@@ -8,16 +8,31 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest",
-    "xcode": "open ios/GasStationsApp.xcworkspace"
+    "xcode": "open ios/GasStationsApp.xcworkspace",
+    "lingui:extract": "lingui extract --clean",
+    "lingui:compile": "lingui compile",
+    "lingui:rebuild": "lingui extract --clean && lingui compile"
   },
   "dependencies": {
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/native-stack": "^7.2.0",
     "react": "18.3.1",
-    "react-native": "0.76.5"
+    "react-native": "0.76.5",
+    "react-native-gesture-handler": "^2.21.2",
+    "react-native-mmkv": "^3.1.0",
+    "react-native-reanimated": "^3.16.5",
+    "react-native-safe-area-context": "^5.0.0",
+    "react-native-screens": "^4.3.0",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
+    "@lingui/cli": "^5.1.0",
+    "@lingui/core": "^5.1.0",
+    "@lingui/react": "^5.1.0",
     "@react-native-community/cli": "15.0.1",
     "@react-native-community/cli-platform-android": "15.0.1",
     "@react-native-community/cli-platform-ios": "15.0.1",

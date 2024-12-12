@@ -13,8 +13,18 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2837EB52D49F49CE830F4F44 /* HostGrotesk-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCD35CFAAB97427294FA4471 /* HostGrotesk-Light.otf */; };
+		393E2A0AD0E044628355FDEA /* HostGrotesk-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A45DD90E3C04CA9A4C7F97E /* HostGrotesk-Italic.otf */; };
+		409E207736474AE99A772397 /* HostGrotesk-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 163F504C81FE469EA2A6B556 /* HostGrotesk-BlackItalic.otf */; };
+		51EB4C4F6A264F5B8E02B22E /* HostGrotesk-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C62C124D0E4E6EBFAF01F4 /* HostGrotesk-BoldItalic.otf */; };
+		602C137C20854194AEEDB27E /* HostGrotesk-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E2593D65C144EFF834CB2CE /* HostGrotesk-Bold.otf */; };
+		7376BFDA6C2340DA8D70E8EC /* HostGrotesk-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9E64B7C804414BD085350CB0 /* HostGrotesk-Regular.otf */; };
 		7699B88040F8A987B510C191 /* libPods-GasStationsApp-GasStationsAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-GasStationsApp-GasStationsAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		98DA4388839A46E7A6A40876 /* HostGrotesk-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E819E86BFB884B3B97191655 /* HostGrotesk-LightItalic.otf */; };
+		C04DBF501FA147E1AB0DB30E /* HostGrotesk-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 435817F81B45428AB5A8576A /* HostGrotesk-MediumItalic.otf */; };
+		D079A5F7253B4AC1A671427E /* HostGrotesk-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAEC6F4A6847A795646768 /* HostGrotesk-Medium.otf */; };
+		ECE56B74C99C42709553848F /* HostGrotesk-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E214642AE2C46B098B3F1DA /* HostGrotesk-Black.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +48,23 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GasStationsApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GasStationsApp/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = GasStationsApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		163F504C81FE469EA2A6B556 /* HostGrotesk-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-BlackItalic.otf"; path = "../assets/fonts/HostGrotesk-BlackItalic.otf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-GasStationsApp-GasStationsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GasStationsApp-GasStationsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-GasStationsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStationsApp.debug.xcconfig"; path = "Target Support Files/Pods-GasStationsApp/Pods-GasStationsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		435817F81B45428AB5A8576A /* HostGrotesk-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-MediumItalic.otf"; path = "../assets/fonts/HostGrotesk-MediumItalic.otf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-GasStationsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStationsApp.release.xcconfig"; path = "Target Support Files/Pods-GasStationsApp/Pods-GasStationsApp.release.xcconfig"; sourceTree = "<group>"; };
+		5A45DD90E3C04CA9A4C7F97E /* HostGrotesk-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-Italic.otf"; path = "../assets/fonts/HostGrotesk-Italic.otf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-GasStationsApp-GasStationsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStationsApp-GasStationsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GasStationsApp-GasStationsAppTests/Pods-GasStationsApp-GasStationsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5CEAEC6F4A6847A795646768 /* HostGrotesk-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-Medium.otf"; path = "../assets/fonts/HostGrotesk-Medium.otf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-GasStationsApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GasStationsApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E214642AE2C46B098B3F1DA /* HostGrotesk-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-Black.otf"; path = "../assets/fonts/HostGrotesk-Black.otf"; sourceTree = "<group>"; };
+		6E2593D65C144EFF834CB2CE /* HostGrotesk-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-Bold.otf"; path = "../assets/fonts/HostGrotesk-Bold.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GasStationsApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-GasStationsApp-GasStationsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStationsApp-GasStationsAppTests.release.xcconfig"; path = "Target Support Files/Pods-GasStationsApp-GasStationsAppTests/Pods-GasStationsApp-GasStationsAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		9E64B7C804414BD085350CB0 /* HostGrotesk-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-Regular.otf"; path = "../assets/fonts/HostGrotesk-Regular.otf"; sourceTree = "<group>"; };
+		BCD35CFAAB97427294FA4471 /* HostGrotesk-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-Light.otf"; path = "../assets/fonts/HostGrotesk-Light.otf"; sourceTree = "<group>"; };
+		C6C62C124D0E4E6EBFAF01F4 /* HostGrotesk-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-BoldItalic.otf"; path = "../assets/fonts/HostGrotesk-BoldItalic.otf"; sourceTree = "<group>"; };
+		E819E86BFB884B3B97191655 /* HostGrotesk-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HostGrotesk-LightItalic.otf"; path = "../assets/fonts/HostGrotesk-LightItalic.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -109,6 +129,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		461C89A61B0C49EEA34CFF9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5E214642AE2C46B098B3F1DA /* HostGrotesk-Black.otf */,
+				163F504C81FE469EA2A6B556 /* HostGrotesk-BlackItalic.otf */,
+				6E2593D65C144EFF834CB2CE /* HostGrotesk-Bold.otf */,
+				C6C62C124D0E4E6EBFAF01F4 /* HostGrotesk-BoldItalic.otf */,
+				5A45DD90E3C04CA9A4C7F97E /* HostGrotesk-Italic.otf */,
+				BCD35CFAAB97427294FA4471 /* HostGrotesk-Light.otf */,
+				E819E86BFB884B3B97191655 /* HostGrotesk-LightItalic.otf */,
+				5CEAEC6F4A6847A795646768 /* HostGrotesk-Medium.otf */,
+				435817F81B45428AB5A8576A /* HostGrotesk-MediumItalic.otf */,
+				9E64B7C804414BD085350CB0 /* HostGrotesk-Regular.otf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +163,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				461C89A61B0C49EEA34CFF9B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -247,6 +286,16 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0D17C6C079E34DA36DD95ED8 /* PrivacyInfo.xcprivacy in Resources */,
+				ECE56B74C99C42709553848F /* HostGrotesk-Black.otf in Resources */,
+				409E207736474AE99A772397 /* HostGrotesk-BlackItalic.otf in Resources */,
+				602C137C20854194AEEDB27E /* HostGrotesk-Bold.otf in Resources */,
+				51EB4C4F6A264F5B8E02B22E /* HostGrotesk-BoldItalic.otf in Resources */,
+				393E2A0AD0E044628355FDEA /* HostGrotesk-Italic.otf in Resources */,
+				2837EB52D49F49CE830F4F44 /* HostGrotesk-Light.otf in Resources */,
+				98DA4388839A46E7A6A40876 /* HostGrotesk-LightItalic.otf in Resources */,
+				D079A5F7253B4AC1A671427E /* HostGrotesk-Medium.otf in Resources */,
+				C04DBF501FA147E1AB0DB30E /* HostGrotesk-MediumItalic.otf in Resources */,
+				7376BFDA6C2340DA8D70E8EC /* HostGrotesk-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
