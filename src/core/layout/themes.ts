@@ -104,6 +104,36 @@ export const light = {
         backgroundColor: lightPalette.primary_500,
       },
     },
+    btn: {
+      bg: {
+        primary: {
+          backgroundColor: lightPalette.primary_500,
+        },
+        secondary: {
+          backgroundColor: lightPalette.gray_100,
+        },
+        success: {
+          backgroundColor: lightPalette.green_700,
+        },
+        error: {
+          backgroundColor: lightPalette.red_500,
+        },
+      },
+      text: {
+        primary: {
+          color: lightPalette.black,
+        },
+        secondary: {
+          color: lightPalette.white,
+        },
+        success: {
+          color: lightPalette.black,
+        },
+        error: {
+          color: lightPalette.black,
+        },
+      },
+    },
   },
 };
 
