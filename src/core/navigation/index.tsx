@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import Home from '@feature/home';
+import Database from '@feature/database';
 
 import {
   AllNavigatorParamList,
@@ -31,6 +32,7 @@ const ModalNavigator = () => {
 
 const MainNavigatorScreens = () => (
   <>
+    <Main.Screen name="Database" component={Database} />
     <Main.Screen name="Home" component={Home} />
   </>
 );
@@ -42,7 +44,7 @@ const MainNavigator = () => {
   } as const;
 
   return (
-    <Main.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+    <Main.Navigator initialRouteName="Database" screenOptions={screenOptions}>
       {MainNavigatorScreens()}
       {ModalNavigator()}
     </Main.Navigator>
