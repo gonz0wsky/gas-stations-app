@@ -44,7 +44,7 @@ const MainNavigator = () => {
   } as const;
 
   return (
-    <Main.Navigator initialRouteName="Database" screenOptions={screenOptions}>
+    <Main.Navigator initialRouteName="Home" screenOptions={screenOptions}>
       {MainNavigatorScreens()}
       {ModalNavigator()}
     </Main.Navigator>

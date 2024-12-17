@@ -100,8 +100,17 @@ export const light = {
       primary: {
         backgroundColor: lightPalette.gray_25,
       },
-      secondary: {
-        backgroundColor: lightPalette.primary_500,
+    },
+    modal: {
+      bg: {
+        primary: {
+          backgroundColor: lightPalette.white,
+        },
+      },
+      drag: {
+        primary: {
+          backgroundColor: lightPalette.primary_500,
+        },
       },
     },
     btn: {
