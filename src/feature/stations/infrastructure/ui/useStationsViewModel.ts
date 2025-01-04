@@ -13,9 +13,7 @@ const useStationsViewModel = () => {
 
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const {data} = useServiceStationsQuery();
-
-  console.log('data', data?.length);
+  const {data: serviceStationsList} = useServiceStationsQuery();
 
   const handlePressSettings = () => {
     navigate('Settings');
@@ -25,6 +23,7 @@ const useStationsViewModel = () => {
     bottomSheetRef,
     handlePressSettings,
     i18n,
+    serviceStationsList,
     t,
     w,
   };

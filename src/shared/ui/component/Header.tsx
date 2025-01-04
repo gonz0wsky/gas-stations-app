@@ -59,9 +59,11 @@ const Header: FC<Props> = ({
           <CircularButton icon={leftIcon} onPress={onPressLeft} />
         ) : null}
       </View>
-      <View>
-        <Text style={[t.atoms.text.primary, a.font_body_one]}>{title}</Text>
-      </View>
+      {!!title && (
+        <View>
+          <Text style={[t.atoms.text.primary, a.font_body_one]}>{title}</Text>
+        </View>
+      )}
       <View style={{minWidth: 36, aspectRatio: 1}}>
         {rightIcon ? (
           <CircularButton icon={rightIcon} onPress={onPressRight} />

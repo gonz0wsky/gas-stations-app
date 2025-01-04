@@ -10,6 +10,8 @@ import StationDetailBottomSheetView from './components/StationDetailBottomSheetV
 const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   bottomSheetRef,
   handlePressSettings,
+  serviceStationsList,
+  t,
   w,
 }) => (
   <View style={[a.flex_1]}>
@@ -26,8 +28,10 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
         showsHorizontalScrollIndicator={false}
         scrollEnabled={false}>
         <StationsBottomSheetView
-          w={w}
           handlePressSettings={handlePressSettings}
+          stations={serviceStationsList ?? []}
+          w={w}
+          t={t}
         />
         <StationDetailBottomSheetView w={w} />
       </BottomSheetScrollView>

@@ -175,7 +175,24 @@ export const light = {
     },
     header: {
       bg: {
-        backgroundColor: lightPalette.gray_25,
+        backgroundColor: lightPalette.gray_400,
+      },
+    },
+    station_card: {
+      bg: {
+        backgroundColor: lightPalette.gray_600,
+      },
+      price: {
+        color: lightPalette.primary_500,
+      },
+      distance: {
+        color: lightPalette.gray_900,
+      },
+      title: {
+        color: lightPalette.gray_950,
+      },
+      subtitle: {
+        color: lightPalette.gray_100,
       },
     },
   },
