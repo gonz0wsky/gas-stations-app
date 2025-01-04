@@ -3,7 +3,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import {useLingui} from '@lingui/react';
 import {useRef} from 'react';
 
-const useHomeViewModel = () => {
+const useStationsViewModel = () => {
   const {i18n} = useLingui();
   const t = useTheme();
   const w = useWindow();
@@ -18,4 +18,4 @@ const useHomeViewModel = () => {
   };
 };
 
-export default useHomeViewModel;
+export default useStationsViewModel;

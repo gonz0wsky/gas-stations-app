@@ -5,7 +5,7 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import Home from '@feature/home';
+import Stations from '@feature/stations';
 import Database from '@feature/database';
 
 import {
@@ -33,7 +33,7 @@ const ModalNavigator = () => {
 const MainNavigatorScreens = () => (
   <>
     <Main.Screen name="Database" component={Database} />
-    <Main.Screen name="Home" component={Home} />
+    <Main.Screen name="Stations" component={Stations} />
   </>
 );
 
@@ -44,7 +44,7 @@ const MainNavigator = () => {
   } as const;
 
   return (
-    <Main.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+    <Main.Navigator initialRouteName="Stations" screenOptions={screenOptions}>
       {MainNavigatorScreens()}
       {ModalNavigator()}
     </Main.Navigator>

@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
-import MapView from 'react-native-maps';
+import RNMap from 'react-native-maps';
 
 type Props = {
   style?: StyleProp<ViewStyle>;
 };
-const Map: FC<Props> = ({style}) => (
-  <MapView
+const MapView: FC<Props> = ({style}) => (
+  <RNMap
     style={style}
     initialRegion={{
       latitude: 37.386052,
@@ -17,4 +17,4 @@ const Map: FC<Props> = ({style}) => (
   />
 );
 
-export default Map;
+export default MapView;

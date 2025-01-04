@@ -1,18 +1,18 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
-import type HomeViewModel from './useHomeViewModel';
+import type StationsViewModel from './useStationsViewModel';
 import {atoms as a} from '@core/layout';
-import Map from './ui/Map';
-import StationsBottomSheetView from './ui/StationsBottomSheetView';
-import StationDetailBottomSheetView from './ui/StationDetailBottomSheetView';
+import MapView from './components/MapView';
+import StationsBottomSheetView from './components/StationsBottomSheetView';
+import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
 
-const HomeView: FC<ReturnType<typeof HomeViewModel>> = ({
+const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   w,
   bottomSheetRef,
 }) => (
   <View style={[a.flex_1]}>
-    <Map style={[a.absolute, a.inset_0]} />
+    <MapView style={[a.absolute, a.inset_0]} />
     <BottomSheet
       animateOnMount={false}
       enableDynamicSizing={false}
@@ -31,4 +31,4 @@ const HomeView: FC<ReturnType<typeof HomeViewModel>> = ({
   </View>
 );
 
-export default HomeView;
+export default StationsView;

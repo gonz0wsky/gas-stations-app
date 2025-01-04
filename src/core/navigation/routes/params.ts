@@ -3,7 +3,7 @@ import {FC} from 'react';
 
 export type MainNavigatorParamList = {
   Database: undefined;
-  Home: undefined;
+  Stations: undefined;
 };
 
 export type ModalNavigatorParamList = {};
