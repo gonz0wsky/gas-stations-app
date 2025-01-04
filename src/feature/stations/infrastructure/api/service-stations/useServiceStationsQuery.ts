@@ -1,6 +1,6 @@
 import GetServiceStationsUseCase from '@feature/stations/application/GetServiceStationsUseCase';
 import {useQuery} from '@tanstack/react-query';
-import GetServiceStationsAPI from '../api/GetServiceStations';
+import GetServiceStationsAPI from './GetServiceStations';
 
 function useServiceStationsQuery() {
   return useQuery({

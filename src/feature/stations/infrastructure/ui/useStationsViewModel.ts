@@ -2,7 +2,7 @@ import {useTheme, useWindow} from '@core/layout';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {useLingui} from '@lingui/react';
 import {useRef} from 'react';
-import useServiceStationsQuery from '../hooks/useServiceStationsQuery';
+import useServiceStationsQuery from '../api/service-stations/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 
 const useStationsViewModel = () => {
