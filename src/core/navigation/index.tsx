@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import Stations from '@feature/stations';
+import Settings from '@feature/settings';
 
 import {
   AllNavigatorParamList,
@@ -32,13 +33,14 @@ const ModalNavigator = () => {
 const MainNavigatorScreens = () => (
   <>
     <Main.Screen name="Stations" component={Stations} />
+    <Main.Screen name="Settings" component={Settings} />
   </>
 );
 
 const MainNavigator = () => {
   const screenOptions: NativeStackNavigationOptions = {
     headerShown: false,
-    animation: 'ios_from_left',
+    animation: 'ios_from_right',
   } as const;
 
   return (

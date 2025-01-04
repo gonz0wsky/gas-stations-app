@@ -1,7 +1,8 @@
+import {useEffect} from 'react';
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 
 type Events = {
-  'update-stations-database': null;
+  'navigate-to-settings': null;
 };
 
 const eventEmitter = new EventEmitter();
@@ -17,5 +18,15 @@ const listentEvent = <T>(
   return eventEmitter.addListener(name, callback);
 };
 
-export {emitEvent, listentEvent};
+const useListenEvent = <T>(
+  name: keyof Events,
+  callback: (...args: any[]) => T,
+) => {
+  useEffect(() => {
+    const event = eventEmitter.addListener(name, callback);
+    return () => event.remove();
+  });
+};
+
+export {emitEvent, listentEvent, useListenEvent};
 export default eventEmitter;

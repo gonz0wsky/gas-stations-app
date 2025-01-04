@@ -1,0 +1,43 @@
+import {atoms as a, useTheme} from '@core/layout/index';
+import Icon from './Icon';
+import {IconName} from './Icon/types';
+import {FC} from 'react';
+import {View} from 'react-native';
+import {
+  BorderlessButton,
+  BorderlessButtonProps,
+} from 'react-native-gesture-handler';
+
+type Props = {
+  icon: IconName;
+  size?: number;
+  variant?: 'primary';
+} & BorderlessButtonProps;
+
+const CircularButton: FC<Props> = ({
+  icon,
+  variant = 'primary',
+  size = 36,
+  style,
+  ...rest
+}) => {
+  const t = useTheme();
+
+  return (
+    <View
+      style={[
+        style,
+        t.atoms.round_btn.bg[variant],
+        a.rounded_full,
+        a.overflow_hidden,
+      ]}>
+      <BorderlessButton
+        style={[{height: size, width: size}, a.align_center, a.justify_center]}
+        {...rest}>
+        <Icon name={icon} color={t.atoms.round_btn.icon[variant].color} />
+      </BorderlessButton>
+    </View>
+  );
+};
+
+export default CircularButton;

@@ -8,8 +8,9 @@ import StationsBottomSheetView from './components/StationsBottomSheetView';
 import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
 
 const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
-  w,
   bottomSheetRef,
+  handlePressSettings,
+  w,
 }) => (
   <View style={[a.flex_1]}>
     <MapView style={[a.absolute, a.inset_0]} />
@@ -24,7 +25,10 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         scrollEnabled={false}>
-        <StationsBottomSheetView w={w} />
+        <StationsBottomSheetView
+          w={w}
+          handlePressSettings={handlePressSettings}
+        />
         <StationDetailBottomSheetView w={w} />
       </BottomSheetScrollView>
     </BottomSheet>

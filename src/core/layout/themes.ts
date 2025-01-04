@@ -143,6 +143,41 @@ export const light = {
         },
       },
     },
+    round_btn: {
+      bg: {
+        primary: {
+          backgroundColor: lightPalette.primary_500,
+        },
+        secondary: {
+          backgroundColor: lightPalette.gray_100,
+        },
+        success: {
+          backgroundColor: lightPalette.green_700,
+        },
+        error: {
+          backgroundColor: lightPalette.red_500,
+        },
+      },
+      icon: {
+        primary: {
+          color: lightPalette.black,
+        },
+        secondary: {
+          color: lightPalette.white,
+        },
+        success: {
+          color: lightPalette.black,
+        },
+        error: {
+          color: lightPalette.black,
+        },
+      },
+    },
+    header: {
+      bg: {
+        backgroundColor: lightPalette.gray_25,
+      },
+    },
   },
 };
 
