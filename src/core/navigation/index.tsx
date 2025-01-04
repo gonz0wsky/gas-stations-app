@@ -6,7 +6,6 @@ import {
 } from '@react-navigation/native-stack';
 
 import Stations from '@feature/stations';
-import Database from '@feature/database';
 
 import {
   AllNavigatorParamList,
@@ -32,7 +31,6 @@ const ModalNavigator = () => {
 
 const MainNavigatorScreens = () => (
   <>
-    <Main.Screen name="Database" component={Database} />
     <Main.Screen name="Stations" component={Stations} />
   </>
 );

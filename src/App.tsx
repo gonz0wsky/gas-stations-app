@@ -8,8 +8,11 @@ import I18nProvider from '@core/locale/i18nProvider';
 import Navigator from '@core/navigation';
 import {StatusBar} from 'react-native';
 import {statusBarStyle} from '@core/layout/themes';
+import useQueryClient from '@core/queryClient';
+import QueryClientProvider from '@core/provider/QueryClientProvider';
 
 const InnerApp = () => {
+  useQueryClient();
   const themeName = useStore(s => s.theme);
   const theme = useColorModeTheme(themeName);
 
@@ -28,7 +31,11 @@ const InnerApp = () => {
 };
 
 const App = () => {
-  return <InnerApp />;
+  return (
+    <QueryClientProvider>
+      <InnerApp />
+    </QueryClientProvider>
+  );
 };
 
 export default App;

@@ -1,6 +1,6 @@
 import ServiceStation, {
   mapDtoToServiceStation,
-} from '@shared/domain/ServiceStationModel';
+} from '../domain/ServiceStationModel';
 import IGetServiceStationsRepository from '../domain/IGetServiceStationsRepository';
 
 const GetServiceStationsUseCase = (

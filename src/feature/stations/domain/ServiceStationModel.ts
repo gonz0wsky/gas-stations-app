@@ -1,4 +1,4 @@
-import type {ServiceStationsItemDTO} from '@shared/infrastructure/ServiceStationsAPI/ServiceStationsDTO';
+import type {ServiceStationsItemDTO} from '../infrastructure/api/ServiceStationsDTO';
 import type ServiceStationPrices from './ServiceStationPricesModel';
 import parseStringToNumber from '@shared/utils/parseStringToNumber';
 

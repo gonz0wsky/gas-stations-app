@@ -2,7 +2,6 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {FC} from 'react';
 
 export type MainNavigatorParamList = {
-  Database: undefined;
   Stations: undefined;
 };
 
