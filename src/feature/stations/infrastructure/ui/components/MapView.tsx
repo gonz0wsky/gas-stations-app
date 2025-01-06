@@ -1,20 +1,25 @@
-import React, {FC} from 'react';
-import {StyleProp, ViewStyle} from 'react-native';
+import {atoms as a} from '@core/layout';
+import React, {FC, useRef} from 'react';
 import RNMap from 'react-native-maps';
 
-type Props = {
-  style?: StyleProp<ViewStyle>;
+const IBERIA = {
+  latitude: 40.0,
+  longitude: -4.5,
+  latitudeDelta: 10.0,
+  longitudeDelta: 10.0,
+} as const;
+
+type Props = {};
+const MapView: FC<Props> = () => {
+  const mapRef = useRef<RNMap>(null);
+
+  return (
+    <RNMap
+      ref={mapRef}
+      style={[a.absolute, a.inset_0]}
+      initialRegion={IBERIA}
+    />
+  );
 };
-const MapView: FC<Props> = ({style}) => (
-  <RNMap
-    style={style}
-    initialRegion={{
-      latitude: 37.386052,
-      longitude: -5.984458,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }}
-  />
-);
 
 export default MapView;

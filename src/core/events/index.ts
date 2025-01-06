@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 
 type Events = {
-  'navigate-to-settings': null;
+  'map-change-location': {latitude: number; longitude: number};
 };
 
 const eventEmitter = new EventEmitter();

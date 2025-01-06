@@ -9,13 +9,14 @@ import StationDetailBottomSheetView from './components/StationDetailBottomSheetV
 
 const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   bottomSheetRef,
+  filter,
+  filteredStations,
+  handlePressCard,
+  handlePressFilter,
   handlePressSettings,
-  serviceStationsList,
-  t,
-  w,
 }) => (
   <View style={[a.flex_1]}>
-    <MapView style={[a.absolute, a.inset_0]} />
+    <MapView />
     <BottomSheet
       animateOnMount={false}
       enableDynamicSizing={false}
@@ -28,12 +29,13 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
         showsHorizontalScrollIndicator={false}
         scrollEnabled={false}>
         <StationsBottomSheetView
+          filter={filter}
           handlePressSettings={handlePressSettings}
-          stations={serviceStationsList ?? []}
-          w={w}
-          t={t}
+          onPressCard={handlePressCard}
+          onPressFilter={handlePressFilter}
+          stations={filteredStations}
         />
-        <StationDetailBottomSheetView w={w} />
+        <StationDetailBottomSheetView />
       </BottomSheetScrollView>
     </BottomSheet>
   </View>

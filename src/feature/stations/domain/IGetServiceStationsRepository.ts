@@ -1,4 +1,4 @@
-import type {ServiceStationsDTO} from '../infrastructure/api/service-stations/ServiceStationsDTO';
+import type {ServiceStationsDTO} from '../infrastructure/api/ServiceStationsDTO';
 
 interface IGetServiceStationsRepository {
   run(): Promise<ServiceStationsDTO>;

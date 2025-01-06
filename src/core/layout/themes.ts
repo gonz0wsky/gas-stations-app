@@ -178,6 +178,20 @@ export const light = {
         backgroundColor: lightPalette.gray_400,
       },
     },
+    selector: {
+      bg: {
+        backgroundColor: lightPalette.gray_400,
+      },
+      text: {
+        color: lightPalette.gray_950,
+      },
+      selected_bg: {
+        backgroundColor: lightPalette.primary_500,
+      },
+      selected_text: {
+        color: lightPalette.gray_100,
+      },
+    },
     station_card: {
       bg: {
         backgroundColor: lightPalette.gray_600,
