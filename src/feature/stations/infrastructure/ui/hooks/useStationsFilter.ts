@@ -1,8 +1,8 @@
 import ServiceStation from '@feature/stations/domain/ServiceStationModel';
-import {FilterOptions} from '../useStationsViewModel';
 import {useEffect, useState} from 'react';
 import useStore from '@core/store';
 import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
+import {FilterOption} from '../constants/filter-constants';
 
 const useStationFilter = (
   stations: ServiceStation[],
@@ -12,16 +12,16 @@ const useStationFilter = (
   const kmToDisplay = useStore(state => state.kmToDisplay);
   const userFavoriteStations = useStore(state => state.favorites);
 
-  const [filter, setFilter] = useState<FilterOptions>('price');
+  const [filter, setFilter] = useState<FilterOption>('price');
   const [filteredStations, setFilteredStations] = useState<
-    Record<FilterOptions, ServiceStation[]>
+    Record<FilterOption, ServiceStation[]>
   >({
     favorites: [],
     near: [],
     price: [],
   });
 
-  const handlePressFilter = (id: FilterOptions) => {
+  const handlePressFilter = (id: FilterOption) => {
     setFilter(id);
   };
 

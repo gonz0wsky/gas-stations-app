@@ -62,7 +62,7 @@ const mapDtoToServiceStation = (
       ),
     },
     province: dto.Provincia,
-    saleType: 'public',
+    saleType: dto['Tipo Venta'] === 'P' ? 'public' : 'private',
     schedule: dto.Horario,
     sideRoad: sideRoadOptions[dto.Margen],
   };

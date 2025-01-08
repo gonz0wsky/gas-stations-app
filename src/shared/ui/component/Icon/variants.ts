@@ -1,9 +1,16 @@
 import type {FC} from 'react';
 
-import ArrowLeft from './icons/ArrowLeft';
+import LeftArrow from './icons/LeftArrow';
 import Close from './icons/Close';
 import Plus from './icons/Plus';
 import Settings from './icons/Settings';
+import Clock from './icons/Clock';
+import Map from './icons/Map';
+import LeftRightArrows from './icons/LeftRightArrows';
+import Star from './icons/Star';
+import BankNotes from './icons/BanknNotes';
+import StarFill from './icons/StarFill';
+
 import {IconProps} from './types';
 
 const createSvgIcons = <T extends {[name: string]: FC<IconProps>}>(
@@ -11,8 +18,14 @@ const createSvgIcons = <T extends {[name: string]: FC<IconProps>}>(
 ): Record<keyof T, FC<IconProps>> => cfg;
 
 export const icons = createSvgIcons({
-  'arrow-left': ArrowLeft,
+  'bank-notes': BankNotes,
+  'left-arrow': LeftArrow,
+  'left-right-arrows': LeftRightArrows,
+  'star-fill': StarFill,
+  clock: Clock,
   close: Close,
+  map: Map,
   plus: Plus,
   settings: Settings,
+  star: Star,
 });

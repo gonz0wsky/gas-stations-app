@@ -4,7 +4,7 @@ import {sliceResetFns} from './clearStorage';
 export interface StationsSlice {
   favorites: string[];
   kmToDisplay: number;
-  setFavorites: (favorites: string[]) => void;
+  permuteFavorite: (id: string) => void;
   setKmToDisplay: (km: number) => void;
 }
 
@@ -19,7 +19,12 @@ const createSystemSlice: StateCreator<StationsSlice> = set => {
   return {
     ...initialState,
 
-    setFavorites: (favorites: string[]) => set(() => ({favorites})),
+    permuteFavorite: (id: string) =>
+      set(state => ({
+        favorites: state.favorites.includes(id)
+          ? state.favorites.filter(favorite => favorite !== id)
+          : [...state.favorites, id],
+      })),
     setKmToDisplay: (kmToDisplay: number) => set(() => ({kmToDisplay})),
   };
 };

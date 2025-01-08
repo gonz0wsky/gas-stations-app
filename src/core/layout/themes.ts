@@ -209,6 +209,21 @@ export const light = {
         color: lightPalette.gray_100,
       },
     },
+    station_detail_row: {
+      icon_bg: {
+        backgroundColor: lightPalette.primary_500,
+        borderColor: lightPalette.primary_700,
+      },
+      icon: {
+        color: lightPalette.gray_100,
+      },
+      title: {
+        color: lightPalette.gray_950,
+      },
+      subtitle: {
+        color: lightPalette.gray_100,
+      },
+    },
   },
 };
 

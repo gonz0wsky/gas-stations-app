@@ -6,6 +6,9 @@ import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import useStore from '@core/store';
 import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
+import Filter from './Filter';
+import FILTER_OPTIONS, {FilterOption} from '../constants/filter-constants';
+import CircularButton from '@shared/ui/component/CircularButton';
 
 type StationCardProps = {
   station: ServiceStation;
@@ -60,15 +63,37 @@ const StationCard = ({station, onPress}: StationCardProps) => {
 };
 
 type Props = {
+  filter: FilterOption;
+  handlePressFilter: (id: FilterOption) => void;
+  handlePressSettings: () => void;
   onPressCard: (id: string) => void;
   stations: ServiceStation[];
 };
 
-const StationsBottomSheetView: FC<Props> = ({onPressCard, stations}) => {
+const StationsBottomSheetView: FC<Props> = ({
+  onPressCard,
+  stations,
+  filter,
+  handlePressFilter,
+  handlePressSettings,
+}) => {
   const w = useWindow();
 
   return (
     <BottomSheetView style={[{width: w.width}]}>
+      <View style={[a.flex_row, a.mx_lg, a.align_center]}>
+        <Filter
+          style={[a.flex_1]}
+          options={FILTER_OPTIONS}
+          onPress={handlePressFilter}
+          selected={filter}
+        />
+        <CircularButton
+          style={[a.ml_sm]}
+          icon="settings"
+          onPress={handlePressSettings}
+        />
+      </View>
       <BottomSheetFlatList
         initialNumToRender={12}
         maxToRenderPerBatch={4}

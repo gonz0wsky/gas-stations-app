@@ -11,7 +11,7 @@ const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
   <View style={[a.flex_1]}>
     <Header
       title={i18n.t('Settings')}
-      leftIcon="arrow-left"
+      leftIcon="left-arrow"
       onPressLeft={onPressBack}
     />
   </View>

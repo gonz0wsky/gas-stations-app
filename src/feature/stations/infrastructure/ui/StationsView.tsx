@@ -6,17 +6,19 @@ import {atoms as a} from '@core/layout';
 import MapView from './components/MapView';
 import StationsBottomSheetView from './components/StationsBottomSheetView';
 import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
-import Filter from './components/Filter';
-import FILTER_OPTIONS from './constants/filter-constants';
-import CircularButton from '@shared/ui/component/CircularButton';
 
 const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   bottomSheetRef,
   filter,
   filteredStations,
+  handleHorizontalOnMomentunScrollEnd,
+  handlePressBack,
   handlePressCard,
+  handlePressFavorite,
   handlePressFilter,
   handlePressSettings,
+  horizontalViewRef,
+  selectedStation,
 }) => (
   <View style={[a.flex_1]}>
     <MapView />
@@ -27,29 +29,27 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
       ref={bottomSheetRef}
       enableContentPanningGesture={false}
       snapPoints={['40%', '60%', '80%']}>
-      <View style={[a.flex_row, a.mx_lg, a.align_center]}>
-        <Filter
-          style={[a.flex_1]}
-          options={FILTER_OPTIONS}
-          onPress={handlePressFilter}
-          selected={filter}
-        />
-        <CircularButton
-          style={[a.ml_sm]}
-          icon="settings"
-          onPress={handlePressSettings}
-        />
-      </View>
       <BottomSheetScrollView
         horizontal
+        onMomentumScrollEnd={handleHorizontalOnMomentunScrollEnd}
         pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled={false}>
+        ref={horizontalViewRef}
+        scrollEnabled={!!selectedStation}
+        showsHorizontalScrollIndicator={false}>
         <StationsBottomSheetView
+          filter={filter}
+          handlePressFilter={handlePressFilter}
+          handlePressSettings={handlePressSettings}
           onPressCard={handlePressCard}
           stations={filteredStations}
         />
-        <StationDetailBottomSheetView />
+        {!!selectedStation && (
+          <StationDetailBottomSheetView
+            handlePressBack={handlePressBack}
+            handlePressFavorite={handlePressFavorite}
+            station={selectedStation}
+          />
+        )}
       </BottomSheetScrollView>
     </BottomSheet>
   </View>
