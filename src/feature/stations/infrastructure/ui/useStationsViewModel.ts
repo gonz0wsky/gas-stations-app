@@ -7,8 +7,6 @@ import useLocation from '../api/useLocation';
 import {emitEvent} from '@core/events';
 import useStationFilter from './hooks/useStationsFilter';
 
-export type FilterOptions = 'price' | 'near' | 'favorites';
-
 const useStationsViewModel = () => {
   const {navigate} = useNavigation();
   const {i18n} = useLingui();
