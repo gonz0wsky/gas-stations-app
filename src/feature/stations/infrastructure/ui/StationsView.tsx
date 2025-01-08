@@ -30,6 +30,7 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
       enableContentPanningGesture={false}
       snapPoints={['40%', '60%', '80%']}>
       <BottomSheetScrollView
+        bounces={false}
         horizontal
         onMomentumScrollEnd={handleHorizontalOnMomentunScrollEnd}
         pagingEnabled
