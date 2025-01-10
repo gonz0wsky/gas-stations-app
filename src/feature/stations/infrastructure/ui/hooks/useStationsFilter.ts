@@ -1,5 +1,5 @@
 import ServiceStation from '@feature/stations/domain/ServiceStationModel';
-import {useEffect, useState} from 'react';
+import {useMemo, useState} from 'react';
 import useStore from '@core/store';
 import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
 import {FilterOption} from '../constants/filter-constants';
@@ -8,58 +8,64 @@ const useStationFilter = (
   stations: ServiceStation[],
   location: {latitude: number; longitude: number},
 ) => {
-  const vehicleFuel = useStore(state => state.fuel);
+  const userVehicleFuel = useStore(state => state.fuel);
   const kmToDisplay = useStore(state => state.kmToDisplay);
   const userFavoriteStations = useStore(state => state.favorites);
 
   const [filter, setFilter] = useState<FilterOption>('price');
-  const [filteredStations, setFilteredStations] = useState<
-    Record<FilterOption, ServiceStation[]>
-  >({
-    favorites: [],
-    near: [],
-    price: [],
-  });
 
   const handlePressFilter = (id: FilterOption) => {
     setFilter(id);
   };
 
-  useEffect(() => {
-    (async () => {
-      if (stations.length === 0) {
-        return;
-      }
-
-      const nearProductsWithPrice = stations
-        .filter(station => station.prices[vehicleFuel])
+  const nearProductsWithPrice = useMemo(
+    () =>
+      stations
+        .filter(station => station.products[userVehicleFuel])
         .filter(
           station =>
             calculateDistanceInKm(station.position, location) <= kmToDisplay,
-        );
+        ),
+    [kmToDisplay, location, stations, userVehicleFuel],
+  );
 
-      const price = [...nearProductsWithPrice].sort(
-        (a, b) => a.prices[vehicleFuel]! - b.prices[vehicleFuel]!,
-      );
+  const price = useMemo(
+    () =>
+      [...nearProductsWithPrice].sort(
+        (a, b) => a.products[userVehicleFuel]! - b.products[userVehicleFuel]!,
+      ),
+    [nearProductsWithPrice, userVehicleFuel],
+  );
 
-      const near = [...nearProductsWithPrice].sort(
+  const near = useMemo(
+    () =>
+      [...nearProductsWithPrice].sort(
         (a, b) =>
           calculateDistanceInKm(a.position, location) -
           calculateDistanceInKm(b.position, location),
-      );
+      ),
+    [location, nearProductsWithPrice],
+  );
 
-      const favorites = stations.filter(station =>
-        userFavoriteStations.includes(station.id),
-      );
+  const favorites = useMemo(
+    () => stations.filter(station => userFavoriteStations.includes(station.id)),
+    [stations, userFavoriteStations],
+  );
 
-      setFilteredStations({price, near, favorites});
-    })();
-  }, [kmToDisplay, location, stations, userFavoriteStations, vehicleFuel]);
+  const filteredStations = useMemo(
+    () => ({
+      price,
+      near,
+      favorites,
+    }),
+    [favorites, near, price],
+  );
 
   return {
     filter,
     filteredStations: filteredStations[filter],
     handlePressFilter,
+    userFavoriteStations,
   };
 };
 

@@ -1,12 +1,12 @@
 import {StateCreator} from 'zustand';
 import {sliceResetFns} from './clearStorage';
-import ServiceStationPrices from '@feature/stations/domain/ServiceStationPricesModel';
+import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 
 export interface VehicleSlice {
-  fuel: keyof ServiceStationPrices;
+  fuel: keyof ServiceStationProducts;
   litresPerKm: number;
   tankLitres: number;
-  setFuel: (product: keyof ServiceStationPrices) => void;
+  setFuel: (product: keyof ServiceStationProducts) => void;
   setLitresPerKm: (litres: number) => void;
   setTankLitres: (litres: number) => void;
 }
@@ -23,7 +23,7 @@ const createSystemSlice: StateCreator<VehicleSlice> = set => {
 
   return {
     ...initialState,
-    setFuel: (fuel: keyof ServiceStationPrices) => set(() => ({fuel})),
+    setFuel: (fuel: keyof ServiceStationProducts) => set(() => ({fuel})),
     setLitresPerKm: (litresPerKm: number) => set(() => ({litresPerKm})),
     setTankLitres: (tankLitres: number) => set(() => ({tankLitres})),
   };

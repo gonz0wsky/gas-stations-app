@@ -1,8 +1,7 @@
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import {msg} from '@lingui/core/macro';
-import useStore from '@core/store';
 import ServiceStation from '@feature/stations/domain/ServiceStationModel';
-import ServiceStationPrices from '@feature/stations/domain/ServiceStationPricesModel';
+import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {BottomSheetView, BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {useLingui} from '@lingui/react';
 import Button from '@shared/ui/component/Button';
@@ -14,7 +13,7 @@ import {FC} from 'react';
 import {Text, View} from 'react-native';
 
 const PRODUCT_NAMES: Record<
-  keyof ServiceStationPrices,
+  keyof ServiceStationProducts,
   ReturnType<typeof msg>
 > = {
   biodiesel: msg`Biodiesel`,
@@ -39,11 +38,11 @@ const SIDE_ROAD_NAMES: Record<'right' | 'left', ReturnType<typeof msg>> = {
 };
 
 type StationProductsDetailRowProps = {
-  prices: ServiceStationPrices;
+  products: ServiceStationProducts;
 };
 
 const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
-  prices,
+  products,
 }) => {
   const {i18n} = useLingui();
   const t = useTheme();
@@ -65,7 +64,7 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
         <Text numberOfLines={1} style={[a.font_body_one_medium, a.mb_xs]}>
           {i18n.t('Prices')}
         </Text>
-        {Object.entries(prices).map(([fuel, price]) => {
+        {Object.entries(products).map(([fuel, price]) => {
           if (!price) {
             return null;
           }
@@ -73,7 +72,7 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
           return (
             <View key={fuel} style={[a.flex_row, a.justify_between]}>
               <Text numberOfLines={1} style={[a.font_body_two]}>
-                {i18n.t(PRODUCT_NAMES[fuel as keyof ServiceStationPrices])}{' '}
+                {i18n.t(PRODUCT_NAMES[fuel as keyof ServiceStationProducts])}{' '}
               </Text>
               <Text numberOfLines={1} style={[a.font_body_two_medium]}>
                 {price ? `${price} ${i18n.t('€/l')}` : i18n.t('N/A')}
@@ -131,19 +130,20 @@ type Props = {
   handlePressBack: () => void;
   handlePressFavorite: (id: string) => void;
   station: ServiceStation;
+  userLocation: {latitude: number; longitude: number};
+  userFavoriteStations: string[];
 };
 
 const StationDetailBottomSheetView: FC<Props> = ({
   handlePressBack,
   handlePressFavorite,
   station,
+  userLocation,
+  userFavoriteStations,
 }) => {
   const w = useWindow();
   const safe = useSafeArea();
   const {i18n} = useLingui();
-
-  const currentLocation = useStore(state => state.currentLocation);
-  const userFavoriteStations = useStore(state => state.favorites);
 
   if (!station) {
     return null;
@@ -174,7 +174,7 @@ const StationDetailBottomSheetView: FC<Props> = ({
         <Text style={[a.font_caption, a.mb_lg]}>
           {[station.address, station.locality].join(', ')}
         </Text>
-        <StationPricesDetailCard prices={station.prices} />
+        <StationPricesDetailCard products={station.products} />
         <Spacer />
         <StationDetailRow
           title={i18n.t('Open Hours')}
@@ -185,7 +185,7 @@ const StationDetailBottomSheetView: FC<Props> = ({
         <StationDetailRow
           title={i18n.t('Distance')}
           subtitle={`${calculateDistanceInKm(
-            currentLocation,
+            userLocation,
             station.position,
           )} ${i18n.t('Km from your location')}`}
           icon="map"

@@ -1,29 +1,36 @@
 import {atoms as a, useTheme, useWindow} from '@core/layout';
 import ServiceStation from '@feature/stations/domain/ServiceStationModel';
 import {BottomSheetFlatList, BottomSheetView} from '@gorhom/bottom-sheet';
-import {FC} from 'react';
+import {FC, useCallback, useMemo} from 'react';
 import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
-import useStore from '@core/store';
 import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
 import Filter from './Filter';
 import FILTER_OPTIONS, {FilterOption} from '../constants/filter-constants';
 import CircularButton from '@shared/ui/component/CircularButton';
+import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 
 type StationCardProps = {
-  station: ServiceStation;
   onPress: (id: string) => void;
+  station: ServiceStation;
+  userLocation: {latitude: number; longitude: number};
+  userPreferredProduct: keyof ServiceStationProducts;
 };
 
-const StationCard = ({station, onPress}: StationCardProps) => {
+const StationCard = ({
+  onPress,
+  station,
+  userLocation,
+  userPreferredProduct,
+}: StationCardProps) => {
   const t = useTheme();
-  const vehicleFuel = useStore(state => state.fuel);
-  const currentLocation = useStore(state => state.currentLocation);
 
-  // TODO: Replace with real data
-  const distance = calculateDistanceInKm(currentLocation, station.position);
+  const distance = useMemo(
+    () => calculateDistanceInKm(userLocation, station.position),
+    [station.position, userLocation],
+  );
 
-  const price = station.prices[vehicleFuel];
+  const price = station.products[userPreferredProduct];
 
   const handlePress = () => onPress(station.id);
 
@@ -68,6 +75,8 @@ type Props = {
   handlePressSettings: () => void;
   onPressCard: (id: string) => void;
   stations: ServiceStation[];
+  userLocation: {latitude: number; longitude: number};
+  userPreferredProduct: keyof ServiceStationProducts;
 };
 
 const StationsBottomSheetView: FC<Props> = ({
@@ -76,32 +85,44 @@ const StationsBottomSheetView: FC<Props> = ({
   filter,
   handlePressFilter,
   handlePressSettings,
+  userLocation,
+  userPreferredProduct,
 }) => {
   const w = useWindow();
+
+  const handleRender = useCallback(
+    ({item}: {item: ServiceStation}) => (
+      <StationCard
+        userLocation={userLocation}
+        userPreferredProduct={userPreferredProduct}
+        station={item}
+        onPress={onPressCard}
+      />
+    ),
+    [onPressCard, userLocation, userPreferredProduct],
+  );
 
   return (
     <BottomSheetView style={[{width: w.width}]}>
       <View style={[a.flex_row, a.mx_lg, a.align_center]}>
         <Filter
-          style={[a.flex_1]}
-          options={FILTER_OPTIONS}
           onPress={handlePressFilter}
+          options={FILTER_OPTIONS}
           selected={filter}
+          style={[a.flex_1]}
         />
         <CircularButton
-          style={[a.ml_sm]}
           icon="settings"
           onPress={handlePressSettings}
+          style={[a.ml_sm]}
         />
       </View>
       <BottomSheetFlatList
+        contentContainerStyle={[a.pb_lg, a.px_lg, {gap: 4}]}
+        data={stations}
         initialNumToRender={12}
         maxToRenderPerBatch={4}
-        data={stations}
-        renderItem={({item}) => (
-          <StationCard station={item} onPress={onPressCard} />
-        )}
-        contentContainerStyle={[a.pb_lg, a.px_lg, {gap: 4}]}
+        renderItem={handleRender}
         style={[a.mt_sm]}
       />
     </BottomSheetView>

@@ -1,5 +1,5 @@
 import type {ServiceStationsItemDTO} from '../infrastructure/api/ServiceStationsDTO';
-import type ServiceStationPrices from './ServiceStationPricesModel';
+import type ServiceStationProducts from './ServiceStationProductsModel';
 import parseStringToNumber from '@shared/utils/parseStringToNumber';
 
 type ServiceStation = {
@@ -10,7 +10,7 @@ type ServiceStation = {
   name: string;
   position: {latitude: number; longitude: number};
   postalCode: string;
-  prices: ServiceStationPrices;
+  products: ServiceStationProducts;
   province: string;
   saleType: 'public' | 'private';
   schedule: string;
@@ -37,7 +37,7 @@ const mapDtoToServiceStation = (
       longitude: parseStringToNumber(dto['Longitud (WGS84)']),
     },
     postalCode: dto['C.P.'],
-    prices: {
+    products: {
       biodiesel: parseStringToNumber(dto['Precio Biodiesel']),
       bioethanol: parseStringToNumber(dto['Precio Bioetanol']),
       compressed_natural_gas: parseStringToNumber(

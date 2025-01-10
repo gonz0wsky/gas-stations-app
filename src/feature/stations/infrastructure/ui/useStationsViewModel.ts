@@ -21,12 +21,12 @@ const useStationsViewModel = () => {
   const {currentLocation} = useLocation();
   const {data: serviceStationsList} = useServiceStationsQuery();
 
-  const {filter, filteredStations, handlePressFilter} = useStationFilter(
-    serviceStationsList ?? [],
-    currentLocation,
-  );
+  const {filter, filteredStations, handlePressFilter, userFavoriteStations} =
+    useStationFilter(serviceStationsList ?? [], currentLocation);
 
   const permuteUserFavorite = useStore(state => state.permuteFavorite);
+  const userCurrentLocation = useStore(state => state.currentLocation);
+  const userVehicleFuel = useStore(state => state.fuel);
 
   const [selectedStation, setSelectedStation] = useState<ServiceStation | null>(
     null,
@@ -88,6 +88,9 @@ const useStationsViewModel = () => {
     handlePressSettings,
     horizontalViewRef,
     selectedStation,
+    userCurrentLocation,
+    userFavoriteStations,
+    userVehicleFuel,
   };
 };
 

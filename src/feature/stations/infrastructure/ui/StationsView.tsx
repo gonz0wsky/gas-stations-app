@@ -19,6 +19,9 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   handlePressSettings,
   horizontalViewRef,
   selectedStation,
+  userCurrentLocation,
+  userFavoriteStations,
+  userVehicleFuel,
 }) => (
   <View style={[a.flex_1]}>
     <MapView />
@@ -43,12 +46,16 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
           handlePressSettings={handlePressSettings}
           onPressCard={handlePressCard}
           stations={filteredStations}
+          userLocation={userCurrentLocation}
+          userPreferredProduct={userVehicleFuel}
         />
         {!!selectedStation && (
           <StationDetailBottomSheetView
             handlePressBack={handlePressBack}
             handlePressFavorite={handlePressFavorite}
             station={selectedStation}
+            userFavoriteStations={userFavoriteStations}
+            userLocation={userCurrentLocation}
           />
         )}
       </BottomSheetScrollView>

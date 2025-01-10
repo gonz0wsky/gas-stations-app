@@ -1,4 +1,4 @@
-type ServiceStationPrices = {
+type ServiceStationProducts = {
   biodiesel: number | null;
   bioethanol: number | null;
   compressed_natural_gas: number | null;
@@ -15,4 +15,4 @@ type ServiceStationPrices = {
   liquefied_petroleum_gas: number | null;
 };
 
-export default ServiceStationPrices;
+export default ServiceStationProducts;
