@@ -7,4 +7,4 @@ const Settings: ScreenComponent<'Settings'> = () => (
   <SettingsView {...useSettingsViewModel()} />
 );
 
-export default Settings;
+export {Settings as SettingsScreen};

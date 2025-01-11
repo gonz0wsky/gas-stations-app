@@ -7,4 +7,4 @@ const Stations: ScreenComponent<'Stations'> = () => (
   <StationsView {...useStationsViewModel()} />
 );
 
-export default Stations;
+export {Stations as StationsScreen};

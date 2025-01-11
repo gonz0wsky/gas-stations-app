@@ -1,6 +1,7 @@
 import type {FC} from 'react';
 
 import LeftArrow from './icons/LeftArrow';
+import RightChevron from './icons/RightChevron';
 import Close from './icons/Close';
 import Plus from './icons/Plus';
 import Settings from './icons/Settings';
@@ -20,6 +21,7 @@ const createSvgIcons = <T extends {[name: string]: FC<IconProps>}>(
 export const icons = createSvgIcons({
   'bank-notes': BankNotes,
   'left-arrow': LeftArrow,
+  'right-chevron': RightChevron,
   'left-right-arrows': LeftRightArrows,
   'star-fill': StarFill,
   clock: Clock,

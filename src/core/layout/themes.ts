@@ -98,7 +98,7 @@ export const light = {
     },
     bg: {
       primary: {
-        backgroundColor: lightPalette.gray_25,
+        backgroundColor: lightPalette.gray_900,
       },
     },
     modal: {
@@ -222,6 +222,17 @@ export const light = {
       },
       subtitle: {
         color: lightPalette.gray_100,
+      },
+    },
+    option_navigate: {
+      bg: {
+        backgroundColor: lightPalette.gray_800,
+      },
+      text: {
+        color: lightPalette.gray_950,
+      },
+      icon: {
+        color: lightPalette.gray_950,
       },
     },
   },

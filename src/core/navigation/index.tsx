@@ -5,8 +5,8 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import Stations from '@feature/stations';
-import Settings from '@feature/settings';
+import {StationsScreen} from '@feature/stations';
+import {SettingsScreen} from '@feature/settings';
 
 import {
   AllNavigatorParamList,
@@ -32,8 +32,8 @@ const ModalNavigator = () => {
 
 const MainNavigatorScreens = () => (
   <>
-    <Main.Screen name="Stations" component={Stations} />
-    <Main.Screen name="Settings" component={Settings} />
+    <Main.Screen name="Stations" component={StationsScreen} />
+    <Main.Screen name="Settings" component={SettingsScreen} />
   </>
 );
 
