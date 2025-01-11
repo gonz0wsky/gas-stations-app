@@ -6,6 +6,11 @@ import {atoms as a} from '@core/layout';
 import MapView from './components/MapView';
 import StationsBottomSheetView from './components/StationsBottomSheetView';
 import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   bottomSheetRef,
@@ -22,45 +27,59 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   userCurrentLocation,
   userFavoriteStations,
   userVehicleFuel,
-}) => (
-  <View style={[a.flex_1]}>
-    <MapView />
-    <BottomSheet
-      animateOnMount={false}
-      enableDynamicSizing={false}
-      index={2}
-      ref={bottomSheetRef}
-      enableContentPanningGesture={false}
-      snapPoints={['40%', '60%', '80%']}>
-      <BottomSheetScrollView
-        bounces={false}
-        horizontal
-        onMomentumScrollEnd={handleHorizontalOnMomentunScrollEnd}
-        pagingEnabled
-        ref={horizontalViewRef}
-        scrollEnabled={!!selectedStation}
-        showsHorizontalScrollIndicator={false}>
-        <StationsBottomSheetView
-          filter={filter}
-          handlePressFilter={handlePressFilter}
-          handlePressSettings={handlePressSettings}
-          onPressCard={handlePressCard}
-          stations={filteredStations}
-          userLocation={userCurrentLocation}
-          userPreferredProduct={userVehicleFuel}
-        />
-        {!!selectedStation && (
-          <StationDetailBottomSheetView
-            handlePressBack={handlePressBack}
-            handlePressFavorite={handlePressFavorite}
-            station={selectedStation}
-            userFavoriteStations={userFavoriteStations}
-            userLocation={userCurrentLocation}
-          />
-        )}
-      </BottomSheetScrollView>
-    </BottomSheet>
-  </View>
-);
+}) => {
+  const INDEX = 2;
+
+  const bsSharedValue = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    height: `${interpolate(bsSharedValue.value, [0, INDEX], [48.3, 100])}%`,
+  }));
+
+  return (
+    <View style={[a.flex_1]}>
+      <MapView />
+      <BottomSheet
+        animatedIndex={bsSharedValue}
+        enableOverDrag={false}
+        animateOnMount={false}
+        enableDynamicSizing={false}
+        index={INDEX}
+        ref={bottomSheetRef}
+        enableContentPanningGesture={false}
+        snapPoints={['40%', '60%', '80%']}>
+        <Animated.View style={[animatedStyle]}>
+          <BottomSheetScrollView
+            bounces={false}
+            horizontal
+            onMomentumScrollEnd={handleHorizontalOnMomentunScrollEnd}
+            pagingEnabled
+            ref={horizontalViewRef}
+            scrollEnabled={!!selectedStation}
+            showsHorizontalScrollIndicator={false}>
+            <StationsBottomSheetView
+              filter={filter}
+              handlePressFilter={handlePressFilter}
+              handlePressSettings={handlePressSettings}
+              onPressCard={handlePressCard}
+              stations={filteredStations}
+              userLocation={userCurrentLocation}
+              userPreferredProduct={userVehicleFuel}
+            />
+            {!!selectedStation && (
+              <StationDetailBottomSheetView
+                handlePressBack={handlePressBack}
+                handlePressFavorite={handlePressFavorite}
+                station={selectedStation}
+                userFavoriteStations={userFavoriteStations}
+                userLocation={userCurrentLocation}
+              />
+            )}
+          </BottomSheetScrollView>
+        </Animated.View>
+      </BottomSheet>
+    </View>
+  );
+};
 
 export default StationsView;

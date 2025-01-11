@@ -150,9 +150,9 @@ const StationDetailBottomSheetView: FC<Props> = ({
   }
 
   return (
-    <BottomSheetView style={[{width: w.width}, a.px_lg]}>
+    <BottomSheetView style={[{width: w.width}]}>
       <Header
-        style={[{paddingTop: 0, paddingLeft: 0, paddingRight: 0}, a.pb_sm]}
+        style={[{paddingTop: 0}, a.pb_sm, a.px_lg]}
         isModal
         transparent
         leftIcon="left-arrow"
@@ -166,9 +166,10 @@ const StationDetailBottomSheetView: FC<Props> = ({
         automaticallyAdjustContentInsets
         alwaysBounceVertical={false}
         contentContainerStyle={[
+          a.px_lg,
           a.pt_lg,
           a.flex_grow,
-          {paddingBottom: Math.max(16, safe.bottom)},
+          a.pb_safe(safe.bottom, 16),
         ]}>
         <Text style={[a.font_title_one, a.mb_xs]}>{station.name}</Text>
         <Text style={[a.font_caption, a.mb_lg]}>

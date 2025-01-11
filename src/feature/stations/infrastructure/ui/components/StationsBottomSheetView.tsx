@@ -1,4 +1,4 @@
-import {atoms as a, useTheme, useWindow} from '@core/layout';
+import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import ServiceStation from '@feature/stations/domain/ServiceStationModel';
 import {BottomSheetFlatList, BottomSheetView} from '@gorhom/bottom-sheet';
 import {FC, useCallback, useMemo} from 'react';
@@ -89,6 +89,7 @@ const StationsBottomSheetView: FC<Props> = ({
   userPreferredProduct,
 }) => {
   const w = useWindow();
+  const safe = useSafeArea();
 
   const handleRender = useCallback(
     ({item}: {item: ServiceStation}) => (
@@ -118,7 +119,12 @@ const StationsBottomSheetView: FC<Props> = ({
         />
       </View>
       <BottomSheetFlatList
-        contentContainerStyle={[a.pb_lg, a.px_lg, {gap: 4}]}
+        contentContainerStyle={[
+          a.pb_lg,
+          a.px_lg,
+          a.pb_safe(safe.bottom, 16),
+          {gap: 4},
+        ]}
         data={stations}
         initialNumToRender={12}
         maxToRenderPerBatch={4}
