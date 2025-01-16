@@ -19,11 +19,38 @@ const useSettingsViewModel = () => {
     navigate('MapSettings');
   };
 
+  const handlePressStationRadius = () => {
+    navigate('StationRadiusSettings');
+  };
+
+  const handlePressFuel = () => {
+    navigate('FuelSettings');
+  };
+  const handlePressTankSize = () => {
+    navigate('TankSettings');
+  };
+
+  const handlePressConsuption = () => {
+    navigate('ConsumptionSettings');
+  };
+  const handlePressTheme = () => {
+    navigate('ThemeSettings');
+  };
+  const handlePressPrivacy = () => {
+    console.log('handle press privacy');
+  };
+
   return {
     carFuel,
     carLitresPer100Km,
     carTankLitres,
+    handlePressConsuption,
+    handlePressFuel,
     handlePressMapSettings,
+    handlePressPrivacy,
+    handlePressStationRadius,
+    handlePressTankSize,
+    handlePressTheme,
     kmToDisplay,
     mapStyle,
     onPressBack,

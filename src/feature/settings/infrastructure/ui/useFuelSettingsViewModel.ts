@@ -1,27 +1,28 @@
 import useStore from '@core/store';
+import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {useNavigation} from '@react-navigation/native';
 
-const useSettingsViewModel = () => {
+const useFuelSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
-  const mapStyle = useStore(state => state.mapStyle);
-  const setMapStyle = useStore(state => state.setMapStyle);
+  const fuel = useStore(state => state.fuel);
+  const setFuel = useStore(state => state.setFuel);
 
   const handlePressBack = () => {
     canGoBack() && goBack();
   };
 
   const handlePressOption = (id: string) => {
-    setMapStyle(id as typeof mapStyle);
+    setFuel(id as keyof ServiceStationProducts);
 
     canGoBack() && goBack();
   };
 
   return {
+    fuel,
     handlePressBack,
     handlePressOption,
-    mapStyle,
   };
 };
 
-export default useSettingsViewModel;
+export default useFuelSettingsViewModel;

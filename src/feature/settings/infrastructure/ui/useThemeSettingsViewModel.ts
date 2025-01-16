@@ -1,18 +1,19 @@
+import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
 import useStore from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
-const useSettingsViewModel = () => {
+const useThemeSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
-  const mapStyle = useStore(state => state.mapStyle);
-  const setMapStyle = useStore(state => state.setMapStyle);
+  const theme = useStore(state => state.theme);
+  const setTheme = useStore(state => state.setTheme);
 
   const handlePressBack = () => {
     canGoBack() && goBack();
   };
 
   const handlePressOption = (id: string) => {
-    setMapStyle(id as typeof mapStyle);
+    setTheme(id as SystemTheme);
 
     canGoBack() && goBack();
   };
@@ -20,8 +21,8 @@ const useSettingsViewModel = () => {
   return {
     handlePressBack,
     handlePressOption,
-    mapStyle,
+    theme,
   };
 };
 
-export default useSettingsViewModel;
+export default useThemeSettingsViewModel;

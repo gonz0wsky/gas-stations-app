@@ -1,21 +1,18 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
-import type MapSettingsViewModel from './useMapSettingsViewModel';
+import type StationRadiusSettingsViewModel from './useStationsRadiusSettingsViewModel';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
 import OptionsList from '../layout/OptionsList';
 import {msg} from '@lingui/core/macro';
-import {MapStyle} from '@core/store/useMapSlice';
-import MAP_NAMES from '@shared/constants/names/map-names';
+import RADIUS_NAMES from '@shared/constants/names/radius-names';
 
-const OPTIONS: Record<MapStyle, ReturnType<typeof msg>> = MAP_NAMES;
+const OPTIONS: Record<string, ReturnType<typeof msg>> = RADIUS_NAMES;
 
-const MapSettingsView: FC<ReturnType<typeof MapSettingsViewModel>> = ({
-  handlePressBack,
-  handlePressOption,
-  mapStyle,
-}) => {
+const StationRadiusSettingsView: FC<
+  ReturnType<typeof StationRadiusSettingsViewModel>
+> = ({kmToDisplay, handlePressBack, handlePressOption}) => {
   const {i18n} = useLingui();
   const safe = useSafeArea();
   const t = useTheme();
@@ -28,18 +25,18 @@ const MapSettingsView: FC<ReturnType<typeof MapSettingsViewModel>> = ({
   return (
     <View style={[a.flex_1, t.atoms.bg.primary]}>
       <Header
-        title={i18n.t('Map style')}
+        title={i18n.t('Stations to show')}
         leftIcon="left-arrow"
         onPressLeft={handlePressBack}
       />
       <OptionsList
         data={options}
         onPress={handlePressOption}
-        selected={mapStyle}
+        selected={kmToDisplay.toString()}
         contentContainerStyle={[a.pb_safe(safe.bottom, 16)]}
       />
     </View>
   );
 };
 
-export default MapSettingsView;
+export default StationRadiusSettingsView;

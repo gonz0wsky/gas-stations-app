@@ -1,7 +1,7 @@
 import {StateCreator} from 'zustand';
 import {sliceResetFns} from './clearStorage';
 
-type MapStyle = 'standard';
+export type MapStyle = 'standard';
 
 export interface MapSlice {
   mapStyle: MapStyle;

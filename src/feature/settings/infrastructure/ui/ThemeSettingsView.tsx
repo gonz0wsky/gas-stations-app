@@ -1,20 +1,20 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
-import type MapSettingsViewModel from './useMapSettingsViewModel';
+import type ThemeSettingsViewModel from './useThemeSettingsViewModel';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
 import OptionsList from '../layout/OptionsList';
+import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
 import {msg} from '@lingui/core/macro';
-import {MapStyle} from '@core/store/useMapSlice';
-import MAP_NAMES from '@shared/constants/names/map-names';
+import THEME_NAMES from '@shared/constants/names/theme-names';
 
-const OPTIONS: Record<MapStyle, ReturnType<typeof msg>> = MAP_NAMES;
+const OPTIONS: Record<SystemTheme, ReturnType<typeof msg>> = THEME_NAMES;
 
-const MapSettingsView: FC<ReturnType<typeof MapSettingsViewModel>> = ({
+const ThemeSettingsView: FC<ReturnType<typeof ThemeSettingsViewModel>> = ({
   handlePressBack,
   handlePressOption,
-  mapStyle,
+  theme,
 }) => {
   const {i18n} = useLingui();
   const safe = useSafeArea();
@@ -28,18 +28,18 @@ const MapSettingsView: FC<ReturnType<typeof MapSettingsViewModel>> = ({
   return (
     <View style={[a.flex_1, t.atoms.bg.primary]}>
       <Header
-        title={i18n.t('Map style')}
+        title={i18n.t('Theme')}
         leftIcon="left-arrow"
         onPressLeft={handlePressBack}
       />
       <OptionsList
         data={options}
         onPress={handlePressOption}
-        selected={mapStyle}
+        selected={theme}
         contentContainerStyle={[a.pb_safe(safe.bottom, 16)]}
       />
     </View>
   );
 };
 
-export default MapSettingsView;
+export default ThemeSettingsView;

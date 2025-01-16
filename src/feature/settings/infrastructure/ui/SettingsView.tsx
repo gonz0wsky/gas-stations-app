@@ -7,11 +7,10 @@ import {useLingui} from '@lingui/react';
 import {RectButton} from 'react-native-gesture-handler';
 import Icon from '@shared/ui/component/Icon';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
-
-const Spacer: FC = () => {
-  const t = useTheme();
-  return <View style={[t.atoms.spacer, a.h_2xs]} />;
-};
+import Spacer from '@shared/ui/component/Spacer';
+import MAP_NAMES from '@shared/constants/names/map-names';
+import RADIUS_NAMES from '@shared/constants/names/radius-names';
+import THEME_NAMES from '@shared/constants/names/theme-names';
 
 type SectionTitleProps = {
   title: string;
@@ -70,7 +69,13 @@ const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
   carFuel,
   carLitresPer100Km,
   carTankLitres,
+  handlePressConsuption,
+  handlePressFuel,
   handlePressMapSettings,
+  handlePressPrivacy,
+  handlePressStationRadius,
+  handlePressTankSize,
+  handlePressTheme,
   kmToDisplay,
   mapStyle,
   onPressBack,
@@ -94,41 +99,44 @@ const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
         <SectionTitle title={i18n.t('General')} />
         <NavigateOption
           title={i18n.t('Map style')}
-          subtitle={`${mapStyle}`}
+          subtitle={i18n.t(MAP_NAMES[mapStyle])}
           onPress={handlePressMapSettings}
         />
         <Spacer />
         <NavigateOption
           title={i18n.t('Station radius')}
-          subtitle={`${kmToDisplay} ${i18n.t('km')}`}
-          onPress={() => {}}
+          subtitle={i18n.t(RADIUS_NAMES[kmToDisplay])}
+          onPress={handlePressStationRadius}
         />
         <SectionTitle title={i18n.t("Vehicle's information")} />
         <NavigateOption
-          title={i18n.t('Combustible type')}
+          title={i18n.t('Fuel type')}
           subtitle={i18n.t(PRODUCT_NAMES[carFuel])}
-          onPress={() => {}}
+          onPress={handlePressFuel}
         />
         <Spacer />
         <NavigateOption
           title={i18n.t('Tank size')}
           subtitle={`${carTankLitres} ${i18n.t('litres')}`}
-          onPress={() => {}}
+          onPress={handlePressTankSize}
         />
         <Spacer />
         <NavigateOption
           title={i18n.t('Consumption')}
           subtitle={`${carLitresPer100Km}${i18n.t('l/100kms')}`}
-          onPress={() => {}}
+          onPress={handlePressConsuption}
         />
         <SectionTitle title={i18n.t('Personalization')} />
         <NavigateOption
           title={i18n.t('Theme')}
-          subtitle={selectedTheme}
-          onPress={() => {}}
+          subtitle={i18n.t(THEME_NAMES[selectedTheme])}
+          onPress={handlePressTheme}
         />
         <SectionTitle title={i18n.t('About')} />
-        <NavigateOption title={i18n.t('Privacy policy')} onPress={() => {}} />
+        <NavigateOption
+          title={i18n.t('Privacy policy')}
+          onPress={handlePressPrivacy}
+        />
       </ScrollView>
     </View>
   );

@@ -6,7 +6,15 @@ import {
 } from '@react-navigation/native-stack';
 
 import {StationsScreen} from '@feature/stations';
-import {SettingsScreen, MapSettingsScreen} from '@feature/settings';
+import {
+  SettingsScreen,
+  MapSettingsScreen,
+  StationsRadiusSettingsScreen,
+  FuelSettingsScreen,
+  TankSettingsScreen,
+  ConsumptionSettingsScreen,
+  ThemeSettingsScreen,
+} from '@feature/settings';
 
 import {
   AllNavigatorParamList,
@@ -35,6 +43,17 @@ const MainNavigatorScreens = () => (
     <Main.Screen name="Stations" component={StationsScreen} />
     <Main.Screen name="Settings" component={SettingsScreen} />
     <Main.Screen name="MapSettings" component={MapSettingsScreen} />
+    <Main.Screen
+      name="StationRadiusSettings"
+      component={StationsRadiusSettingsScreen}
+    />
+    <Main.Screen name="FuelSettings" component={FuelSettingsScreen} />
+    <Main.Screen name="TankSettings" component={TankSettingsScreen} />
+    <Main.Screen
+      name="ConsumptionSettings"
+      component={ConsumptionSettingsScreen}
+    />
+    <Main.Screen name="ThemeSettings" component={ThemeSettingsScreen} />
   </>
 );
 

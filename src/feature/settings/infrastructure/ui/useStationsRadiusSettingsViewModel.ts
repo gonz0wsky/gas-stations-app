@@ -1,18 +1,18 @@
 import useStore from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
-const useSettingsViewModel = () => {
+const useStationRadiusViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
-  const mapStyle = useStore(state => state.mapStyle);
-  const setMapStyle = useStore(state => state.setMapStyle);
+  const kmToDisplay = useStore(state => state.kmToDisplay);
+  const setKmToDisplay = useStore(state => state.setKmToDisplay);
 
   const handlePressBack = () => {
     canGoBack() && goBack();
   };
 
   const handlePressOption = (id: string) => {
-    setMapStyle(id as typeof mapStyle);
+    setKmToDisplay(parseInt(id, 10));
 
     canGoBack() && goBack();
   };
@@ -20,8 +20,8 @@ const useSettingsViewModel = () => {
   return {
     handlePressBack,
     handlePressOption,
-    mapStyle,
+    kmToDisplay,
   };
 };
 
-export default useSettingsViewModel;
+export default useStationRadiusViewModel;

@@ -236,7 +236,7 @@ export const light = {
       },
     },
     spacer: {
-      backgroundColor: lightPalette.gray_900,
+      backgroundColor: lightPalette.gray_800,
     },
   },
 };

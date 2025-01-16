@@ -1,27 +1,27 @@
 import useStore from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
-const useSettingsViewModel = () => {
+const useConsumptionSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
-  const mapStyle = useStore(state => state.mapStyle);
-  const setMapStyle = useStore(state => state.setMapStyle);
+  const litresPer100Km = useStore(state => state.litresPer100Km);
+  const setLitresPer100Km = useStore(state => state.setLitresPer100Km);
 
   const handlePressBack = () => {
     canGoBack() && goBack();
   };
 
   const handlePressOption = (id: string) => {
-    setMapStyle(id as typeof mapStyle);
+    setLitresPer100Km(parseInt(id, 10));
 
     canGoBack() && goBack();
   };
 
   return {
+    litresPer100Km,
     handlePressBack,
     handlePressOption,
-    mapStyle,
   };
 };
 
-export default useSettingsViewModel;
+export default useConsumptionSettingsViewModel;

@@ -1,27 +1,27 @@
 import useStore from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
-const useSettingsViewModel = () => {
+const useTankSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
-  const mapStyle = useStore(state => state.mapStyle);
-  const setMapStyle = useStore(state => state.setMapStyle);
+  const tankLitres = useStore(state => state.tankLitres);
+  const setTankLitres = useStore(state => state.setTankLitres);
 
   const handlePressBack = () => {
     canGoBack() && goBack();
   };
 
   const handlePressOption = (id: string) => {
-    setMapStyle(id as typeof mapStyle);
+    setTankLitres(parseInt(id, 10));
 
     canGoBack() && goBack();
   };
 
   return {
+    tankLitres,
     handlePressBack,
     handlePressOption,
-    mapStyle,
   };
 };
 
-export default useSettingsViewModel;
+export default useTankSettingsViewModel;
