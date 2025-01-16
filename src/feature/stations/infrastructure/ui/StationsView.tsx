@@ -28,12 +28,16 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   userFavoriteStations,
   userVehicleFuel,
 }) => {
-  const INDEX = 2;
+  const INDEX = 1;
 
   const bsSharedValue = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    height: `${interpolate(bsSharedValue.value, [0, INDEX], [48.3, 100])}%`,
+    height: `${interpolate(
+      bsSharedValue.value,
+      [0, INDEX, 2],
+      [48.3, 74.1, 100],
+    )}%`,
   }));
 
   return (
