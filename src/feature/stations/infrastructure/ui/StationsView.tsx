@@ -26,12 +26,13 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   horizontalViewRef,
   mapRef,
   mapStations,
+  priceRanges,
   selectedStation,
   userCurrentLocation,
   userFavoriteStations,
   userVehicleFuel,
 }) => {
-  const INDEX = 1;
+  const INDEX = 1 as const;
 
   const bsSharedValue = useSharedValue(0);
 
@@ -73,6 +74,7 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
               handlePressFilter={handlePressFilter}
               handlePressSettings={handlePressSettings}
               onPressCard={handlePressCard}
+              priceRanges={priceRanges}
               stations={filteredStations}
               userLocation={userCurrentLocation}
               userPreferredProduct={userVehicleFuel}

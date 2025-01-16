@@ -66,11 +66,23 @@ const useStationFilter = (
     [favorites, nearProductsWithPrice],
   );
 
+  const priceRanges = useMemo(() => {
+    const minValue = price[0]?.products[userVehicleFuel] ?? 0;
+    const maxValue = price[price.length - 1]?.products[userVehicleFuel] ?? 0;
+
+    const range = maxValue - minValue;
+    const lowEnd = minValue + range / 3;
+    const midEnd = minValue + (2 * range) / 3;
+
+    return {lowEnd, midEnd};
+  }, [price, userVehicleFuel]);
+
   return {
     filter,
     filteredStations: filteredStations[filter],
     handlePressFilter,
     mapStations,
+    priceRanges,
     userFavoriteStations,
   };
 };

@@ -199,6 +199,15 @@ export const light = {
       price: {
         color: lightPalette.primary_500,
       },
+      price_low: {
+        color: lightPalette.green_700,
+      },
+      price_medium: {
+        color: lightPalette.primary_500,
+      },
+      price_high: {
+        color: lightPalette.red_500,
+      },
       distance: {
         color: lightPalette.gray_900,
       },

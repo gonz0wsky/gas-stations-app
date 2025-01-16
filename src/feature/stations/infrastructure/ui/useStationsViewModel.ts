@@ -27,6 +27,7 @@ const useStationsViewModel = () => {
     filteredStations,
     handlePressFilter,
     mapStations,
+    priceRanges,
     userFavoriteStations,
   } = useStationFilter(serviceStationsList ?? [], currentLocation);
 
@@ -110,6 +111,7 @@ const useStationsViewModel = () => {
     horizontalViewRef,
     mapRef,
     mapStations,
+    priceRanges,
     selectedStation,
     userCurrentLocation,
     userFavoriteStations,

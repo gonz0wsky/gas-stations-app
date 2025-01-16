@@ -12,6 +12,7 @@ import ServiceStationProducts from '@feature/stations/domain/ServiceStationProdu
 
 type StationCardProps = {
   onPress: (id: string) => void;
+  priceRanges: {lowEnd: number; midEnd: number};
   station: ServiceStation;
   userLocation: {latitude: number; longitude: number};
   userPreferredProduct: keyof ServiceStationProducts;
@@ -19,6 +20,7 @@ type StationCardProps = {
 
 const StationCard = ({
   onPress,
+  priceRanges,
   station,
   userLocation,
   userPreferredProduct,
@@ -32,6 +34,30 @@ const StationCard = ({
 
   const price = station.products[userPreferredProduct];
 
+  const priceRangeStyle = useMemo(() => {
+    if (!price) {
+      return t.atoms.station_card.price;
+    }
+
+    if (price < priceRanges.lowEnd) {
+      return t.atoms.station_card.price_low;
+    }
+
+    if (price < priceRanges.midEnd) {
+      return t.atoms.station_card.price_medium;
+    }
+
+    return t.atoms.station_card.price_high;
+  }, [
+    price,
+    priceRanges.lowEnd,
+    priceRanges.midEnd,
+    t.atoms.station_card.price_high,
+    t.atoms.station_card.price_low,
+    t.atoms.station_card.price_medium,
+    t.atoms.station_card.price,
+  ]);
+
   const handlePress = () => onPress(station.id);
 
   return (
@@ -39,7 +65,7 @@ const StationCard = ({
       <RectButton style={[a.flex_row, a.py_sm, a.px_lg]} onPress={handlePress}>
         <View
           style={[{minWidth: 80}, a.mr_lg, a.align_center, a.justify_between]}>
-          <Text style={[a.font_title_two, t.atoms.station_card.price]}>
+          <Text style={[a.font_title_two, priceRangeStyle]}>
             {price ? `${price} €/l` : 'N/A'}
           </Text>
           <Text
@@ -74,17 +100,19 @@ type Props = {
   handlePressFilter: (id: FilterOption) => void;
   handlePressSettings: () => void;
   onPressCard: (id: string) => void;
+  priceRanges: {lowEnd: number; midEnd: number};
   stations: ServiceStation[];
   userLocation: {latitude: number; longitude: number};
   userPreferredProduct: keyof ServiceStationProducts;
 };
 
 const StationsBottomSheetView: FC<Props> = ({
-  onPressCard,
-  stations,
   filter,
   handlePressFilter,
   handlePressSettings,
+  onPressCard,
+  priceRanges,
+  stations,
   userLocation,
   userPreferredProduct,
 }) => {
@@ -94,13 +122,14 @@ const StationsBottomSheetView: FC<Props> = ({
   const handleRender = useCallback(
     ({item}: {item: ServiceStation}) => (
       <StationCard
+        priceRanges={priceRanges}
         userLocation={userLocation}
         userPreferredProduct={userPreferredProduct}
         station={item}
         onPress={onPressCard}
       />
     ),
-    [onPressCard, userLocation, userPreferredProduct],
+    [onPressCard, priceRanges, userLocation, userPreferredProduct],
   );
 
   return (
