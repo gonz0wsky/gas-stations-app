@@ -11,26 +11,7 @@ import {IconName} from '@shared/ui/component/Icon/types';
 import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
 import {FC} from 'react';
 import {Text, View} from 'react-native';
-
-const PRODUCT_NAMES: Record<
-  keyof ServiceStationProducts,
-  ReturnType<typeof msg>
-> = {
-  biodiesel: msg`Biodiesel`,
-  bioethanol: msg`Bioethanol`,
-  compressed_natural_gas: msg`Compressed natural gas`,
-  diesel_a: msg`Diesel A`,
-  diesel_b: msg`Diesel B`,
-  diesel_premium: msg`Diesel premium`,
-  gasoline_95_e10: msg`Gasoline 95 E10`,
-  gasoline_95_e5: msg`Gasoline 95 E5`,
-  gasoline_95_e5_premium: msg`Gasoline 95 E5 premium`,
-  gasoline_98_e10: msg`Gasoline 98 E10`,
-  gasoline_98_e5: msg`Gasoline 98 E5`,
-  hydrogen: msg`Hydrogen`,
-  liquefied_natural_gas: msg`Liquefied natural gas`,
-  liquefied_petroleum_gas: msg`Liquefied petroleum gas`,
-};
+import PRODUCT_NAMES from '@shared/constants/names/product-names';
 
 const SIDE_ROAD_NAMES: Record<'right' | 'left', ReturnType<typeof msg>> = {
   right: msg`Right`,
@@ -47,6 +28,8 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
   const {i18n} = useLingui();
   const t = useTheme();
 
+  const viewStyle = {alignSelf: 'flex-start'} as const;
+
   return (
     <View style={[a.flex_row, a.align_center]}>
       <View
@@ -56,7 +39,7 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
           a.p_sm,
           a.border,
           a.rounded_sm,
-          {alignSelf: 'flex-start'},
+          viewStyle,
         ]}>
         <Icon name="bank-notes" />
       </View>

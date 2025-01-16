@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import {StationsScreen} from '@feature/stations';
-import {SettingsScreen} from '@feature/settings';
+import {SettingsScreen, MapSettingsScreen} from '@feature/settings';
 
 import {
   AllNavigatorParamList,
@@ -34,6 +34,7 @@ const MainNavigatorScreens = () => (
   <>
     <Main.Screen name="Stations" component={StationsScreen} />
     <Main.Screen name="Settings" component={SettingsScreen} />
+    <Main.Screen name="MapSettings" component={MapSettingsScreen} />
   </>
 );
 

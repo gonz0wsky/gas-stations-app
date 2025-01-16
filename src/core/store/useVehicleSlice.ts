@@ -4,19 +4,21 @@ import ServiceStationProducts from '@feature/stations/domain/ServiceStationProdu
 
 export interface VehicleSlice {
   fuel: keyof ServiceStationProducts;
-  litresPerKm: number;
+  litresPer100Km: number;
   tankLitres: number;
   setFuel: (product: keyof ServiceStationProducts) => void;
-  setLitresPerKm: (litres: number) => void;
+  setLitresPer100Km: (litres: number) => void;
   setTankLitres: (litres: number) => void;
 }
 
-const initialState: Pick<VehicleSlice, 'fuel' | 'tankLitres' | 'litresPerKm'> =
-  {
-    fuel: 'gasoline_95_e5',
-    litresPerKm: 6,
-    tankLitres: 45,
-  };
+const initialState: Pick<
+  VehicleSlice,
+  'fuel' | 'tankLitres' | 'litresPer100Km'
+> = {
+  fuel: 'gasoline_95_e5',
+  litresPer100Km: 6,
+  tankLitres: 45,
+};
 
 const createSystemSlice: StateCreator<VehicleSlice> = set => {
   sliceResetFns.add(() => set(() => initialState));
@@ -24,7 +26,8 @@ const createSystemSlice: StateCreator<VehicleSlice> = set => {
   return {
     ...initialState,
     setFuel: (fuel: keyof ServiceStationProducts) => set(() => ({fuel})),
-    setLitresPerKm: (litresPerKm: number) => set(() => ({litresPerKm})),
+    setLitresPer100Km: (litresPerKm: number) =>
+      set(() => ({litresPer100Km: litresPerKm})),
     setTankLitres: (tankLitres: number) => set(() => ({tankLitres})),
   };
 };

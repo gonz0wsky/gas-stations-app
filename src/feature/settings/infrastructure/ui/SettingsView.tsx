@@ -6,6 +6,12 @@ import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
 import {RectButton} from 'react-native-gesture-handler';
 import Icon from '@shared/ui/component/Icon';
+import PRODUCT_NAMES from '@shared/constants/names/product-names';
+
+const Spacer: FC = () => {
+  const t = useTheme();
+  return <View style={[t.atoms.spacer, a.h_2xs]} />;
+};
 
 type SectionTitleProps = {
   title: string;
@@ -32,11 +38,13 @@ const NavigateOption: FC<NavigateOptionProps> = ({
 }) => {
   const t = useTheme();
 
+  const pressStyle = {height: 56};
+
   return (
     <RectButton
       onPress={onPress}
       style={[
-        {height: 56},
+        pressStyle,
         t.atoms.option_navigate.bg,
         a.px_lg,
         a.flex_row,
@@ -59,6 +67,12 @@ const NavigateOption: FC<NavigateOptionProps> = ({
 };
 
 const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
+  carFuel,
+  carLitresPer100Km,
+  carTankLitres,
+  handlePressMapSettings,
+  kmToDisplay,
+  mapStyle,
   onPressBack,
   selectedTheme,
 }) => {
@@ -80,28 +94,31 @@ const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
         <SectionTitle title={i18n.t('General')} />
         <NavigateOption
           title={i18n.t('Map style')}
-          subtitle="Standard"
-          onPress={() => {}}
+          subtitle={`${mapStyle}`}
+          onPress={handlePressMapSettings}
         />
+        <Spacer />
         <NavigateOption
           title={i18n.t('Station radius')}
-          subtitle="5 km"
+          subtitle={`${kmToDisplay} ${i18n.t('km')}`}
           onPress={() => {}}
         />
         <SectionTitle title={i18n.t("Vehicle's information")} />
         <NavigateOption
           title={i18n.t('Combustible type')}
-          subtitle="Diesel"
+          subtitle={i18n.t(PRODUCT_NAMES[carFuel])}
           onPress={() => {}}
         />
+        <Spacer />
         <NavigateOption
           title={i18n.t('Tank size')}
-          subtitle="55l"
+          subtitle={`${carTankLitres} ${i18n.t('litres')}`}
           onPress={() => {}}
         />
+        <Spacer />
         <NavigateOption
           title={i18n.t('Consumption')}
-          subtitle="5.5l/100km"
+          subtitle={`${carLitresPer100Km}${i18n.t('l/100kms')}`}
           onPress={() => {}}
         />
         <SectionTitle title={i18n.t('Personalization')} />
