@@ -3,7 +3,6 @@ import {useEffect, useRef, useState} from 'react';
 import useServiceStationsQuery from '../api/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 import useLocation from '../api/useLocation';
-import {emitEvent} from '@core/events';
 import useStationFilter from './hooks/useStationsFilter';
 import ServiceStation from '@feature/stations/domain/ServiceStationModel';
 import {
@@ -12,17 +11,24 @@ import {
   ScrollView,
 } from 'react-native';
 import useStore from '@core/store';
+import RNMap, {MarkerPressEvent} from 'react-native-maps';
 
 const useStationsViewModel = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const horizontalViewRef = useRef<ScrollView>(null);
+  const mapRef = useRef<RNMap>(null);
 
   const {navigate} = useNavigation();
   const {currentLocation} = useLocation();
   const {data: serviceStationsList} = useServiceStationsQuery();
 
-  const {filter, filteredStations, handlePressFilter, userFavoriteStations} =
-    useStationFilter(serviceStationsList ?? [], currentLocation);
+  const {
+    filter,
+    filteredStations,
+    handlePressFilter,
+    mapStations,
+    userFavoriteStations,
+  } = useStationFilter(serviceStationsList ?? [], currentLocation);
 
   const permuteUserFavorite = useStore(state => state.permuteFavorite);
   const userCurrentLocation = useStore(state => state.currentLocation);
@@ -34,7 +40,10 @@ const useStationsViewModel = () => {
 
   useEffect(() => {
     if (selectedStation) {
-      horizontalViewRef.current?.scrollToEnd({animated: true});
+      // Workaround to scroll to the end
+      setTimeout(() => {
+        horizontalViewRef.current?.scrollToEnd({animated: true});
+      }, 10);
     }
   }, [selectedStation]);
 
@@ -43,15 +52,20 @@ const useStationsViewModel = () => {
   };
 
   const handlePressCard = (id: string) => {
-    const station = serviceStationsList?.find(station => station.id === id);
+    const station = serviceStationsList?.find(s => s.id === id);
 
     if (!station) {
       return;
     }
 
-    setSelectedStation(station);
+    mapRef.current?.animateToRegion({
+      latitude: station.position.latitude,
+      longitude: station.position.longitude,
+      latitudeDelta: 0.02,
+      longitudeDelta: 0.02,
+    });
 
-    emitEvent('map-change-location', station?.position);
+    setSelectedStation(station ?? null);
   };
 
   const handlePressBack = () => {
@@ -76,6 +90,12 @@ const useStationsViewModel = () => {
     }
   };
 
+  const handlePressMarker = (event: MarkerPressEvent) => {
+    const station = mapStations.find(s => s.id === event.nativeEvent.id);
+
+    setSelectedStation(station ?? null);
+  };
+
   return {
     bottomSheetRef,
     filter,
@@ -85,8 +105,11 @@ const useStationsViewModel = () => {
     handlePressCard,
     handlePressFavorite,
     handlePressFilter,
+    handlePressMarker,
     handlePressSettings,
     horizontalViewRef,
+    mapRef,
+    mapStations,
     selectedStation,
     userCurrentLocation,
     userFavoriteStations,

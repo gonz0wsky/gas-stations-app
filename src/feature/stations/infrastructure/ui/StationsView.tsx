@@ -21,8 +21,11 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
   handlePressCard,
   handlePressFavorite,
   handlePressFilter,
+  handlePressMarker,
   handlePressSettings,
   horizontalViewRef,
+  mapRef,
+  mapStations,
   selectedStation,
   userCurrentLocation,
   userFavoriteStations,
@@ -42,7 +45,11 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
 
   return (
     <View style={[a.flex_1]}>
-      <MapView />
+      <MapView
+        mapRef={mapRef}
+        stations={mapStations}
+        onPressMarker={handlePressMarker}
+      />
       <BottomSheet
         animatedIndex={bsSharedValue}
         enableOverDrag={false}

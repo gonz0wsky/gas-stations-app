@@ -61,10 +61,16 @@ const useStationFilter = (
     [favorites, near, price],
   );
 
+  const mapStations = useMemo(
+    () => [...nearProductsWithPrice, ...favorites],
+    [favorites, nearProductsWithPrice],
+  );
+
   return {
     filter,
     filteredStations: filteredStations[filter],
     handlePressFilter,
+    mapStations,
     userFavoriteStations,
   };
 };
