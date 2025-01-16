@@ -9,7 +9,9 @@ const useSettingsViewModel = () => {
   const kmToDisplay = useStore(state => state.kmToDisplay);
   const carFuel = useStore(state => state.fuel);
   const carTankLitres = useStore(state => state.tankLitres);
+  const setCarTankLitres = useStore(state => state.setTankLitres);
   const carLitresPer100Km = useStore(state => state.litresPer100Km);
+  const setLitresPer100Km = useStore(state => state.setLitresPer100Km);
 
   const onPressBack = () => {
     canGoBack() && goBack();
@@ -26,12 +28,12 @@ const useSettingsViewModel = () => {
   const handlePressFuel = () => {
     navigate('FuelSettings');
   };
-  const handlePressTankSize = () => {
-    navigate('TankSettings');
+  const handleOnChangeTankSize = (value: number) => {
+    setCarTankLitres(value);
   };
 
-  const handlePressConsuption = () => {
-    navigate('ConsumptionSettings');
+  const handleOnChangeConsumption = (value: number) => {
+    setLitresPer100Km(value);
   };
   const handlePressTheme = () => {
     navigate('ThemeSettings');
@@ -44,12 +46,12 @@ const useSettingsViewModel = () => {
     carFuel,
     carLitresPer100Km,
     carTankLitres,
-    handlePressConsuption,
+    handleOnChangeConsumption,
+    handleOnChangeTankSize,
     handlePressFuel,
     handlePressMapSettings,
     handlePressPrivacy,
     handlePressStationRadius,
-    handlePressTankSize,
     handlePressTheme,
     kmToDisplay,
     mapStyle,

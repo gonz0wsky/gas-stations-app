@@ -7,6 +7,7 @@ import Close from './icons/Close';
 import LeftArrow from './icons/LeftArrow';
 import LeftRightArrows from './icons/LeftRightArrows';
 import Map from './icons/Map';
+import Minus from './icons/Minus';
 import Plus from './icons/Plus';
 import RightChevron from './icons/RightChevron';
 import Settings from './icons/Settings';
@@ -29,6 +30,7 @@ export const icons = createSvgIcons({
   clock: Clock,
   close: Close,
   map: Map,
+  minus: Minus,
   plus: Plus,
   settings: Settings,
   star: Star,

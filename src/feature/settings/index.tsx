@@ -9,10 +9,6 @@ import StationsRadiusSettingsView from './infrastructure/ui/StationsRadiusSettin
 import useStationsRadiusSettingsViewModel from './infrastructure/ui/useStationsRadiusSettingsViewModel';
 import FuelSettingsView from './infrastructure/ui/FuelSettingsView';
 import useFuelSettingsViewModel from './infrastructure/ui/useFuelSettingsViewModel';
-import TankSettingsView from './infrastructure/ui/TankSettingsView';
-import useTanSettingsViewModel from './infrastructure/ui/useTankSettingsViewModel';
-import ConsumptionSettingsView from './infrastructure/ui/ConsumptionSettingsView';
-import useConsumptionSettingsViewModel from './infrastructure/ui/useConsumptionSettingsViewModel';
 import ThemeSettingsView from './infrastructure/ui/ThemeSettingsView';
 import useThemeSettingsViewModel from './infrastructure/ui/useThemeSettingsViewModel';
 
@@ -34,14 +30,6 @@ const FuelSettingsScreen: ScreenComponent<'FuelSettings'> = () => (
   <FuelSettingsView {...useFuelSettingsViewModel()} />
 );
 
-const TankSettingsScreen: ScreenComponent<'TankSettings'> = () => (
-  <TankSettingsView {...useTanSettingsViewModel()} />
-);
-
-const ConsumptionSettingsScreen: ScreenComponent<
-  'ConsumptionSettings'
-> = () => <ConsumptionSettingsView {...useConsumptionSettingsViewModel()} />;
-
 const ThemeSettingsScreen: ScreenComponent<'ThemeSettings'> = () => (
   <ThemeSettingsView {...useThemeSettingsViewModel()} />
 );
@@ -51,7 +39,5 @@ export {
   MapSettingsScreen,
   StationsRadiusSettingsScreen,
   FuelSettingsScreen,
-  TankSettingsScreen,
-  ConsumptionSettingsScreen,
   ThemeSettingsScreen,
 };

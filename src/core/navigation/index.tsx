@@ -11,8 +11,6 @@ import {
   MapSettingsScreen,
   StationsRadiusSettingsScreen,
   FuelSettingsScreen,
-  TankSettingsScreen,
-  ConsumptionSettingsScreen,
   ThemeSettingsScreen,
 } from '@feature/settings';
 
@@ -48,11 +46,6 @@ const MainNavigatorScreens = () => (
       component={StationsRadiusSettingsScreen}
     />
     <Main.Screen name="FuelSettings" component={FuelSettingsScreen} />
-    <Main.Screen name="TankSettings" component={TankSettingsScreen} />
-    <Main.Screen
-      name="ConsumptionSettings"
-      component={ConsumptionSettingsScreen}
-    />
     <Main.Screen name="ThemeSettings" component={ThemeSettingsScreen} />
   </>
 );

@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useRef} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import type SettingsViewModel from './useSettingsViewModel';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
@@ -11,6 +11,7 @@ import Spacer from '@shared/ui/component/Spacer';
 import MAP_NAMES from '@shared/constants/names/map-names';
 import RADIUS_NAMES from '@shared/constants/names/radius-names';
 import THEME_NAMES from '@shared/constants/names/theme-names';
+import CircularButton from '@shared/ui/component/CircularButton';
 
 type SectionTitleProps = {
   title: string;
@@ -65,16 +66,116 @@ const NavigateOption: FC<NavigateOptionProps> = ({
   );
 };
 
+type SelectorOptionProps = {
+  maxValue: number;
+  minValue: number;
+  onChange: (value: number) => void;
+  step: number;
+  subtitle?: string;
+  title: string;
+  value: number;
+};
+
+const SelectorOption: FC<SelectorOptionProps> = ({
+  maxValue,
+  minValue,
+  onChange,
+  step,
+  subtitle,
+  title,
+  value,
+}) => {
+  const t = useTheme();
+
+  const pressStyle = {height: 56} as const;
+
+  const currentValueRef = useRef(value);
+  const longPressIntervalRef = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    currentValueRef.current = value;
+  }, [value]);
+
+  const onPressMinus = () => {
+    const nextValue = value - step;
+
+    onChange(nextValue < minValue ? minValue : nextValue);
+  };
+
+  const onPressPlus = () => {
+    const nextValue = value + step;
+
+    onChange(nextValue > maxValue ? maxValue : nextValue);
+  };
+
+  const onLongPressMinus = () => {
+    longPressIntervalRef.current = setInterval(() => {
+      const nextValue = currentValueRef.current - step;
+
+      onChange(nextValue < minValue ? minValue : nextValue);
+    }, 100);
+  };
+
+  const onLongPressPlus = () => {
+    longPressIntervalRef.current = setInterval(() => {
+      const nextValue = currentValueRef.current + step;
+
+      onChange(nextValue > maxValue ? maxValue : nextValue);
+    }, 100);
+  };
+
+  const onLongPressEnd = () => {
+    clearInterval(longPressIntervalRef.current);
+  };
+
+  return (
+    <View
+      style={[
+        pressStyle,
+        t.atoms.option_navigate.bg,
+        a.px_lg,
+        a.flex_row,
+        a.justify_between,
+        a.align_center,
+      ]}>
+      <View>
+        <Text numberOfLines={1} style={[a.font_body_one_medium]}>
+          {title}
+        </Text>
+        {!!subtitle && (
+          <Text numberOfLines={1} style={[a.font_body_two]}>
+            {subtitle}
+          </Text>
+        )}
+      </View>
+      <View style={[a.flex_row, a.align_center, a.gap_sm]}>
+        <CircularButton
+          icon="minus"
+          onPress={onPressMinus}
+          onLongPress={onLongPressMinus}
+          onEnded={onLongPressEnd}
+        />
+        <CircularButton
+          icon="plus"
+          onPress={onPressPlus}
+          onLongPress={onLongPressPlus}
+          onEnded={onLongPressEnd}
+        />
+      </View>
+    </View>
+  );
+};
+
 const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
   carFuel,
   carLitresPer100Km,
   carTankLitres,
-  handlePressConsuption,
+  handleOnChangeConsumption,
+  handleOnChangeTankSize,
   handlePressFuel,
   handlePressMapSettings,
   handlePressPrivacy,
   handlePressStationRadius,
-  handlePressTankSize,
   handlePressTheme,
   kmToDisplay,
   mapStyle,
@@ -115,16 +216,24 @@ const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
           onPress={handlePressFuel}
         />
         <Spacer />
-        <NavigateOption
-          title={i18n.t('Tank size')}
+        <SelectorOption
+          maxValue={2000}
+          minValue={0.5}
+          onChange={handleOnChangeTankSize}
+          step={0.5}
           subtitle={`${carTankLitres} ${i18n.t('litres')}`}
-          onPress={handlePressTankSize}
+          title={i18n.t('Tank size')}
+          value={carTankLitres}
         />
         <Spacer />
-        <NavigateOption
-          title={i18n.t('Consumption')}
+        <SelectorOption
+          maxValue={50}
+          minValue={0.5}
+          onChange={handleOnChangeConsumption}
+          step={0.5}
           subtitle={`${carLitresPer100Km}${i18n.t('l/100kms')}`}
-          onPress={handlePressConsuption}
+          title={i18n.t('Consumption')}
+          value={carLitresPer100Km}
         />
         <SectionTitle title={i18n.t('Personalization')} />
         <NavigateOption
