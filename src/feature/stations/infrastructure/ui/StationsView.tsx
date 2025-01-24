@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
-import {atoms as a} from '@core/layout';
+import {atoms as a, useTheme} from '@core/layout';
 import MapView from './components/MapView';
 import StationsBottomSheetView from './components/StationsBottomSheetView';
 import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
@@ -11,6 +11,19 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import useStationsViewModel from './useStationsViewModel';
+import {MapViewProps} from 'react-native-maps';
+import {MapStyle} from '@core/store/useMapSlice';
+
+const INDEX = 1 as const;
+
+const mapVariants: Record<
+  MapStyle,
+  MapViewProps['userInterfaceStyle'] | undefined
+> = {
+  dark: 'dark',
+  light: 'light',
+  system: undefined,
+} as const;
 
 const StationsView: FC = () => {
   const {
@@ -28,6 +41,7 @@ const StationsView: FC = () => {
     isServiceStationsLoading,
     mapRef,
     mapStations,
+    mapStyle,
     priceRanges,
     selectedStation,
     userCurrentLocation,
@@ -35,7 +49,7 @@ const StationsView: FC = () => {
     userVehicleFuel,
   } = useStationsViewModel();
 
-  const INDEX = 1 as const;
+  const t = useTheme();
 
   const bsSharedValue = useSharedValue(0);
 
@@ -50,11 +64,14 @@ const StationsView: FC = () => {
   return (
     <View style={[a.flex_1]}>
       <MapView
+        bsSharedValue={bsSharedValue}
         mapRef={mapRef}
-        stations={mapStations}
+        mapStyle={mapVariants[mapStyle]}
         onPressMarker={handlePressMarker}
+        stations={mapStations}
       />
       <BottomSheet
+        handleStyle={t.atoms.bg.primary}
         animatedIndex={bsSharedValue}
         enableOverDrag={false}
         animateOnMount={false}
@@ -63,7 +80,7 @@ const StationsView: FC = () => {
         ref={bottomSheetRef}
         enableContentPanningGesture={false}
         snapPoints={['40%', '60%', '80%']}>
-        <Animated.View style={[animatedStyle]}>
+        <Animated.View style={[animatedStyle, t.atoms.bg.primary]}>
           <BottomSheetScrollView
             bounces={false}
             horizontal

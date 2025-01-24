@@ -35,6 +35,7 @@ const useStationsViewModel = () => {
   const permuteUserFavorite = useStore(state => state.permuteFavorite);
   const userCurrentLocation = useStore(state => state.currentLocation);
   const userVehicleFuel = useStore(state => state.fuel);
+  const mapStyle = useStore(state => state.mapStyle);
 
   const [selectedStation, setSelectedStation] = useState<ServiceStation | null>(
     null,
@@ -63,8 +64,8 @@ const useStationsViewModel = () => {
     mapRef.current?.animateToRegion({
       latitude: station.position.latitude,
       longitude: station.position.longitude,
-      latitudeDelta: 0.02,
-      longitudeDelta: 0.02,
+      latitudeDelta: 0.001,
+      longitudeDelta: 0.001,
     });
 
     setSelectedStation(station ?? null);
@@ -113,6 +114,7 @@ const useStationsViewModel = () => {
     isServiceStationsLoading,
     mapRef,
     mapStations,
+    mapStyle,
     priceRanges,
     selectedStation,
     userCurrentLocation,
