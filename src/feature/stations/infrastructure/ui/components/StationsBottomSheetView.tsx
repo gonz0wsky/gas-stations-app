@@ -26,6 +26,8 @@ const StationCard = ({
   userLocation,
   userPreferredProduct,
 }: StationCardProps) => {
+  const priceInfoViewStyles = {minWidth: 80} as const;
+
   const t = useTheme();
 
   const distance = useMemo(
@@ -65,7 +67,12 @@ const StationCard = ({
     <View style={[a.rounded_sm, a.overflow_hidden, t.atoms.station_card.bg]}>
       <RectButton style={[a.flex_row, a.py_sm, a.px_lg]} onPress={handlePress}>
         <View
-          style={[{minWidth: 80}, a.mr_lg, a.align_center, a.justify_between]}>
+          style={[
+            priceInfoViewStyles,
+            a.mr_lg,
+            a.align_center,
+            a.justify_between,
+          ]}>
           <Text style={[a.font_title_two, priceRangeStyle]}>
             {price ? `${price} €/l` : 'N/A'}
           </Text>
