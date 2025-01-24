@@ -9,6 +9,7 @@ import Filter from './Filter';
 import FILTER_OPTIONS, {FilterOption} from '../constants/filter-constants';
 import CircularButton from '@shared/ui/component/CircularButton';
 import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
+import Skeleton from 'react-native-reanimated-skeleton';
 
 type StationCardProps = {
   onPress: (id: string) => void;
@@ -95,10 +96,54 @@ const StationCard = ({
   );
 };
 
+const LoadingView: FC = () => {
+  const containerStyle = Object.freeze({flex: 1});
+
+  return (
+    <Skeleton
+      containerStyle={containerStyle}
+      isLoading
+      layout={[
+        {
+          flexDirection: 'row',
+          ...a.mb_sm,
+          ...a.mx_lg,
+          children: [
+            {
+              key: 'filter',
+              height: 36,
+              width: 326,
+              ...a.mr_sm,
+              ...a.rounded_sm,
+            },
+            {
+              key: 'circular-button',
+              height: 36,
+              width: 36,
+              ...a.rounded_full,
+            },
+          ],
+        },
+        {
+          gap: 4,
+          children: Array.from({length: 8}, (_, i) => ({
+            key: `station-card-${i}`,
+            height: 55.2,
+            width: '92%',
+            ...a.mx_lg,
+            ...a.rounded_sm,
+          })),
+        },
+      ]}
+    />
+  );
+};
+
 type Props = {
   filter: FilterOption;
   handlePressFilter: (id: FilterOption) => void;
   handlePressSettings: () => void;
+  isLoading: boolean;
   onPressCard: (id: string) => void;
   priceRanges: {lowEnd: number; midEnd: number};
   stations: ServiceStation[];
@@ -110,12 +155,15 @@ const StationsBottomSheetView: FC<Props> = ({
   filter,
   handlePressFilter,
   handlePressSettings,
+  isLoading,
   onPressCard,
   priceRanges,
   stations,
   userLocation,
   userPreferredProduct,
 }) => {
+  const contentContainerStyle = {gap: 4} as const;
+
   const w = useWindow();
   const safe = useSafeArea();
 
@@ -131,6 +179,10 @@ const StationsBottomSheetView: FC<Props> = ({
     ),
     [onPressCard, priceRanges, userLocation, userPreferredProduct],
   );
+
+  if (isLoading) {
+    return <LoadingView />;
+  }
 
   return (
     <BottomSheetView style={[{width: w.width}]}>
@@ -149,10 +201,9 @@ const StationsBottomSheetView: FC<Props> = ({
       </View>
       <BottomSheetFlatList
         contentContainerStyle={[
-          a.pb_lg,
           a.px_lg,
           a.pb_safe(safe.bottom, 16),
-          {gap: 4},
+          contentContainerStyle,
         ]}
         data={stations}
         initialNumToRender={12}

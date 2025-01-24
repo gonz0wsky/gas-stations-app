@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
-import type StationsViewModel from './useStationsViewModel';
 import {atoms as a} from '@core/layout';
 import MapView from './components/MapView';
 import StationsBottomSheetView from './components/StationsBottomSheetView';
@@ -11,27 +10,31 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+import useStationsViewModel from './useStationsViewModel';
 
-const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
-  bottomSheetRef,
-  filter,
-  filteredStations,
-  handleHorizontalOnMomentunScrollEnd,
-  handlePressBack,
-  handlePressCard,
-  handlePressFavorite,
-  handlePressFilter,
-  handlePressMarker,
-  handlePressSettings,
-  horizontalViewRef,
-  mapRef,
-  mapStations,
-  priceRanges,
-  selectedStation,
-  userCurrentLocation,
-  userFavoriteStations,
-  userVehicleFuel,
-}) => {
+const StationsView: FC = () => {
+  const {
+    bottomSheetRef,
+    filter,
+    filteredStations,
+    handleHorizontalOnMomentunScrollEnd,
+    handlePressBack,
+    handlePressCard,
+    handlePressFavorite,
+    handlePressFilter,
+    handlePressMarker,
+    handlePressSettings,
+    horizontalViewRef,
+    isServiceStationsLoading,
+    mapRef,
+    mapStations,
+    priceRanges,
+    selectedStation,
+    userCurrentLocation,
+    userFavoriteStations,
+    userVehicleFuel,
+  } = useStationsViewModel();
+
   const INDEX = 1 as const;
 
   const bsSharedValue = useSharedValue(0);
@@ -78,6 +81,7 @@ const StationsView: FC<ReturnType<typeof StationsViewModel>> = ({
               stations={filteredStations}
               userLocation={userCurrentLocation}
               userPreferredProduct={userVehicleFuel}
+              isLoading={isServiceStationsLoading}
             />
             {!!selectedStation && (
               <StationDetailBottomSheetView

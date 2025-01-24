@@ -20,7 +20,8 @@ const useStationsViewModel = () => {
 
   const {navigate} = useNavigation();
   const {currentLocation} = useLocation();
-  const {data: serviceStationsList} = useServiceStationsQuery();
+  const {data: serviceStationsList, isLoading: isServiceStationsLoading} =
+    useServiceStationsQuery();
 
   const {
     filter,
@@ -109,6 +110,7 @@ const useStationsViewModel = () => {
     handlePressMarker,
     handlePressSettings,
     horizontalViewRef,
+    isServiceStationsLoading,
     mapRef,
     mapStations,
     priceRanges,
