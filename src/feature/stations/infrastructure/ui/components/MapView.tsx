@@ -60,10 +60,6 @@ export const MapView: FC<Props> = ({
           ? t.atoms.map.poi.favorite
           : t.atoms.map.poi.price_level[poi.priceLevel];
 
-        if (pinColor.color === 'hsl(49, 84%, 53%)') {
-          console.log(poi.name, pinColor);
-        }
-
         return (
           <Marker
             pinColor={pinColor.color}
