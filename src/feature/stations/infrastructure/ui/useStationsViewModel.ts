@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from 'react';
 import useServiceStationsQuery from '../api/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 import useLocation from '../api/useLocation';
-import useStationFilter from './hooks/useStationsFilter';
+import {useStationFilter} from './hooks/useStationsFilter';
 import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {
   NativeScrollEvent,
@@ -18,6 +18,11 @@ export const useStationsViewModel = () => {
   const horizontalViewRef = useRef<ScrollView>(null);
   const mapRef = useRef<RNMap>(null);
 
+  const permuteUserFavorite = useStore(state => state.permuteFavorite);
+  const userCurrentLocation = useStore(state => state.currentLocation);
+  const userVehicleFuel = useStore(state => state.fuel);
+  const mapStyle = useStore(state => state.mapStyle);
+
   const {navigate} = useNavigation();
   const {currentLocation} = useLocation();
   const {data: serviceStationsList, isLoading: isServiceStationsLoading} =
@@ -29,13 +34,12 @@ export const useStationsViewModel = () => {
     handlePressFilter,
     mapPois,
     priceRanges,
-    userFavoriteStations,
-  } = useStationFilter(serviceStationsList ?? [], currentLocation);
-
-  const permuteUserFavorite = useStore(state => state.permuteFavorite);
-  const userCurrentLocation = useStore(state => state.currentLocation);
-  const userVehicleFuel = useStore(state => state.fuel);
-  const mapStyle = useStore(state => state.mapStyle);
+    userFavoriteStationsIds,
+  } = useStationFilter(
+    serviceStationsList ?? [],
+    currentLocation,
+    userVehicleFuel,
+  );
 
   const [selectedStation, setSelectedStation] = useState<ServiceStation | null>(
     null,
@@ -124,7 +128,7 @@ export const useStationsViewModel = () => {
     priceRanges,
     selectedStation,
     userCurrentLocation,
-    userFavoriteStations,
+    userFavoriteStationsIds,
     userVehicleFuel,
   };
 };

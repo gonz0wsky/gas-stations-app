@@ -1,6 +1,6 @@
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import {msg} from '@lingui/core/macro';
-import ServiceStation from '@feature/stations/domain/ServiceStationModel';
+import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {BottomSheetView, BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {useLingui} from '@lingui/react';
@@ -117,7 +117,7 @@ type Props = {
   userFavoriteStations: string[];
 };
 
-const StationDetailBottomSheetView: FC<Props> = ({
+export const StationDetailBottomSheetView: FC<Props> = ({
   handlePressBack,
   handlePressFavorite,
   station,
@@ -190,5 +190,3 @@ const StationDetailBottomSheetView: FC<Props> = ({
     </BottomSheetView>
   );
 };
-
-export default StationDetailBottomSheetView;

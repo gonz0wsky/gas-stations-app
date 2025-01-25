@@ -92,13 +92,13 @@ const calculatePriceRanges = (
   return {lowEnd, midEnd};
 };
 
-const useStationFilter = (
+export const useStationFilter = (
   stations: ServiceStation[],
   location: {latitude: number; longitude: number},
+  userVehicleFuel: keyof ServiceStationProducts,
 ) => {
-  const userVehicleFuel = useStore(state => state.fuel);
   const kmToDisplay = useStore(state => state.kmToDisplay);
-  const userFavoriteStations = useStore(state => state.favorites);
+  const userFavoriteStationsIds = useStore(state => state.favorites);
 
   const [filter, setFilter] = useState<FilterOption>('price');
 
@@ -123,8 +123,8 @@ const useStationFilter = (
   );
 
   const favoriteStationsList = useMemo(
-    () => favoriteStations(nearStationsList, userFavoriteStations),
-    [nearStationsList, userFavoriteStations],
+    () => favoriteStations(nearStationsList, userFavoriteStationsIds),
+    [nearStationsList, userFavoriteStationsIds],
   );
 
   const priceRanges = useMemo(
@@ -141,14 +141,14 @@ const useStationFilter = (
     () =>
       serviceStationsToMapPois(
         nearStationsListSortedByDistance,
-        userFavoriteStations,
+        userFavoriteStationsIds,
         userVehicleFuel,
         priceRanges,
       ),
     [
       nearStationsListSortedByDistance,
       priceRanges,
-      userFavoriteStations,
+      userFavoriteStationsIds,
       userVehicleFuel,
     ],
   );
@@ -174,8 +174,6 @@ const useStationFilter = (
     handlePressFilter,
     mapPois,
     priceRanges,
-    userFavoriteStations,
+    userFavoriteStationsIds,
   };
 };
-
-export default useStationFilter;

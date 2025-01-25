@@ -4,7 +4,7 @@ import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {atoms as a, useTheme} from '@core/layout';
 import {MapView} from './components/MapView';
 import StationsBottomSheetView from './components/StationsBottomSheetView';
-import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
+import {StationDetailBottomSheetView} from './components/StationDetailBottomSheetView';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -46,7 +46,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
     priceRanges,
     selectedStation,
     userCurrentLocation,
-    userFavoriteStations,
+    userFavoriteStationsIds,
     userVehicleFuel,
   } = useStationsViewModel();
 
@@ -106,7 +106,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
                 handlePressBack={handlePressBack}
                 handlePressFavorite={handlePressFavorite}
                 station={selectedStation}
-                userFavoriteStations={userFavoriteStations}
+                userFavoriteStations={userFavoriteStationsIds}
                 userLocation={userCurrentLocation}
               />
             )}
