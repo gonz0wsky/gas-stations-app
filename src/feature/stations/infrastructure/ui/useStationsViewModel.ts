@@ -4,7 +4,7 @@ import useServiceStationsQuery from '../api/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 import useLocation from '../api/useLocation';
 import useStationFilter from './hooks/useStationsFilter';
-import ServiceStation from '@feature/stations/domain/ServiceStationModel';
+import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -13,7 +13,7 @@ import {
 import useStore from '@core/store';
 import RNMap, {MarkerPressEvent} from 'react-native-maps';
 
-const useStationsViewModel = () => {
+export const useStationsViewModel = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const horizontalViewRef = useRef<ScrollView>(null);
   const mapRef = useRef<RNMap>(null);
@@ -25,9 +25,9 @@ const useStationsViewModel = () => {
 
   const {
     filter,
-    filteredStations,
+    filteredStationList,
     handlePressFilter,
-    mapStations,
+    mapPois,
     priceRanges,
     userFavoriteStations,
   } = useStationFilter(serviceStationsList ?? [], currentLocation);
@@ -64,8 +64,8 @@ const useStationsViewModel = () => {
     mapRef.current?.animateToRegion({
       latitude: station.position.latitude,
       longitude: station.position.longitude,
-      latitudeDelta: 0.001,
-      longitudeDelta: 0.001,
+      latitudeDelta: 0.05,
+      longitudeDelta: 0.05,
     });
 
     setSelectedStation(station ?? null);
@@ -94,15 +94,21 @@ const useStationsViewModel = () => {
   };
 
   const handlePressMarker = (event: MarkerPressEvent) => {
-    const station = mapStations.find(s => s.id === event.nativeEvent.id);
+    if (serviceStationsList === undefined) {
+      return;
+    }
 
-    setSelectedStation(station ?? null);
+    const match = serviceStationsList.find(
+      item => item.id === event.nativeEvent.id,
+    );
+
+    setSelectedStation(match ?? null);
   };
 
   return {
     bottomSheetRef,
     filter,
-    filteredStations,
+    filteredStationList,
     handleHorizontalOnMomentunScrollEnd,
     handlePressBack,
     handlePressCard,
@@ -112,8 +118,8 @@ const useStationsViewModel = () => {
     handlePressSettings,
     horizontalViewRef,
     isServiceStationsLoading,
+    mapPois,
     mapRef,
-    mapStations,
     mapStyle,
     priceRanges,
     selectedStation,
@@ -122,5 +128,3 @@ const useStationsViewModel = () => {
     userVehicleFuel,
   };
 };
-
-export default useStationsViewModel;

@@ -1,5 +1,5 @@
-import {atoms as a} from '@core/layout';
-import ServiceStation from '@feature/stations/domain/ServiceStationModel';
+import {atoms as a, useTheme} from '@core/layout';
+import {MapPoi} from '@feature/stations/domain/MapPoiModel';
 import React, {FC, useMemo} from 'react';
 import RNMap, {
   Marker,
@@ -25,16 +25,19 @@ type Props = {
   mapStyle: MapViewProps['userInterfaceStyle'];
   bsSharedValue: SharedValue<number>;
   mapRef: React.RefObject<RNMap>;
-  stations: ServiceStation[];
+  poiList: MapPoi[];
   onPressMarker: (id: MarkerPressEvent) => void;
 };
-const MapView: FC<Props> = ({
+
+export const MapView: FC<Props> = ({
   bsSharedValue,
   mapRef,
   mapStyle,
   onPressMarker,
-  stations,
+  poiList,
 }) => {
+  const t = useTheme();
+
   const animatedRegion = new AnimatedRegion(IBERIA);
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -52,20 +55,33 @@ const MapView: FC<Props> = ({
 
   const Markers = useMemo(
     () =>
-      stations.map(station => (
-        <Marker
-          id={station.id}
-          identifier={station.id}
-          onPress={onPressMarker}
-          key={station.id}
-          title={station.name}
-          coordinate={{
-            latitude: station.position.latitude,
-            longitude: station.position.longitude,
-          }}
-        />
-      )),
-    [onPressMarker, stations],
+      poiList.map(poi => {
+        const pinColor = poi.isFavorite
+          ? t.atoms.map.poi.favorite
+          : t.atoms.map.poi.price_level[poi.priceLevel];
+
+        if (pinColor.color === 'hsl(49, 84%, 53%)') {
+          console.log(poi.name, pinColor);
+        }
+
+        return (
+          <Marker
+            pinColor={pinColor.color}
+            id={poi.id}
+            identifier={poi.id}
+            onPress={onPressMarker}
+            key={poi.id}
+            title={poi.name}
+            coordinate={poi.location}
+          />
+        );
+      }),
+    [
+      poiList,
+      t.atoms.map.poi.favorite,
+      t.atoms.map.poi.price_level,
+      onPressMarker,
+    ],
   );
 
   return (
@@ -73,6 +89,7 @@ const MapView: FC<Props> = ({
       <AnimatedMap
         ref={mapRef}
         region={animatedRegion}
+        showsBuildings={false}
         showsPointsOfInterest={false}
         style={[a.absolute, a.inset_0]}
         userInterfaceStyle={mapStyle}>
@@ -81,5 +98,3 @@ const MapView: FC<Props> = ({
     </Animated.View>
   );
 };
-
-export default MapView;

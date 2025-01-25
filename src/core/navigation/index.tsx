@@ -5,7 +5,7 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import {StationsScreen} from '@feature/stations';
+import {StationsView} from '@feature/stations/infrastructure/ui/StationsView';
 import {
   SettingsScreen,
   MapSettingsScreen,
@@ -38,7 +38,7 @@ const ModalNavigator = () => {
 
 const MainNavigatorScreens = () => (
   <>
-    <Main.Screen name="Stations" component={StationsScreen} />
+    <Main.Screen name="Stations" component={StationsView} />
     <Main.Screen name="Settings" component={SettingsScreen} />
     <Main.Screen name="MapSettings" component={MapSettingsScreen} />
     <Main.Screen

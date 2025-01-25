@@ -247,6 +247,24 @@ export const light = {
     spacer: {
       backgroundColor: lightPalette.gray_800,
     },
+    map: {
+      poi: {
+        favorite: {
+          color: lightPalette.gray_100,
+        },
+        price_level: {
+          low: {
+            color: lightPalette.green_600,
+          },
+          medium: {
+            color: lightPalette.primary_500,
+          },
+          high: {
+            color: lightPalette.red_500,
+          },
+        },
+      },
+    },
   },
 };
 

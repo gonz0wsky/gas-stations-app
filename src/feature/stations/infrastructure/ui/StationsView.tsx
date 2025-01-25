@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {atoms as a, useTheme} from '@core/layout';
-import MapView from './components/MapView';
+import {MapView} from './components/MapView';
 import StationsBottomSheetView from './components/StationsBottomSheetView';
 import StationDetailBottomSheetView from './components/StationDetailBottomSheetView';
 import Animated, {
@@ -10,9 +10,10 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import useStationsViewModel from './useStationsViewModel';
+import {useStationsViewModel} from './useStationsViewModel';
 import {MapViewProps} from 'react-native-maps';
 import {MapStyle} from '@core/store/useMapSlice';
+import type {ScreenComponent} from '@core/navigation/routes/params';
 
 const INDEX = 1 as const;
 
@@ -25,11 +26,11 @@ const mapVariants: Record<
   system: undefined,
 } as const;
 
-const StationsView: FC = () => {
+export const StationsView: ScreenComponent<'Stations'> = () => {
   const {
     bottomSheetRef,
     filter,
-    filteredStations,
+    filteredStationList,
     handleHorizontalOnMomentunScrollEnd,
     handlePressBack,
     handlePressCard,
@@ -39,8 +40,8 @@ const StationsView: FC = () => {
     handlePressSettings,
     horizontalViewRef,
     isServiceStationsLoading,
+    mapPois,
     mapRef,
-    mapStations,
     mapStyle,
     priceRanges,
     selectedStation,
@@ -68,7 +69,7 @@ const StationsView: FC = () => {
         mapRef={mapRef}
         mapStyle={mapVariants[mapStyle]}
         onPressMarker={handlePressMarker}
-        stations={mapStations}
+        poiList={mapPois}
       />
       <BottomSheet
         handleStyle={t.atoms.bg.primary}
@@ -95,7 +96,7 @@ const StationsView: FC = () => {
               handlePressSettings={handlePressSettings}
               onPressCard={handlePressCard}
               priceRanges={priceRanges}
-              stations={filteredStations}
+              stations={filteredStationList}
               userLocation={userCurrentLocation}
               userPreferredProduct={userVehicleFuel}
               isLoading={isServiceStationsLoading}
@@ -115,5 +116,3 @@ const StationsView: FC = () => {
     </View>
   );
 };
-
-export default StationsView;

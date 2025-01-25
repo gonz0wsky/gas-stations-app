@@ -2,7 +2,7 @@ import type {ServiceStationsItemDTO} from '../infrastructure/api/ServiceStations
 import type ServiceStationProducts from './ServiceStationProductsModel';
 import parseStringToNumber from '@shared/utils/parseStringToNumber';
 
-type ServiceStation = {
+export type ServiceStation = {
   address: string;
   id: string;
   locality: string;
@@ -17,7 +17,7 @@ type ServiceStation = {
   sideRoad: 'left' | 'right' | undefined;
 };
 
-const mapDtoToServiceStation = (
+export const mapDtoToServiceStation = (
   dto: ServiceStationsItemDTO,
 ): ServiceStation => {
   const sideRoadOptions = {
@@ -67,7 +67,3 @@ const mapDtoToServiceStation = (
     sideRoad: sideRoadOptions[dto.Margen],
   };
 };
-
-export {mapDtoToServiceStation};
-
-export default ServiceStation;
