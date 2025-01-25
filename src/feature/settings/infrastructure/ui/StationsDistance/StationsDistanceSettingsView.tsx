@@ -11,7 +11,7 @@ import {useStationsDistanceSettingsViewModel} from './useStationsDistanceSetting
 
 const OPTIONS: Record<string, ReturnType<typeof msg>> = RADIUS_NAMES;
 
-export const StationDiscanteSettingsView: ScreenComponent<
+export const StationDistanceSettingsView: ScreenComponent<
   'StationDistanceSettings'
 > = () => {
   const {handlePressBack, handlePressOption, kmToDisplay} =

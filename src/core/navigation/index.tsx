@@ -8,7 +8,7 @@ import {
 import {StationsView} from '@feature/stations/infrastructure/ui/StationsView';
 import {SettingsView} from '@feature/settings/infrastructure/ui/SettingsView';
 import {MapSettingsView} from '@feature/settings/infrastructure/ui/Map/MapSettingsView';
-import {StationDiscanteSettingsView} from '@feature/settings/infrastructure/ui/StationsDistance/StationsDistanceSettingsView';
+import {StationDistanceSettingsView} from '@feature/settings/infrastructure/ui/StationsDistance/StationsDistanceSettingsView';
 import {UserVehicleFuelSettingsView} from '@feature/settings/infrastructure/ui/UserVehicleFuel/UserVehicleFuelSettingsView';
 import {ThemeSettingsView} from '@feature/settings/infrastructure/ui/Theme/ThemeSettingsView';
 
@@ -41,7 +41,7 @@ const MainNavigatorScreens = () => (
     <Main.Screen name="MapSettings" component={MapSettingsView} />
     <Main.Screen
       name="StationDistanceSettings"
-      component={StationDiscanteSettingsView}
+      component={StationDistanceSettingsView}
     />
     <Main.Screen
       name="UserVehicleFuelSettings"
