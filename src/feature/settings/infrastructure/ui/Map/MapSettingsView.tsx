@@ -1,21 +1,20 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {View} from 'react-native';
-import type ThemeSettingsViewModel from './useThemeSettingsViewModel';
+import {useMapSettingsViewModel} from './useMapSettingsViewModel';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
-import OptionsList from '../layout/OptionsList';
-import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
 import {msg} from '@lingui/core/macro';
-import THEME_NAMES from '@shared/constants/names/theme-names';
+import {MapStyle} from '@core/store/useMapSlice';
+import MAP_NAMES from '@shared/constants/names/map-names';
+import {ScreenComponent} from '@core/navigation/routes/params';
+import OptionsList from '../../layout/OptionsList';
 
-const OPTIONS: Record<SystemTheme, ReturnType<typeof msg>> = THEME_NAMES;
+const OPTIONS: Record<MapStyle, ReturnType<typeof msg>> = MAP_NAMES;
 
-const ThemeSettingsView: FC<ReturnType<typeof ThemeSettingsViewModel>> = ({
-  handlePressBack,
-  handlePressOption,
-  theme,
-}) => {
+export const MapSettingsView: ScreenComponent<'MapSettings'> = () => {
+  const {handlePressBack, handlePressOption, mapStyle} =
+    useMapSettingsViewModel();
   const {i18n} = useLingui();
   const safe = useSafeArea();
   const t = useTheme();
@@ -28,18 +27,16 @@ const ThemeSettingsView: FC<ReturnType<typeof ThemeSettingsViewModel>> = ({
   return (
     <View style={[a.flex_1, t.atoms.bg.primary]}>
       <Header
-        title={i18n.t('Theme')}
+        title={i18n.t('Map style')}
         leftIcon="left-arrow"
         onPressLeft={handlePressBack}
       />
       <OptionsList
         data={options}
         onPress={handlePressOption}
-        selected={theme}
+        selected={mapStyle}
         contentContainerStyle={[a.pb_safe(safe.bottom, 16)]}
       />
     </View>
   );
 };
-
-export default ThemeSettingsView;

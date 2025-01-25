@@ -6,13 +6,11 @@ import {
 } from '@react-navigation/native-stack';
 
 import {StationsView} from '@feature/stations/infrastructure/ui/StationsView';
-import {
-  SettingsScreen,
-  MapSettingsScreen,
-  StationsRadiusSettingsScreen,
-  FuelSettingsScreen,
-  ThemeSettingsScreen,
-} from '@feature/settings';
+import {SettingsView} from '@feature/settings/infrastructure/ui/SettingsView';
+import {MapSettingsView} from '@feature/settings/infrastructure/ui/Map/MapSettingsView';
+import {StationDiscanteSettingsView} from '@feature/settings/infrastructure/ui/StationsDistance/StationsDistanceSettingsView';
+import {UserVehicleFuelSettingsView} from '@feature/settings/infrastructure/ui/UserVehicleFuel/UserVehicleFuelSettingsView';
+import {ThemeSettingsView} from '@feature/settings/infrastructure/ui/Theme/ThemeSettingsView';
 
 import {
   AllNavigatorParamList,
@@ -39,14 +37,17 @@ const ModalNavigator = () => {
 const MainNavigatorScreens = () => (
   <>
     <Main.Screen name="Stations" component={StationsView} />
-    <Main.Screen name="Settings" component={SettingsScreen} />
-    <Main.Screen name="MapSettings" component={MapSettingsScreen} />
+    <Main.Screen name="Settings" component={SettingsView} />
+    <Main.Screen name="MapSettings" component={MapSettingsView} />
     <Main.Screen
-      name="StationRadiusSettings"
-      component={StationsRadiusSettingsScreen}
+      name="StationDistanceSettings"
+      component={StationDiscanteSettingsView}
     />
-    <Main.Screen name="FuelSettings" component={FuelSettingsScreen} />
-    <Main.Screen name="ThemeSettings" component={ThemeSettingsScreen} />
+    <Main.Screen
+      name="UserVehicleFuelSettings"
+      component={UserVehicleFuelSettingsView}
+    />
+    <Main.Screen name="ThemeSettings" component={ThemeSettingsView} />
   </>
 );
 

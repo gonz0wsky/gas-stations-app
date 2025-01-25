@@ -1,28 +1,26 @@
+import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
 import useStore from '@core/store';
-import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {useNavigation} from '@react-navigation/native';
 
-const useFuelSettingsViewModel = () => {
+export const useThemeSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
-  const fuel = useStore(state => state.fuel);
-  const setFuel = useStore(state => state.setFuel);
+  const theme = useStore(state => state.theme);
+  const setTheme = useStore(state => state.setTheme);
 
   const handlePressBack = () => {
     canGoBack() && goBack();
   };
 
   const handlePressOption = (id: string) => {
-    setFuel(id as keyof ServiceStationProducts);
+    setTheme(id as SystemTheme);
 
     canGoBack() && goBack();
   };
 
   return {
-    fuel,
     handlePressBack,
     handlePressOption,
+    theme,
   };
 };
-
-export default useFuelSettingsViewModel;

@@ -1,7 +1,7 @@
 import useStore from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
-const useSettingsViewModel = () => {
+export const useMapSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
   const mapStyle = useStore(state => state.mapStyle);
@@ -23,5 +23,3 @@ const useSettingsViewModel = () => {
     mapStyle,
   };
 };
-
-export default useSettingsViewModel;

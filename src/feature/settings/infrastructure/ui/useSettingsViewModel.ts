@@ -22,11 +22,11 @@ const useSettingsViewModel = () => {
   };
 
   const handlePressStationRadius = () => {
-    navigate('StationRadiusSettings');
+    navigate('StationDistanceSettings');
   };
 
   const handlePressFuel = () => {
-    navigate('FuelSettings');
+    navigate('UserVehicleFuelSettings');
   };
   const handleOnChangeTankSize = (value: number) => {
     setCarTankLitres(value);

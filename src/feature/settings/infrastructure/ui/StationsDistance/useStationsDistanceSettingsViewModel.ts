@@ -1,7 +1,7 @@
 import useStore from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
-const useStationRadiusViewModel = () => {
+export const useStationsDistanceSettingsViewModel = () => {
   const {canGoBack, goBack} = useNavigation();
 
   const kmToDisplay = useStore(state => state.kmToDisplay);
@@ -23,5 +23,3 @@ const useStationRadiusViewModel = () => {
     kmToDisplay,
   };
 };
-
-export default useStationRadiusViewModel;

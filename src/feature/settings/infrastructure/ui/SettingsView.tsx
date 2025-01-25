@@ -1,6 +1,5 @@
 import React, {FC, useEffect, useRef} from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import type SettingsViewModel from './useSettingsViewModel';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
@@ -12,6 +11,8 @@ import MAP_NAMES from '@shared/constants/names/map-names';
 import RADIUS_NAMES from '@shared/constants/names/radius-names';
 import THEME_NAMES from '@shared/constants/names/theme-names';
 import CircularButton from '@shared/ui/component/CircularButton';
+import useSettingsViewModel from './useSettingsViewModel';
+import {ScreenComponent} from '@core/navigation/routes/params';
 
 type SectionTitleProps = {
   title: string;
@@ -166,22 +167,23 @@ const SelectorOption: FC<SelectorOptionProps> = ({
   );
 };
 
-const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
-  carFuel,
-  carLitresPer100Km,
-  carTankLitres,
-  handleOnChangeConsumption,
-  handleOnChangeTankSize,
-  handlePressFuel,
-  handlePressMapSettings,
-  handlePressPrivacy,
-  handlePressStationRadius,
-  handlePressTheme,
-  kmToDisplay,
-  mapStyle,
-  onPressBack,
-  selectedTheme,
-}) => {
+export const SettingsView: ScreenComponent<'Settings'> = () => {
+  const {
+    carFuel,
+    carLitresPer100Km,
+    carTankLitres,
+    handleOnChangeConsumption,
+    handleOnChangeTankSize,
+    handlePressFuel,
+    handlePressMapSettings,
+    handlePressPrivacy,
+    handlePressStationRadius,
+    handlePressTheme,
+    kmToDisplay,
+    mapStyle,
+    onPressBack,
+    selectedTheme,
+  } = useSettingsViewModel();
   const {i18n} = useLingui();
   const t = useTheme();
   const safe = useSafeArea();
@@ -250,5 +252,3 @@ const SettingsView: FC<ReturnType<typeof SettingsViewModel>> = ({
     </View>
   );
 };
-
-export default SettingsView;

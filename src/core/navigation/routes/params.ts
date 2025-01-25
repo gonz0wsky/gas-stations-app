@@ -2,12 +2,12 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {FC} from 'react';
 
 export type MainNavigatorParamList = {
-  FuelSettings: undefined;
   MapSettings: undefined;
   Settings: undefined;
-  StationRadiusSettings: undefined;
+  StationDistanceSettings: undefined;
   Stations: undefined;
   ThemeSettings: undefined;
+  UserVehicleFuelSettings: undefined;
 };
 
 export type ModalNavigatorParamList = {};

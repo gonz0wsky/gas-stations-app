@@ -1,18 +1,20 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {View} from 'react-native';
-import type StationRadiusSettingsViewModel from './useStationsRadiusSettingsViewModel';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
-import OptionsList from '../layout/OptionsList';
+import OptionsList from '../../layout/OptionsList';
+import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
 import {msg} from '@lingui/core/macro';
-import RADIUS_NAMES from '@shared/constants/names/radius-names';
+import THEME_NAMES from '@shared/constants/names/theme-names';
+import {useThemeSettingsViewModel} from './useThemeSettingsViewModel';
+import {ScreenComponent} from '@core/navigation/routes/params';
 
-const OPTIONS: Record<string, ReturnType<typeof msg>> = RADIUS_NAMES;
+const OPTIONS: Record<SystemTheme, ReturnType<typeof msg>> = THEME_NAMES;
 
-const StationRadiusSettingsView: FC<
-  ReturnType<typeof StationRadiusSettingsViewModel>
-> = ({kmToDisplay, handlePressBack, handlePressOption}) => {
+export const ThemeSettingsView: ScreenComponent<'ThemeSettings'> = () => {
+  const {handlePressBack, handlePressOption, theme} =
+    useThemeSettingsViewModel();
   const {i18n} = useLingui();
   const safe = useSafeArea();
   const t = useTheme();
@@ -25,18 +27,16 @@ const StationRadiusSettingsView: FC<
   return (
     <View style={[a.flex_1, t.atoms.bg.primary]}>
       <Header
-        title={i18n.t('Stations to show')}
+        title={i18n.t('Theme')}
         leftIcon="left-arrow"
         onPressLeft={handlePressBack}
       />
       <OptionsList
         data={options}
         onPress={handlePressOption}
-        selected={kmToDisplay.toString()}
+        selected={theme}
         contentContainerStyle={[a.pb_safe(safe.bottom, 16)]}
       />
     </View>
   );
 };
-
-export default StationRadiusSettingsView;
