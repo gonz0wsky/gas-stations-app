@@ -37,6 +37,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
     handlePressFavorite,
     handlePressFilter,
     handlePressMarker,
+    handlePressOpenInMaps,
     handlePressSettings,
     horizontalViewRef,
     isServiceStationsLoading,
@@ -105,6 +106,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
               <StationDetailBottomSheetView
                 handlePressBack={handlePressBack}
                 handlePressFavorite={handlePressFavorite}
+                handlePressOpenInMaps={handlePressOpenInMaps}
                 station={selectedStation}
                 userFavoriteStations={userFavoriteStationsIds}
                 userLocation={userCurrentLocation}

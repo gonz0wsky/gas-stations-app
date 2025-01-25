@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import useStore from '@core/store';
 import RNMap, {MarkerPressEvent} from 'react-native-maps';
+import {openExternalMaps} from './utils/openExternalMaps';
 
 export const useStationsViewModel = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -109,6 +110,16 @@ export const useStationsViewModel = () => {
     setSelectedStation(match ?? null);
   };
 
+  const handlePressOpenInMaps = () => {
+    if (selectedStation === null) {
+      return;
+    }
+
+    const {latitude, longitude} = selectedStation.position;
+
+    openExternalMaps(latitude, longitude);
+  };
+
   return {
     bottomSheetRef,
     filter,
@@ -119,6 +130,7 @@ export const useStationsViewModel = () => {
     handlePressFavorite,
     handlePressFilter,
     handlePressMarker,
+    handlePressOpenInMaps,
     handlePressSettings,
     horizontalViewRef,
     isServiceStationsLoading,

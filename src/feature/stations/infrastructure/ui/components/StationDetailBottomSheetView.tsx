@@ -112,17 +112,19 @@ const StationDetailRow: FC<StationDetailRowProps> = ({
 type Props = {
   handlePressBack: () => void;
   handlePressFavorite: (id: string) => void;
+  handlePressOpenInMaps: () => void;
   station: ServiceStation;
-  userLocation: {latitude: number; longitude: number};
   userFavoriteStations: string[];
+  userLocation: {latitude: number; longitude: number};
 };
 
 export const StationDetailBottomSheetView: FC<Props> = ({
   handlePressBack,
   handlePressFavorite,
+  handlePressOpenInMaps,
   station,
-  userLocation,
   userFavoriteStations,
+  userLocation,
 }) => {
   const w = useWindow();
   const safe = useSafeArea();
@@ -185,7 +187,11 @@ export const StationDetailBottomSheetView: FC<Props> = ({
           icon="left-right-arrows"
         />
         <Spacer />
-        <Button style={[a.mt_auto]} title={i18n.t('Open in Maps')} />
+        <Button
+          style={[a.mt_auto]}
+          title={i18n.t('Open in Maps')}
+          onPress={handlePressOpenInMaps}
+        />
       </BottomSheetScrollView>
     </BottomSheetView>
   );
