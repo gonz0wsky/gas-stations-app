@@ -1,5 +1,5 @@
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
-import ServiceStation from '@feature/stations/domain/ServiceStationModel';
+import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {BottomSheetFlatList, BottomSheetView} from '@gorhom/bottom-sheet';
 import {FC, useCallback, useMemo} from 'react';
 import {Text, View} from 'react-native';
@@ -74,7 +74,9 @@ const StationCard = ({
             a.justify_between,
           ]}>
           <Text style={[a.font_title_two, priceRangeStyle]}>
-            {price ? `${price} €/l` : 'N/A'}
+            {typeof price === 'number'
+              ? `${`${price}00`.slice(0, 5)} €/l`
+              : 'N/A'}
           </Text>
           <Text
             style={[
