@@ -21,11 +21,13 @@ const InitClient = ({children}: {children: ReactNode}) => {
 
 export const QueryClientProvider = ({children}: {children: ReactNode}) => {
   return (
-    <InitClient>
-      <ReactQueryClientProvider client={queryClient}>
-        {children}
-      </ReactQueryClientProvider>
-    </InitClient>
+    <Context.Provider value={{queryClient}}>
+      <InitClient>
+        <ReactQueryClientProvider client={queryClient}>
+          {children}
+        </ReactQueryClientProvider>
+      </InitClient>
+    </Context.Provider>
   );
 };
 
