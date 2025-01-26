@@ -1,6 +1,6 @@
 import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {useMemo, useState} from 'react';
-import useStore from '@core/store';
+import {useStore} from '@core/store';
 import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
 import {FilterOption} from '../constants/filter-constants';
 import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';

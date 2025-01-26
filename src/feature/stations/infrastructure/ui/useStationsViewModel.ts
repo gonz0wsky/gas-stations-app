@@ -10,7 +10,7 @@ import {
   NativeSyntheticEvent,
   ScrollView,
 } from 'react-native';
-import useStore from '@core/store';
+import {useStore} from '@core/store';
 import RNMap, {MarkerPressEvent} from 'react-native-maps';
 import {openExternalMaps} from './utils/openExternalMaps';
 

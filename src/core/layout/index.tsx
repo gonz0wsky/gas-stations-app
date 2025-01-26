@@ -33,7 +33,7 @@ const Context = React.createContext<{
   window: {fontScale: 0, height: 0, scale: 0, width: 0},
 });
 
-const ThemeProvider = ({
+export const ThemeProvider = ({
   children,
   theme: themeName,
 }: React.PropsWithChildren<{theme: themes.ThemeName}>) => {
@@ -90,5 +90,3 @@ export function useSafeArea() {
 export function useWindow() {
   return React.useContext(Context).window;
 }
-
-export default ThemeProvider;

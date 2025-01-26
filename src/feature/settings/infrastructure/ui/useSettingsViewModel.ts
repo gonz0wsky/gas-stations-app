@@ -1,4 +1,4 @@
-import useStore from '@core/store';
+import {useStore} from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 
 const useSettingsViewModel = () => {

@@ -65,7 +65,7 @@ const MainNavigator = () => {
   );
 };
 
-const Navigator = () => {
+export const Navigator = () => {
   const linking: LinkingOptions<AllNavigatorParamList> = {
     prefixes: [],
   };
@@ -76,5 +76,3 @@ const Navigator = () => {
     </NavigationContainer>
   );
 };
-
-export default Navigator;

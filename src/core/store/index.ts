@@ -15,7 +15,7 @@ type Slices = SystemSlice &
   LocationSlice &
   MapSlice;
 
-const useStore = create<Slices>()(
+export const useStore = create<Slices>()(
   persist(
     (...a) => ({
       ...createSystemSlice(...a),
@@ -31,5 +31,3 @@ const useStore = create<Slices>()(
     },
   ),
 );
-
-export default useStore;

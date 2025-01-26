@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest",
+    "clean": "rm -rf node_modules && yarn cache clean && yarn && cd ios && pod install && cd ..",
     "xcode": "open ios/GasStationsApp.xcworkspace",
     "lingui:extract": "lingui extract --clean",
     "lingui:compile": "lingui compile",

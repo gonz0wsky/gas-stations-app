@@ -1,4 +1,4 @@
-import useStore from '@core/store/index';
+import {useStore} from '@core/store/index';
 import {i18n} from '@lingui/core';
 import {I18nProvider as DefaultI18nProvider} from '@lingui/react';
 import React, {useEffect} from 'react';
@@ -13,7 +13,7 @@ const messages: Record<Language, Record<string, string>> = {
   en: messagesEn,
 } as const;
 
-export default function I18nProvider({children}: {children: React.ReactNode}) {
+export function I18nProvider({children}: {children: React.ReactNode}) {
   const language = useStore(state => state.language);
 
   useEffect(() => {

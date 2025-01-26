@@ -1,4 +1,4 @@
-import useStore from '@core/store';
+import {useStore} from '@core/store';
 import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {useNavigation} from '@react-navigation/native';
 

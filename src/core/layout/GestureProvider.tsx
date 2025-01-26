@@ -1,9 +1,9 @@
 import {atoms as a} from '@core/layout/atoms';
 import {useTheme} from '@core/layout/index';
-import React from 'react';
+import type {ReactNode} from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
-const GestureProvider = ({children}: {children: React.ReactNode}) => {
+export const GestureProvider = ({children}: {children: ReactNode}) => {
   const t = useTheme();
 
   return (
@@ -12,5 +12,3 @@ const GestureProvider = ({children}: {children: React.ReactNode}) => {
     </GestureHandlerRootView>
   );
 };
-
-export default GestureProvider;
