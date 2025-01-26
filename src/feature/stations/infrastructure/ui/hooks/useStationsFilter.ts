@@ -1,7 +1,7 @@
 import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {useMemo, useState} from 'react';
 import {useStore} from '@core/store';
-import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
+import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
 import {FilterOption} from '../constants/filter-constants';
 import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {MapPoi, PriceLevelValue} from '@feature/stations/domain/MapPoiModel';
@@ -56,20 +56,31 @@ const favoriteStations = (
 };
 
 const serviceStationsToMapPois = (
-  stations: Array<ServiceStation>,
-  favoriteIds: Array<string>,
+  stationsList: Array<ServiceStation>,
+  favoriteStationsList: Array<ServiceStation>,
   product: keyof ServiceStationProducts,
   priceRanges: {lowEnd: number; midEnd: number},
 ): Array<MapPoi> => {
-  const keys = favoriteIds.reduce(
-    (acc, id) => ({...acc, [id]: true}),
+  const favoriteIdsKeyValue = favoriteStationsList.reduce(
+    (acc, station) => ({...acc, [station.id]: true}),
     {} as Record<string, boolean>,
   );
 
-  const matches = stations.map<MapPoi>(station =>
+  const stationsListKeyValue = [
+    ...stationsList,
+    ...favoriteStationsList,
+  ].reduce(
+    (acc, station) => ({
+      ...acc,
+      [station.id]: station,
+    }),
+    {} as Record<string, ServiceStation>,
+  );
+
+  const matches = Object.values(stationsListKeyValue).map<MapPoi>(station =>
     mapServiceStationToMapPoi(
       station,
-      keys[station.id] ?? false,
+      favoriteIdsKeyValue[station.id] ?? false,
       PriceLevelValue(station.products[product] ?? 0, priceRanges),
     ),
   );
@@ -92,11 +103,15 @@ const calculatePriceRanges = (
   return {lowEnd, midEnd};
 };
 
-export const useStationFilter = (
-  stations: ServiceStation[],
-  location: {latitude: number; longitude: number},
-  userVehicleFuel: keyof ServiceStationProducts,
-) => {
+export const useStationFilter = ({
+  stations,
+  location,
+  userVehicleFuel,
+}: {
+  stations: ServiceStation[];
+  location: {latitude: number; longitude: number} | null;
+  userVehicleFuel: keyof ServiceStationProducts;
+}) => {
   const kmToDisplay = useStore(state => state.kmToDisplay);
   const userFavoriteStationsIds = useStore(state => state.favorites);
 
@@ -108,7 +123,14 @@ export const useStationFilter = (
 
   const nearStationsList = useMemo(
     () =>
-      nearAvailableStations(stations, userVehicleFuel, location, kmToDisplay),
+      location
+        ? nearAvailableStations(
+            stations,
+            userVehicleFuel,
+            location,
+            kmToDisplay,
+          )
+        : [],
     [kmToDisplay, location, stations, userVehicleFuel],
   );
 
@@ -118,13 +140,13 @@ export const useStationFilter = (
   );
 
   const nearStationsListSortedByDistance = useMemo(
-    () => sortStationsByDistance(nearStationsList, location),
+    () => (location ? sortStationsByDistance(nearStationsList, location) : []),
     [location, nearStationsList],
   );
 
   const favoriteStationsList = useMemo(
-    () => favoriteStations(nearStationsList, userFavoriteStationsIds),
-    [nearStationsList, userFavoriteStationsIds],
+    () => favoriteStations(stations, userFavoriteStationsIds),
+    [stations, userFavoriteStationsIds],
   );
 
   const priceRanges = useMemo(
@@ -141,14 +163,14 @@ export const useStationFilter = (
     () =>
       serviceStationsToMapPois(
         nearStationsListSortedByDistance,
-        userFavoriteStationsIds,
+        favoriteStationsList,
         userVehicleFuel,
         priceRanges,
       ),
     [
+      favoriteStationsList,
       nearStationsListSortedByDistance,
       priceRanges,
-      userFavoriteStationsIds,
       userVehicleFuel,
     ],
   );

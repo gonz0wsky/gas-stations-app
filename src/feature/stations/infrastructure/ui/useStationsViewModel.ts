@@ -2,7 +2,6 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import {useEffect, useRef, useState} from 'react';
 import useServiceStationsQuery from '../api/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
-import useLocation from '../api/useLocation';
 import {useStationFilter} from './hooks/useStationsFilter';
 import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {
@@ -13,6 +12,7 @@ import {
 import {useStore} from '@core/store';
 import RNMap, {MarkerPressEvent} from 'react-native-maps';
 import {openExternalMaps} from './utils/openExternalMaps';
+import {useLocation} from '@core/geolocation/GeoLocationProvider';
 
 export const useStationsViewModel = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -25,7 +25,7 @@ export const useStationsViewModel = () => {
   const mapStyle = useStore(state => state.mapStyle);
 
   const {navigate} = useNavigation();
-  const {currentLocation} = useLocation();
+  const deviceLocation = useLocation();
   const {data: serviceStationsList, isLoading: isServiceStationsLoading} =
     useServiceStationsQuery();
 
@@ -36,11 +36,11 @@ export const useStationsViewModel = () => {
     mapPois,
     priceRanges,
     userFavoriteStationsIds,
-  } = useStationFilter(
-    serviceStationsList ?? [],
-    currentLocation,
+  } = useStationFilter({
+    stations: serviceStationsList ?? [],
+    location: deviceLocation,
     userVehicleFuel,
-  );
+  });
 
   const [selectedStation, setSelectedStation] = useState<ServiceStation | null>(
     null,

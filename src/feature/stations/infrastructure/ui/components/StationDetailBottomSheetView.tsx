@@ -8,7 +8,7 @@ import Button from '@shared/ui/component/Button';
 import Header from '@shared/ui/component/Header';
 import Icon from '@shared/ui/component/Icon';
 import {IconName} from '@shared/ui/component/Icon/types';
-import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
+import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
 import {FC} from 'react';
 import {Text, View} from 'react-native';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';

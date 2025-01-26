@@ -4,7 +4,7 @@ import {BottomSheetFlatList, BottomSheetView} from '@gorhom/bottom-sheet';
 import {FC, useCallback, useMemo} from 'react';
 import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
-import calculateDistanceInKm from '@shared/utils/calculateDistanteInKm';
+import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
 import Filter from './Filter';
 import FILTER_OPTIONS, {FilterOption} from '../constants/filter-constants';
 import CircularButton from '@shared/ui/component/CircularButton';

@@ -8,6 +8,7 @@ import {Navigator} from '@core/navigation';
 import {StatusBar} from 'react-native';
 import {statusBarStyle} from '@core/layout/themes';
 import {QueryClientProvider} from '@core/query-client/QueryClientProvider';
+import {GeoLocationProvider} from '@core/geolocation/GeoLocationProvider';
 
 const InnerApp = () => {
   const themeName = useStore(s => s.theme);
@@ -29,9 +30,11 @@ const InnerApp = () => {
 
 const App = () => {
   return (
-    <QueryClientProvider>
-      <InnerApp />
-    </QueryClientProvider>
+    <GeoLocationProvider>
+      <QueryClientProvider>
+        <InnerApp />
+      </QueryClientProvider>
+    </GeoLocationProvider>
   );
 };
 

@@ -3,7 +3,10 @@ type Location = {
   longitude: number;
 };
 
-const calculateDistanceInKm = (loc1: Location, loc2: Location): number => {
+export const calculateDistanceInKm = (
+  loc1: Location,
+  loc2: Location,
+): number => {
   const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
 
   const R = 6371;
@@ -27,5 +30,3 @@ const calculateDistanceInKm = (loc1: Location, loc2: Location): number => {
 
   return withTwhoDecimals;
 };
-
-export default calculateDistanceInKm;
