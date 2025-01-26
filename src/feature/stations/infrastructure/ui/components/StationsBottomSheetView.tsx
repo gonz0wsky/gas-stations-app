@@ -106,6 +106,7 @@ const StationCard = ({
 };
 
 const LoadingView: FC = () => {
+  const w = useWindow();
   const containerStyle = Object.freeze({flex: 1});
 
   return (
@@ -115,13 +116,14 @@ const LoadingView: FC = () => {
       layout={[
         {
           flexDirection: 'row',
+          width: w.width - a.mx_lg.marginLeft - a.mx_lg.marginRight,
           ...a.mb_sm,
           ...a.mx_lg,
           children: [
             {
               key: 'filter',
               height: 36,
-              width: 326,
+              flex: 1,
               ...a.mr_sm,
               ...a.rounded_sm,
             },
