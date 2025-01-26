@@ -87,6 +87,7 @@ export const MapView: FC<Props> = ({
         region={animatedRegion}
         showsBuildings={false}
         showsPointsOfInterest={false}
+        showsUserLocation
         style={[a.absolute, a.inset_0]}
         userInterfaceStyle={mapStyle}>
         {Markers}

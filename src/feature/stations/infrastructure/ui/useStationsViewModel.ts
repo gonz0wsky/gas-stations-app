@@ -14,10 +14,38 @@ import RNMap, {MarkerPressEvent} from 'react-native-maps';
 import {openExternalMaps} from './utils/openExternalMaps';
 import {useLocation} from '@core/geolocation/GeoLocationProvider';
 
+const animateMapToPosition = (
+  mapRef: React.RefObject<RNMap>,
+  type: 'poi' | 'region',
+  latitude: number,
+  longitude: number,
+) => {
+  const deltas: Record<
+    string,
+    {latitudeDelta: number; longitudeDelta: number}
+  > = {
+    poi: {
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    },
+    region: {
+      latitudeDelta: 0.5,
+      longitudeDelta: 0.5,
+    },
+  } as const;
+
+  mapRef.current?.animateToRegion({
+    latitude,
+    longitude,
+    ...deltas[type],
+  });
+};
+
 export const useStationsViewModel = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const horizontalViewRef = useRef<ScrollView>(null);
   const mapRef = useRef<RNMap>(null);
+  const initialGPSMapPositionDone = useRef(false);
 
   const permuteUserFavorite = useStore(state => state.permuteFavorite);
   const userCurrentLocation = useStore(state => state.currentLocation);
@@ -55,6 +83,24 @@ export const useStationsViewModel = () => {
     }
   }, [selectedStation]);
 
+  // Animate map to device location when it's available
+  useEffect(() => {
+    if (
+      !initialGPSMapPositionDone.current &&
+      deviceLocation &&
+      !isServiceStationsLoading
+    ) {
+      animateMapToPosition(
+        mapRef,
+        'region',
+        deviceLocation.latitude,
+        deviceLocation.longitude,
+      );
+
+      initialGPSMapPositionDone.current = true;
+    }
+  }, [deviceLocation, isServiceStationsLoading, selectedStation]);
+
   const handlePressSettings = () => {
     navigate('Settings');
   };
@@ -66,12 +112,12 @@ export const useStationsViewModel = () => {
       return;
     }
 
-    mapRef.current?.animateToRegion({
-      latitude: station.position.latitude,
-      longitude: station.position.longitude,
-      latitudeDelta: 0.05,
-      longitudeDelta: 0.05,
-    });
+    animateMapToPosition(
+      mapRef,
+      'poi',
+      station.position.latitude,
+      station.position.longitude,
+    );
 
     setSelectedStation(station ?? null);
   };
