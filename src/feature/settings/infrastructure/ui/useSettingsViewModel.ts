@@ -39,7 +39,7 @@ const useSettingsViewModel = () => {
     navigate('ThemeSettings');
   };
   const handlePressPrivacy = () => {
-    console.log('handle press privacy');
+    // TODO: navigate to PrivacyPolicy
   };
 
   return {
