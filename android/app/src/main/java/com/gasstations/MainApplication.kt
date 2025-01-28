@@ -1,4 +1,4 @@
-package com.gasstationsapp
+package com.gasstations
 
 import android.app.Application
 import com.facebook.react.PackageList

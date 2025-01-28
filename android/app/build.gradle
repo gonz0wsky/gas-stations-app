@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.gasstationsapp"
+    namespace "com.gasstations"
     defaultConfig {
-        applicationId "com.gasstationsapp"
+        applicationId "com.gasstations"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

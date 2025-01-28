@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>GasStationsApp</string>
+	<string>GasStations</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,17 +26,14 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need your location to find nearby gas stations</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to find nearby gas stations</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to find nearby gas stations</string>
+	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,18 +48,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>HostGrotesk-Black.otf</string>
-		<string>HostGrotesk-BlackItalic.otf</string>
-		<string>HostGrotesk-Bold.otf</string>
-		<string>HostGrotesk-BoldItalic.otf</string>
-		<string>HostGrotesk-Italic.otf</string>
-		<string>HostGrotesk-Light.otf</string>
-		<string>HostGrotesk-LightItalic.otf</string>
-		<string>HostGrotesk-Medium.otf</string>
-		<string>HostGrotesk-MediumItalic.otf</string>
-		<string>HostGrotesk-Regular.otf</string>
-	</array>
 </dict>
 </plist>
