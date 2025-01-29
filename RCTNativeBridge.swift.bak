@@ -1,0 +1,19 @@
+import Foundation
+import React
+
+@objc(NativeBridge)
+class NativeBridge: NSObject {
+  
+  override init() {
+    super.init()
+  }
+  
+  @objc func isWatchReachable() -> NSNumber {
+    print("Hello from Swift")
+    return true
+  }
+  
+  @objc func updateStations(_ cheap: [String], favorites: [String], near: [String], resolver: @escaping RCTPromiseResolveBlock, rejecter: @escaping RCTPromiseRejectBlock) {
+    resolver("Stations updated successfully")
+  }
+}

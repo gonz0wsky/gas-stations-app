@@ -1,13 +1,6 @@
-//
-//  GasStationsWatch_Watch_AppUITestsLaunchTests.swift
-//  GasStationsWatch Watch AppUITests
-//
-//  Created by Álvaro González on 29/1/25.
-//
-
 import XCTest
 
-final class GasStationsWatch_Watch_AppUITestsLaunchTests: XCTestCase {
+final class GasStations_Watch_AppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

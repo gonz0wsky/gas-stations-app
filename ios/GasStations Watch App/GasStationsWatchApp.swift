@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct GasStationsWatch_Watch_AppApp: App {
+struct GasStations_Watch_App: App {
     var body: some Scene {
         WindowGroup {
           CoordinatorStack(CoordinatorPages.home)

@@ -1,13 +1,4 @@
-//
-//  GasStationsWatch_Watch_AppUITests.swift
-//  GasStationsWatch Watch AppUITests
-//
-//  Created by Álvaro González on 29/1/25.
-//
-
-import XCTest
-
-final class GasStationsWatch_Watch_AppUITests: XCTestCase {
+final class GasStations_Watch_AppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -3,17 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C80B921A6F3F58F76C31292 /* libPods-GasStations.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-GasStations.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		307754B76FEAB8244F1284A7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		30A330DBE84ACB6826EFC8AA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		3E3EF9792D495BDF00029429 /* RCTNativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EF9782D495BDF00029429 /* RCTNativeBridge.mm */; };
-		3E541ECE2D4A7DEB00A31525 /* GasStationsWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3E541EAB2D4A7DEA00A31525 /* GasStationsWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3E541ECE2D4A7DEB00A31525 /* GasStations Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3E541EAB2D4A7DEA00A31525 /* GasStations Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3E927D832D4AB81D002491F0 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D6D2D4AB81D002491F0 /* Coordinatable.swift */; };
+		3E927D842D4AB81D002491F0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D6E2D4AB81D002491F0 /* Coordinator.swift */; };
+		3E927D852D4AB81D002491F0 /* CoordinatorPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D6F2D4AB81D002491F0 /* CoordinatorPages.swift */; };
+		3E927D862D4AB81D002491F0 /* CoordinatorStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D702D4AB81D002491F0 /* CoordinatorStack.swift */; };
+		3E927D872D4AB81D002491F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D732D4AB81D002491F0 /* HomeView.swift */; };
+		3E927D882D4AB81D002491F0 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D752D4AB81D002491F0 /* StationDetailView.swift */; };
+		3E927D892D4AB81D002491F0 /* StationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D772D4AB81D002491F0 /* StationsListView.swift */; };
+		3E927D8A2D4AB81D002491F0 /* ItemsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D7C2D4AB81D002491F0 /* ItemsList.swift */; };
+		3E927D8B2D4AB81D002491F0 /* GasStationsWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D812D4AB81D002491F0 /* GasStationsWatchApp.swift */; };
+		3E927D8C2D4AB81D002491F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E927D6B2D4AB81D002491F0 /* Preview Assets.xcassets */; };
+		3E927D8D2D4AB81D002491F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E927D802D4AB81D002491F0 /* Assets.xcassets */; };
+		3E927D902D4AB823002491F0 /* GasStations_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D8E2D4AB823002491F0 /* GasStations_Watch_AppTests.swift */; };
+		3E927D942D4AB825002491F0 /* GasStations_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D912D4AB825002491F0 /* GasStations_Watch_AppUITests.swift */; };
+		3E927D952D4AB825002491F0 /* GasStations_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D922D4AB825002491F0 /* GasStations_Watch_AppUITestsLaunchTests.swift */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8DA91274DA67C21A435EF361 /* libPods-GasStations.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B131E7B4EDFAD249AB7CA8 /* libPods-GasStations.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +62,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				3E541ECE2D4A7DEB00A31525 /* GasStationsWatch Watch App.app in Embed Watch Content */,
+				3E541ECE2D4A7DEB00A31525 /* GasStations Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,31 +74,39 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GasStations/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GasStations/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = GasStations/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-GasStations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStations.debug.xcconfig"; path = "Target Support Files/Pods-GasStations/Pods-GasStations.debug.xcconfig"; sourceTree = "<group>"; };
+		16B131E7B4EDFAD249AB7CA8 /* libPods-GasStations.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GasStations.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3EF9772D495BDF00029429 /* RCTNativeBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeBridge.h; sourceTree = "<group>"; };
 		3E3EF9782D495BDF00029429 /* RCTNativeBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeBridge.mm; sourceTree = "<group>"; };
-		3E541EAB2D4A7DEA00A31525 /* GasStationsWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GasStationsWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E541EBA2D4A7DEB00A31525 /* GasStationsWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GasStationsWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E541EC42D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GasStationsWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5709B34CF0A7D63546082F79 /* Pods-GasStations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStations.release.xcconfig"; path = "Target Support Files/Pods-GasStations/Pods-GasStations.release.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-GasStations.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GasStations.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E541EAB2D4A7DEA00A31525 /* GasStations Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GasStations Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E541EBA2D4A7DEB00A31525 /* GasStations Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GasStations Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E541EC42D4A7DEB00A31525 /* GasStations Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GasStations Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E927D6B2D4AB81D002491F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3E927D6D2D4AB81D002491F0 /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
+		3E927D6E2D4AB81D002491F0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3E927D6F2D4AB81D002491F0 /* CoordinatorPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorPages.swift; sourceTree = "<group>"; };
+		3E927D702D4AB81D002491F0 /* CoordinatorStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStack.swift; sourceTree = "<group>"; };
+		3E927D732D4AB81D002491F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3E927D752D4AB81D002491F0 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
+		3E927D772D4AB81D002491F0 /* StationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListView.swift; sourceTree = "<group>"; };
+		3E927D7C2D4AB81D002491F0 /* ItemsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsList.swift; sourceTree = "<group>"; };
+		3E927D802D4AB81D002491F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3E927D812D4AB81D002491F0 /* GasStationsWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationsWatchApp.swift; sourceTree = "<group>"; };
+		3E927D8E2D4AB823002491F0 /* GasStations_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStations_Watch_AppTests.swift; sourceTree = "<group>"; };
+		3E927D912D4AB825002491F0 /* GasStations_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStations_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		3E927D922D4AB825002491F0 /* GasStations_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStations_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = GasStations/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GasStations/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B220D52806291409DE5DEC73 /* Pods-GasStations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStations.release.xcconfig"; path = "Target Support Files/Pods-GasStations/Pods-GasStations.release.xcconfig"; sourceTree = "<group>"; };
+		DA562DDCA11108B476A79841 /* Pods-GasStations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GasStations.debug.xcconfig"; path = "Target Support Files/Pods-GasStations/Pods-GasStations.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		3E541EAC2D4A7DEA00A31525 /* GasStationsWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "GasStationsWatch Watch App"; sourceTree = "<group>"; };
-		3E541EBD2D4A7DEB00A31525 /* GasStationsWatch Watch AppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "GasStationsWatch Watch AppTests"; sourceTree = "<group>"; };
-		3E541EC72D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "GasStationsWatch Watch AppUITests"; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-GasStations.a in Frameworks */,
+				8DA91274DA67C21A435EF361 /* libPods-GasStations.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-GasStations.a */,
+				16B131E7B4EDFAD249AB7CA8 /* libPods-GasStations.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,6 +162,137 @@
 				3E3EF9782D495BDF00029429 /* RCTNativeBridge.mm */,
 			);
 			path = NativeBridge;
+			sourceTree = "<group>";
+		};
+		3E927D6C2D4AB81D002491F0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D6B2D4AB81D002491F0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3E927D712D4AB81D002491F0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D6D2D4AB81D002491F0 /* Coordinatable.swift */,
+				3E927D6E2D4AB81D002491F0 /* Coordinator.swift */,
+				3E927D6F2D4AB81D002491F0 /* CoordinatorPages.swift */,
+				3E927D702D4AB81D002491F0 /* CoordinatorStack.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3E927D722D4AB81D002491F0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D712D4AB81D002491F0 /* Coordinator */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3E927D742D4AB81D002491F0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D732D4AB81D002491F0 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3E927D762D4AB81D002491F0 /* StationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D752D4AB81D002491F0 /* StationDetailView.swift */,
+			);
+			path = StationDetail;
+			sourceTree = "<group>";
+		};
+		3E927D782D4AB81D002491F0 /* StationsList */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D772D4AB81D002491F0 /* StationsListView.swift */,
+			);
+			path = StationsList;
+			sourceTree = "<group>";
+		};
+		3E927D792D4AB81D002491F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D742D4AB81D002491F0 /* Home */,
+				3E927D762D4AB81D002491F0 /* StationDetail */,
+				3E927D782D4AB81D002491F0 /* StationsList */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E927D7A2D4AB81D002491F0 /* Stations */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D792D4AB81D002491F0 /* View */,
+			);
+			path = Stations;
+			sourceTree = "<group>";
+		};
+		3E927D7B2D4AB81D002491F0 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D7A2D4AB81D002491F0 /* Stations */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		3E927D7D2D4AB81D002491F0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D7C2D4AB81D002491F0 /* ItemsList.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3E927D7E2D4AB81D002491F0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D7D2D4AB81D002491F0 /* UI */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3E927D7F2D4AB81D002491F0 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D722D4AB81D002491F0 /* Core */,
+				3E927D7B2D4AB81D002491F0 /* Feature */,
+				3E927D7E2D4AB81D002491F0 /* Shared */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		3E927D822D4AB81D002491F0 /* GasStations Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D6C2D4AB81D002491F0 /* Preview Content */,
+				3E927D7F2D4AB81D002491F0 /* Src */,
+				3E927D802D4AB81D002491F0 /* Assets.xcassets */,
+				3E927D812D4AB81D002491F0 /* GasStationsWatchApp.swift */,
+			);
+			path = "GasStations Watch App";
+			sourceTree = "<group>";
+		};
+		3E927D8F2D4AB823002491F0 /* GasStations Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D8E2D4AB823002491F0 /* GasStations_Watch_AppTests.swift */,
+			);
+			path = "GasStations Watch AppTests";
+			sourceTree = "<group>";
+		};
+		3E927D932D4AB825002491F0 /* GasStations Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3E927D912D4AB825002491F0 /* GasStations_Watch_AppUITests.swift */,
+				3E927D922D4AB825002491F0 /* GasStations_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "GasStations Watch AppUITests";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -154,9 +308,9 @@
 				3E3EF9762D495BCA00029429 /* NativeBridge */,
 				13B07FAE1A68108700A75B9A /* GasStations */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				3E541EAC2D4A7DEA00A31525 /* GasStationsWatch Watch App */,
-				3E541EBD2D4A7DEB00A31525 /* GasStationsWatch Watch AppTests */,
-				3E541EC72D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests */,
+				3E927D822D4AB81D002491F0 /* GasStations Watch App */,
+				3E927D8F2D4AB823002491F0 /* GasStations Watch AppTests */,
+				3E927D932D4AB825002491F0 /* GasStations Watch AppUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -170,9 +324,9 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* GasStations.app */,
-				3E541EAB2D4A7DEA00A31525 /* GasStationsWatch Watch App.app */,
-				3E541EBA2D4A7DEB00A31525 /* GasStationsWatch Watch AppTests.xctest */,
-				3E541EC42D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests.xctest */,
+				3E541EAB2D4A7DEA00A31525 /* GasStations Watch App.app */,
+				3E541EBA2D4A7DEB00A31525 /* GasStations Watch AppTests.xctest */,
+				3E541EC42D4A7DEB00A31525 /* GasStations Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,8 +334,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-GasStations.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-GasStations.release.xcconfig */,
+				DA562DDCA11108B476A79841 /* Pods-GasStations.debug.xcconfig */,
+				B220D52806291409DE5DEC73 /* Pods-GasStations.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -193,14 +347,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "GasStations" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				37BE67342E24172A72BD35CA /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
 				3E541ECF2D4A7DEB00A31525 /* Embed Watch Content */,
+				07E64A7A1E83BA74DCBB7197 /* [CP] Embed Pods Frameworks */,
+				EFAB2D6C4BF6E4AC7A244D4B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,9 +366,9 @@
 			productReference = 13B07F961A680F5B00A75B9A /* GasStations.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3E541EAA2D4A7DEA00A31525 /* GasStationsWatch Watch App */ = {
+		3E541EAA2D4A7DEA00A31525 /* GasStations Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E541ED62D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStationsWatch Watch App" */;
+			buildConfigurationList = 3E541ED62D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStations Watch App" */;
 			buildPhases = (
 				3E541EA72D4A7DEA00A31525 /* Sources */,
 				3E541EA82D4A7DEA00A31525 /* Frameworks */,
@@ -224,19 +378,14 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				3E541EAC2D4A7DEA00A31525 /* GasStationsWatch Watch App */,
-			);
-			name = "GasStationsWatch Watch App";
-			packageProductDependencies = (
-			);
+			name = "GasStations Watch App";
 			productName = "GasStationsWatch Watch App";
-			productReference = 3E541EAB2D4A7DEA00A31525 /* GasStationsWatch Watch App.app */;
+			productReference = 3E541EAB2D4A7DEA00A31525 /* GasStations Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3E541EB92D4A7DEB00A31525 /* GasStationsWatch Watch AppTests */ = {
+		3E541EB92D4A7DEB00A31525 /* GasStations Watch AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E541ED72D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStationsWatch Watch AppTests" */;
+			buildConfigurationList = 3E541ED72D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStations Watch AppTests" */;
 			buildPhases = (
 				3E541EB62D4A7DEB00A31525 /* Sources */,
 				3E541EB72D4A7DEB00A31525 /* Frameworks */,
@@ -247,19 +396,14 @@
 			dependencies = (
 				3E541EBC2D4A7DEB00A31525 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				3E541EBD2D4A7DEB00A31525 /* GasStationsWatch Watch AppTests */,
-			);
-			name = "GasStationsWatch Watch AppTests";
-			packageProductDependencies = (
-			);
+			name = "GasStations Watch AppTests";
 			productName = "GasStationsWatch Watch AppTests";
-			productReference = 3E541EBA2D4A7DEB00A31525 /* GasStationsWatch Watch AppTests.xctest */;
+			productReference = 3E541EBA2D4A7DEB00A31525 /* GasStations Watch AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3E541EC32D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests */ = {
+		3E541EC32D4A7DEB00A31525 /* GasStations Watch AppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E541ED82D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStationsWatch Watch AppUITests" */;
+			buildConfigurationList = 3E541ED82D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStations Watch AppUITests" */;
 			buildPhases = (
 				3E541EC02D4A7DEB00A31525 /* Sources */,
 				3E541EC12D4A7DEB00A31525 /* Frameworks */,
@@ -270,14 +414,9 @@
 			dependencies = (
 				3E541EC62D4A7DEB00A31525 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				3E541EC72D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests */,
-			);
-			name = "GasStationsWatch Watch AppUITests";
-			packageProductDependencies = (
-			);
+			name = "GasStations Watch AppUITests";
 			productName = "GasStationsWatch Watch AppUITests";
-			productReference = 3E541EC42D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests.xctest */;
+			productReference = 3E541EC42D4A7DEB00A31525 /* GasStations Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -319,9 +458,9 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* GasStations */,
-				3E541EAA2D4A7DEA00A31525 /* GasStationsWatch Watch App */,
-				3E541EB92D4A7DEB00A31525 /* GasStationsWatch Watch AppTests */,
-				3E541EC32D4A7DEB00A31525 /* GasStationsWatch Watch AppUITests */,
+				3E541EAA2D4A7DEA00A31525 /* GasStations Watch App */,
+				3E541EB92D4A7DEB00A31525 /* GasStations Watch AppTests */,
+				3E541EC32D4A7DEB00A31525 /* GasStations Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -341,6 +480,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E927D8C2D4AB81D002491F0 /* Preview Assets.xcassets in Resources */,
+				3E927D8D2D4AB81D002491F0 /* Assets.xcassets in Resources */,
+				307754B76FEAB8244F1284A7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +519,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		07E64A7A1E83BA74DCBB7197 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,7 +536,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GasStations/Pods-GasStations-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		37BE67342E24172A72BD35CA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -416,7 +558,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		EFAB2D6C4BF6E4AC7A244D4B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,6 +591,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E927D832D4AB81D002491F0 /* Coordinatable.swift in Sources */,
+				3E927D842D4AB81D002491F0 /* Coordinator.swift in Sources */,
+				3E927D852D4AB81D002491F0 /* CoordinatorPages.swift in Sources */,
+				3E927D862D4AB81D002491F0 /* CoordinatorStack.swift in Sources */,
+				3E927D872D4AB81D002491F0 /* HomeView.swift in Sources */,
+				3E927D882D4AB81D002491F0 /* StationDetailView.swift in Sources */,
+				3E927D892D4AB81D002491F0 /* StationsListView.swift in Sources */,
+				3E927D8A2D4AB81D002491F0 /* ItemsList.swift in Sources */,
+				3E927D8B2D4AB81D002491F0 /* GasStationsWatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E927D902D4AB823002491F0 /* GasStations_Watch_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +615,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E927D942D4AB825002491F0 /* GasStations_Watch_AppUITests.swift in Sources */,
+				3E927D952D4AB825002491F0 /* GasStations_Watch_AppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,17 +625,17 @@
 /* Begin PBXTargetDependency section */
 		3E541EBC2D4A7DEB00A31525 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3E541EAA2D4A7DEA00A31525 /* GasStationsWatch Watch App */;
+			target = 3E541EAA2D4A7DEA00A31525 /* GasStations Watch App */;
 			targetProxy = 3E541EBB2D4A7DEB00A31525 /* PBXContainerItemProxy */;
 		};
 		3E541EC62D4A7DEB00A31525 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3E541EAA2D4A7DEA00A31525 /* GasStationsWatch Watch App */;
+			target = 3E541EAA2D4A7DEA00A31525 /* GasStations Watch App */;
 			targetProxy = 3E541EC52D4A7DEB00A31525 /* PBXContainerItemProxy */;
 		};
 		3E541ECD2D4A7DEB00A31525 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3E541EAA2D4A7DEA00A31525 /* GasStationsWatch Watch App */;
+			target = 3E541EAA2D4A7DEA00A31525 /* GasStations Watch App */;
 			targetProxy = 3E541ECC2D4A7DEB00A31525 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -489,7 +643,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-GasStations.debug.xcconfig */;
+			baseConfigurationReference = DA562DDCA11108B476A79841 /* Pods-GasStations.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -517,7 +671,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-GasStations.release.xcconfig */;
+			baseConfigurationReference = B220D52806291409DE5DEC73 /* Pods-GasStations.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -556,7 +710,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"GasStationsWatch Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"GasStations Watch App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -601,7 +755,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"GasStationsWatch Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"GasStations Watch App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -833,7 +987,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -902,7 +1059,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -922,7 +1082,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E541ED62D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStationsWatch Watch App" */ = {
+		3E541ED62D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStations Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E541ED02D4A7DEB00A31525 /* Debug */,
@@ -931,7 +1091,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E541ED72D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStationsWatch Watch AppTests" */ = {
+		3E541ED72D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStations Watch AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E541ED22D4A7DEB00A31525 /* Debug */,
@@ -940,7 +1100,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E541ED82D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStationsWatch Watch AppUITests" */ = {
+		3E541ED82D4A7DEB00A31525 /* Build configuration list for PBXNativeTarget "GasStations Watch AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E541ED42D4A7DEB00A31525 /* Debug */,

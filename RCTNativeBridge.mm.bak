@@ -1,0 +1,31 @@
+#import "RCTNativeBridge.h"
+#import <React/RCTBridgeModule.h>
+#import <GasStations-Swift.h>
+
+@implementation RCTNativeBridge
+
+RCT_EXPORT_MODULE(NativeBridge)
+
+NativeBridge *swiftBridge;
+
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    swiftBridge = [[NativeBridge alloc] init];
+  }
+  return self;
+}
+
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const facebook::react::ObjCTurboModule::InitParams &)params {
+  return std::make_shared<facebook::react::NativeBridgeSpecJSI>(params);
+}
+
+- (NSNumber *)isWatchReachable {
+  return [swiftBridge isWatchReachable];
+}
+
+- (void)updateStations:(NSArray *)cheap favorites:(NSArray *)favorites near:(NSArray *)near resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
+  [swiftBridge updateStations:cheap favorites:favorites near:near resolver:resolve rejecter:reject];
+}
+
+@end
