@@ -10,9 +10,18 @@
     "test": "jest",
     "clean": "rm -rf node_modules && rm -rf ios/build && rm ios/Podfile.lock && npm install && pod install --project-directory=ios",
     "xcode": "open ios/GasStations.xcworkspace",
+    "build:ios:bridge": "cd ios && bundle install && bundle exec pod install && cd ..",
     "lingui:extract": "lingui extract --clean",
     "lingui:compile": "lingui compile",
     "lingui:rebuild": "lingui extract --clean && lingui compile"
+  },
+  "codegenConfig": {
+    "name": "NativeBridgeSpec",
+    "type": "modules",
+    "jsSrcsDir": "src/core/specs",
+    "android": {
+      "javaPackageName": "com.nativebridge"
+    }
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "5.0.6",
