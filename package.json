@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest",
-    "clean": "rm -rf node_modules && rm -rf ios/build && rm ios/Podfile.lock && npm install && pod install --project-directory=ios",
+    "clean": "rm -rf node_modules ios/build ios/Pods && rm ios/Podfile.lock && npm install && pod install --project-directory=ios",
     "xcode": "open ios/GasStations.xcworkspace",
     "build:ios:bridge": "cd ios && bundle install && bundle exec pod install && cd ..",
     "lingui:extract": "lingui extract --clean",
