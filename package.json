@@ -15,14 +15,6 @@
     "lingui:compile": "lingui compile",
     "lingui:rebuild": "lingui extract --clean && lingui compile"
   },
-  "codegenConfig": {
-    "name": "NativeBridgeSpec",
-    "type": "modules",
-    "jsSrcsDir": "src/core/specs",
-    "android": {
-      "javaPackageName": "com.nativebridge"
-    }
-  },
   "dependencies": {
     "@gorhom/bottom-sheet": "5.0.6",
     "@react-native-community/geolocation": "3.4.0",

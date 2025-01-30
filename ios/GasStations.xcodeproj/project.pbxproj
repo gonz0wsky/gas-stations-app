@@ -10,7 +10,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		307754B76FEAB8244F1284A7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		30A330DBE84ACB6826EFC8AA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		3E3EF9792D495BDF00029429 /* RCTNativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EF9782D495BDF00029429 /* RCTNativeBridge.mm */; };
 		3E541ECE2D4A7DEB00A31525 /* GasStations Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3E541EAB2D4A7DEA00A31525 /* GasStations Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3E927D832D4AB81D002491F0 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D6D2D4AB81D002491F0 /* Coordinatable.swift */; };
 		3E927D842D4AB81D002491F0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E927D6E2D4AB81D002491F0 /* Coordinator.swift */; };
@@ -75,8 +74,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GasStations/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = GasStations/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		16B131E7B4EDFAD249AB7CA8 /* libPods-GasStations.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GasStations.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E3EF9772D495BDF00029429 /* RCTNativeBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeBridge.h; sourceTree = "<group>"; };
-		3E3EF9782D495BDF00029429 /* RCTNativeBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeBridge.mm; sourceTree = "<group>"; };
 		3E541EAB2D4A7DEA00A31525 /* GasStations Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GasStations Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E541EBA2D4A7DEB00A31525 /* GasStations Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GasStations Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E541EC42D4A7DEB00A31525 /* GasStations Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GasStations Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,15 +150,6 @@
 				16B131E7B4EDFAD249AB7CA8 /* libPods-GasStations.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3E3EF9762D495BCA00029429 /* NativeBridge */ = {
-			isa = PBXGroup;
-			children = (
-				3E3EF9772D495BDF00029429 /* RCTNativeBridge.h */,
-				3E3EF9782D495BDF00029429 /* RCTNativeBridge.mm */,
-			);
-			path = NativeBridge;
 			sourceTree = "<group>";
 		};
 		3E927D6C2D4AB81D002491F0 /* Preview Content */ = {
@@ -305,7 +293,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				3E3EF9762D495BCA00029429 /* NativeBridge */,
 				13B07FAE1A68108700A75B9A /* GasStations */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				3E927D822D4AB81D002491F0 /* GasStations Watch App */,
@@ -583,7 +570,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
-				3E3EF9792D495BDF00029429 /* RCTNativeBridge.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
