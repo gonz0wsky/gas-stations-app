@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest",
-    "clean": "rm -rf node_modules ios/build ios/Pods && rm ios/Podfile.lock && npm install && pod install --project-directory=ios",
+    "clean": "rm -rf node_modules ios/build ios/Pods && rm ios/Podfile.lock && yarn && pod install --project-directory=ios",
     "xcode": "open ios/GasStations.xcworkspace",
     "build:ios:bridge": "cd ios && bundle install && bundle exec pod install && cd ..",
     "lingui:extract": "lingui extract --clean",
@@ -32,7 +32,8 @@
     "react-native-safe-area-context": "5.1.0",
     "react-native-screens": "4.5.0",
     "react-native-svg": "15.11.1",
-    "zustand": "5.0.3"
+    "zustand": "5.0.3",
+    "react-native-apple-watch-connect": "link:./modules/apple-watch-connect"
   },
   "devDependencies": {
     "@babel/core": "7.25.2",

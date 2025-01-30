@@ -13,6 +13,10 @@ import {useStore} from '@core/store';
 import RNMap, {MarkerPressEvent} from 'react-native-maps';
 import {openExternalMaps} from './utils/openExternalMaps';
 import {useLocation} from '@core/geolocation/GeoLocationProvider';
+import {
+  isWatchReachable,
+  updateStations,
+} from 'react-native-apple-watch-connect';
 
 const animateMapToPosition = (
   mapRef: React.RefObject<RNMap>,
@@ -73,6 +77,19 @@ export const useStationsViewModel = () => {
   const [selectedStation, setSelectedStation] = useState<ServiceStation | null>(
     null,
   );
+
+  useEffect(() => {
+    if (isWatchReachable()) {
+      console.log('Watch is reachable');
+      updateStations({
+        near: serviceStationsList ?? [],
+        favorites: serviceStationsList ?? [],
+        cheap: serviceStationsList ?? [],
+      });
+    } else {
+      console.log('Watch is not reachable');
+    }
+  }, [serviceStationsList]);
 
   useEffect(() => {
     if (selectedStation) {

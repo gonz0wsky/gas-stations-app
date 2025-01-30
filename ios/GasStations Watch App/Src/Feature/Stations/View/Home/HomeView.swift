@@ -10,6 +10,8 @@ struct HomeView: View {
   
   @Environment(Coordinator<CoordinatorPages>.self) private var coordinator
   
+  let connec = PhoneConnection()
+  
   var body: some View {
     ItemsList(options: options) { id in
       if let pressedId = ListFilter(rawValue: id) {
