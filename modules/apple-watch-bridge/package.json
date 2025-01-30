@@ -1,0 +1,19 @@
+{
+  "name": "react-native-apple-watch-bridge",
+  "version": "0.0.0",
+  "description": "apple watch bridge",
+  "main": "src/index",
+  "codegenConfig": {
+    "name": "RNAppleWatchBridgeSpec",
+    "type": "modules",
+    "jsSrcsDir": "src"
+  },
+  "author": " <> ()",
+  "license": "UNLICENSED",
+  "homepage": "#readme",
+  "create-react-native-library": {
+    "type": "turbo-module",
+    "languages": "kotlin-objc",
+    "version": "0.47.0"
+  }
+}
