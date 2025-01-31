@@ -1,5 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import useServiceStationsQuery from '../api/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 import {useStationFilter} from './hooks/useStationsFilter';
@@ -101,62 +101,72 @@ export const useStationsViewModel = () => {
     }
   }, [deviceLocation, isServiceStationsLoading, selectedStation]);
 
-  const handlePressSettings = () => {
+  const handlePressSettings = useCallback(() => {
     navigate('Settings');
-  };
+  }, [navigate]);
 
-  const handlePressCard = (id: string) => {
-    const station = serviceStationsList?.find(s => s.id === id);
+  const handlePressCard = useCallback(
+    (id: string) => {
+      const station = serviceStationsList?.find(s => s.id === id);
 
-    if (!station) {
-      return;
-    }
+      if (!station) {
+        return;
+      }
 
-    animateMapToPosition(
-      mapRef,
-      'poi',
-      station.position.latitude,
-      station.position.longitude,
-    );
+      animateMapToPosition(
+        mapRef,
+        'poi',
+        station.position.latitude,
+        station.position.longitude,
+      );
 
-    setSelectedStation(station ?? null);
-  };
+      setSelectedStation(station ?? null);
+    },
+    [serviceStationsList],
+  );
 
-  const handlePressBack = () => {
+  const handlePressBack = useCallback(() => {
     horizontalViewRef.current?.scrollTo({x: 0, animated: true});
 
     setTimeout(() => {
       setSelectedStation(null);
     }, 300);
-  };
+  }, []);
 
-  const handlePressFavorite = (id: string) => {
-    permuteUserFavorite(id);
-  };
+  const handlePressFavorite = useCallback(
+    (id: string) => {
+      permuteUserFavorite(id);
+    },
+    [permuteUserFavorite],
+  );
 
-  const handleHorizontalOnMomentunScrollEnd = (
-    event: NativeSyntheticEvent<NativeScrollEvent>,
-  ) => {
-    const position = event.nativeEvent.contentOffset.x;
+  const handleHorizontalOnMomentunScrollEnd = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const position = event.nativeEvent.contentOffset.x;
 
-    if (position === 0) {
-      setSelectedStation(null);
-    }
-  };
+      if (position === 0) {
+        setSelectedStation(null);
+      }
+    },
+    [],
+  );
 
-  const handlePressMarker = (event: MarkerPressEvent) => {
-    if (serviceStationsList === undefined) {
-      return;
-    }
+  const handlePressMarker = useCallback(
+    (event: MarkerPressEvent) => {
+      if (serviceStationsList === undefined) {
+        return;
+      }
 
-    const match = serviceStationsList.find(
-      item => item.id === event.nativeEvent.id,
-    );
+      const match = serviceStationsList.find(
+        item => item.id === event.nativeEvent.id,
+      );
 
-    setSelectedStation(match ?? null);
-  };
+      setSelectedStation(match ?? null);
+    },
+    [serviceStationsList],
+  );
 
-  const handlePressOpenInMaps = () => {
+  const handlePressOpenInMaps = useCallback(() => {
     if (selectedStation === null) {
       return;
     }
@@ -164,7 +174,7 @@ export const useStationsViewModel = () => {
     const {latitude, longitude} = selectedStation.position;
 
     openExternalMaps(latitude, longitude);
-  };
+  }, [selectedStation]);
 
   return {
     bottomSheetRef,

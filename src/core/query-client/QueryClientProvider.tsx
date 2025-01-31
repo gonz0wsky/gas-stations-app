@@ -16,7 +16,7 @@ const Context = React.createContext<{
 
 const InitClient = ({children}: {children: ReactNode}) => {
   useReactQueryClient(queryClient);
-  return children;
+  return <>{children}</>;
 };
 
 export const QueryClientProvider = ({children}: {children: ReactNode}) => {

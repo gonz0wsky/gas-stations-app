@@ -1,17 +1,16 @@
-import ServiceStation, {
+import {
   mapDtoToServiceStation,
+  ServiceStation,
 } from '../domain/ServiceStationModel';
-import IGetServiceStationsRepository from '../domain/IGetServiceStationsRepository';
+import {ServiceStationsRepository} from '../domain/ServiceStationsRepository';
 
-const GetServiceStationsUseCase = (
-  repository: IGetServiceStationsRepository,
-) => ({
-  run: async (): Promise<ServiceStation[]> => {
-    const data = await repository.run();
+const GetServiceStationsUseCase =
+  (request: ServiceStationsRepository['fetch']) =>
+  async (): Promise<ServiceStation[]> => {
+    const data = await request();
     const stations = data.ListaEESSPrecio.map(mapDtoToServiceStation);
 
     return stations;
-  },
-});
+  };
 
 export default GetServiceStationsUseCase;
