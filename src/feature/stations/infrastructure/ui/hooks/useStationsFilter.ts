@@ -1,9 +1,11 @@
-import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
+import type {
+  ServiceStation,
+  ServiceStationProducts,
+} from '@feature/stations/domain/ServiceStationModel';
 import {useMemo, useState} from 'react';
 import {useStore} from '@core/store';
 import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
 import {FilterOption} from '../constants/filter-constants';
-import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
 import {MapPoi, PriceLevelValue} from '@feature/stations/domain/MapPoiModel';
 import {mapServiceStationToMapPoi} from '@feature/stations/domain/ServiceStationModel+MapPoiModel';
 
