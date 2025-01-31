@@ -119,10 +119,6 @@ export const useStationFilter = ({
 
   const [filter, setFilter] = useState<FilterOption>('price');
 
-  const handlePressFilter = (id: FilterOption) => {
-    setFilter(id);
-  };
-
   const nearStationsList = useMemo(
     () =>
       location
@@ -195,7 +191,7 @@ export const useStationFilter = ({
   return {
     filter,
     filteredStationList,
-    handlePressFilter,
+    handlePressFilter: setFilter,
     mapPois,
     priceRanges,
     userFavoriteStationsIds,

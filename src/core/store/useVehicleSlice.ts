@@ -1,6 +1,6 @@
 import {StateCreator} from 'zustand';
 import {sliceResetFns} from './clearStorage';
-import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
+import type {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 
 export interface VehicleSlice {
   fuel: keyof ServiceStationProducts;
