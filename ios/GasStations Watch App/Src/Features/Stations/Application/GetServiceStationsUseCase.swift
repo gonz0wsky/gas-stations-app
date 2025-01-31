@@ -11,14 +11,14 @@ class GetServiceStationsUseCase {
     self.repository = repository
   }
   
-  func run(_ filter: GetServiceStationsFilter) -> [ServiceStation] {
+  func run(_ filter: GetServiceStationsFilter) async -> [ServiceStation] {
     switch filter {
     case .cheap:
-      return repository.getSortedByPrice()
+      return await repository.getSortedByPrice()
     case .favorite:
-      return repository.getFavorites()
+      return await repository.getFavorites(favorites: [])
     case .near:
-      return repository.getSortedByDistance()
+      return await repository.getSortedByDistance()
     }
   }
 }

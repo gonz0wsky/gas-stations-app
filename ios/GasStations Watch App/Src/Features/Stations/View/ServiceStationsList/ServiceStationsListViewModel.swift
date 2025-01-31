@@ -18,10 +18,10 @@ class ServiceStationsListViewModel {
     self.getServiceStationsUseCase = GetServiceStationsUseCase(repository: repository)
   }
   
-  func load(_ filter: ServiceStationsListViewFilter) {
-    let serviceStations = self.getServiceStationsUseCase.run(getFilter[filter] ?? .cheap)
+  func load(_ filter: ServiceStationsListViewFilter) async {
+    let serviceStations = await self.getServiceStationsUseCase.run(getFilter[filter] ?? .cheap)
     let optionsList = serviceStations.map { item in
-      Option(id: item.id, title: item.title)
+      Option(id: item.id, title: item.name)
     }
     
     options = optionsList

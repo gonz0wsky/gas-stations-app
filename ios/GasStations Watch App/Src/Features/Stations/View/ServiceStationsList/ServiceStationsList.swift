@@ -16,7 +16,9 @@ struct ServiceStationsListView: View {
     ItemsList(options: vm.options) {
       print($0)
     }.onAppear {
-      vm.load(filter)
+      Task {
+        await vm.load(filter)
+      }
     }
   }
 }

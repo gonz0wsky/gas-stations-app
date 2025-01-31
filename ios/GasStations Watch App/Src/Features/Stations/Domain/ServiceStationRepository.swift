@@ -1,5 +1,5 @@
 protocol ServiceStationRepository {
-  func getFavorites() -> [ServiceStation]
-  func getSortedByDistance() -> [ServiceStation]
-  func getSortedByPrice() -> [ServiceStation]
+  func getFavorites(favorites: [String]) async -> [ServiceStation]
+  func getSortedByDistance() async -> [ServiceStation]
+  func getSortedByPrice() async -> [ServiceStation]
 }
