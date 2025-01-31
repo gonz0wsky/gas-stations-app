@@ -1,20 +1,14 @@
+import {CONFIG} from '@core/config';
 import type {ServiceStationsDTO} from './ServiceStationsDTO';
 
-const API_URL =
-  'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/';
+export const getServiceStations = async (): Promise<ServiceStationsDTO> => {
+  const response = await fetch(CONFIG.STATIONS_API_URL);
 
-const GetServiceStationsAPI = {
-  run: async (): Promise<ServiceStationsDTO> => {
-    const response = await fetch(API_URL);
+  if (!response.ok) {
+    throw new Error('GetServiceStationsAPI network error');
+  }
 
-    if (!response.ok) {
-      throw new Error('ServiceStationsAPI network error');
-    }
+  const json = (await response.json()) as ServiceStationsDTO;
 
-    const json = (await response.json()) as ServiceStationsDTO;
-
-    return json;
-  },
+  return json;
 };
-
-export default GetServiceStationsAPI;
