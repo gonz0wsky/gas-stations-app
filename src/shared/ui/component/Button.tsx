@@ -64,7 +64,8 @@ const Button: FC<Props> = ({
         {loading ? (
           <ActivityIndicator color={t.atoms.btn.text[variant].color} />
         ) : (
-          <Text style={[t.atoms.btn.text[variant], buttonTextSize[size]]}>
+          <Text
+            style={[t.atoms.btn.text[variant], buttonTextSize[size], a.mx_xl]}>
             {title}
           </Text>
         )}

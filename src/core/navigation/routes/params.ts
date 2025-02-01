@@ -3,6 +3,7 @@ import {FC} from 'react';
 
 export type MainNavigatorParamList = {
   MapSettings: undefined;
+  Onboarding: undefined;
   Settings: undefined;
   StationDistanceSettings: undefined;
   Stations: undefined;

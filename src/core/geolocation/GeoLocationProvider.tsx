@@ -7,7 +7,7 @@ Geolocation.setRNConfiguration({
   authorizationLevel: 'whenInUse',
   enableBackgroundLocationUpdates: false,
   locationProvider: 'auto',
-  skipPermissionRequests: false,
+  skipPermissionRequests: true,
 });
 
 export type Location = {
