@@ -5,8 +5,9 @@ import type {
 import {useMemo, useState} from 'react';
 import {useStore} from '@core/store';
 import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
-import {FilterOption} from '../constants/filter-constants';
-import {MapPoi, PriceLevelValue} from '@feature/stations/domain/MapPoiModel';
+import type {FilterOption} from '../constants/filter-constants';
+import type {MapPoi} from '@feature/stations/domain/MapPoiModel';
+import { PriceLevelValue} from '@feature/stations/domain/MapPoiModel';
 import {mapServiceStationToMapPoi} from '@feature/stations/domain/ServiceStationModel+MapPoiModel';
 
 const nearAvailableStations = (

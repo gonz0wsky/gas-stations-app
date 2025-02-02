@@ -1,4 +1,4 @@
-import {StateCreator} from 'zustand';
+import type {StateCreator} from 'zustand';
 import {sliceResetFns} from './clearStorage';
 
 export interface StationsSlice {

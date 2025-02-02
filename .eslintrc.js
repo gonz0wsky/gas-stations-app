@@ -8,16 +8,17 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   ignorePatterns: ['**/locales/**/*.js'],
-  
+
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
     'import/no-unresolved': 'error',
     'import/no-unused-modules': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
   },
   settings: {
-    "import/resolver": {
-      typescript: {} // this loads <rootdir>/tsconfig.json to eslint
+    'import/resolver': {
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
     },
   },
 };

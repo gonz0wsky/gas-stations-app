@@ -1,5 +1,5 @@
-import {MapPoi} from './MapPoiModel';
-import {ServiceStation} from './ServiceStationModel';
+import type {MapPoi} from './MapPoiModel';
+import type {ServiceStation} from './ServiceStationModel';
 
 export const mapServiceStationToMapPoi = (
   station: ServiceStation,

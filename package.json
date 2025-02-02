@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint src",
+    "fix": "eslint src --fix",
     "start": "react-native start --reset-cache",
     "test": "jest",
     "clean": "rm -rf node_modules && rm -rf ios/build && rm ios/Podfile.lock && npm install && pod install --project-directory=ios",

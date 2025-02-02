@@ -2,8 +2,10 @@ import * as themes from '@core/layout/themes';
 import type {Breakpoint} from '@core/layout/tokens';
 import getActiveBreakpoints from '@core/layout/utils/getActiveBreakpoints';
 import React from 'react';
-import {Dimensions, ScaledSize, useWindowDimensions} from 'react-native';
-import {EdgeInsets, useSafeAreaInsets} from 'react-native-safe-area-context';
+import type { ScaledSize} from 'react-native';
+import {Dimensions, useWindowDimensions} from 'react-native';
+import type {EdgeInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export {atoms} from '@core/layout/atoms';
 export * as tokens from '@core/layout/tokens';

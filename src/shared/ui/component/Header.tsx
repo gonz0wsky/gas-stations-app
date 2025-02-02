@@ -1,8 +1,9 @@
 import React from 'react';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout/index';
-import {IconName} from './Icon/types';
-import {FC, ReactNode} from 'react';
-import {StyleProp, StyleSheet, Text, View, ViewStyle} from 'react-native';
+import type {IconName} from './Icon/types';
+import type {FC, ReactNode} from 'react';
+import type {StyleProp, ViewStyle} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 
 import CircularButton from './CircularButton';
 

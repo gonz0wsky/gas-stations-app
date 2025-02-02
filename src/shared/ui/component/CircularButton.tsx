@@ -1,11 +1,12 @@
 import {atoms as a, useTheme} from '@core/layout/index';
 import Icon from './Icon';
-import {IconName} from './Icon/types';
-import {FC} from 'react';
+import type {IconName} from './Icon/types';
+import type {FC} from 'react';
 import {View} from 'react-native';
+import type {
+  BorderlessButtonProps} from 'react-native-gesture-handler';
 import {
   BorderlessButton,
-  BorderlessButtonProps,
 } from 'react-native-gesture-handler';
 
 type Props = {

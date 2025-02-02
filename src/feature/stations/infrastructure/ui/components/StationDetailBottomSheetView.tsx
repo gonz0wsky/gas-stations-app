@@ -1,15 +1,15 @@
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import {msg} from '@lingui/core/macro';
-import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
-import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
+import type {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
+import type {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import {BottomSheetView, BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {useLingui} from '@lingui/react';
 import Button from '@shared/ui/component/Button';
 import Header from '@shared/ui/component/Header';
 import Icon from '@shared/ui/component/Icon';
-import {IconName} from '@shared/ui/component/Icon/types';
+import type {IconName} from '@shared/ui/component/Icon/types';
 import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
-import {FC} from 'react';
+import type {FC} from 'react';
 import {Text, View} from 'react-native';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
 

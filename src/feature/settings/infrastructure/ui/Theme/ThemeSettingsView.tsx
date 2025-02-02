@@ -4,11 +4,11 @@ import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
 import OptionsList from '../../layout/OptionsList';
-import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
-import {msg} from '@lingui/core/macro';
+import type {SystemTheme} from '@core/layout/utils/useColorModeTheme';
+import type {msg} from '@lingui/core/macro';
 import THEME_NAMES from '@shared/constants/names/theme-names';
 import {useThemeSettingsViewModel} from './useThemeSettingsViewModel';
-import {ScreenComponent} from '@core/navigation/routes/params';
+import type {ScreenComponent} from '@core/navigation/routes/params';
 
 const OPTIONS: Record<SystemTheme, ReturnType<typeof msg>> = THEME_NAMES;
 

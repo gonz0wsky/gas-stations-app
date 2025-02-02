@@ -1,5 +1,5 @@
 import {useStore} from '@core/store';
-import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
+import type {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import {useNavigation} from '@react-navigation/native';
 
 export const useUserVehicleFuelSettingsViewModel = () => {

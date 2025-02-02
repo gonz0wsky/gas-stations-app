@@ -1,6 +1,6 @@
-import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
-import {Language} from '@core/locale/locales/types';
-import {StateCreator} from 'zustand';
+import type {SystemTheme} from '@core/layout/utils/useColorModeTheme';
+import type {Language} from '@core/locale/locales/types';
+import type {StateCreator} from 'zustand';
 import {sliceResetFns} from './clearStorage';
 
 export interface SystemSlice {

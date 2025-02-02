@@ -1,6 +1,7 @@
-import {ColorSchemeName, useColorScheme} from 'react-native';
+import type {ColorSchemeName} from 'react-native';
+import { useColorScheme} from 'react-native';
 
-import {ThemeName} from '../themes';
+import type {ThemeName} from '../themes';
 
 export type SystemTheme = 'system' | NonNullable<ColorSchemeName> | ThemeName;
 

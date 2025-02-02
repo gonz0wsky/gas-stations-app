@@ -1,4 +1,5 @@
-import React, {FC, useEffect, useRef} from 'react';
+import type {FC} from 'react';
+import React, { useEffect, useRef} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
@@ -12,7 +13,7 @@ import RADIUS_NAMES from '@shared/constants/names/radius-names';
 import THEME_NAMES from '@shared/constants/names/theme-names';
 import CircularButton from '@shared/ui/component/CircularButton';
 import useSettingsViewModel from './useSettingsViewModel';
-import {ScreenComponent} from '@core/navigation/routes/params';
+import type {ScreenComponent} from '@core/navigation/routes/params';
 
 type SectionTitleProps = {
   title: string;

@@ -1,4 +1,4 @@
-import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
+import type {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import {msg} from '@lingui/core/macro';
 
 const PRODUCT_NAMES: Record<

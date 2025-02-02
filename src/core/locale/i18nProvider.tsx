@@ -6,7 +6,7 @@ import React, {useEffect} from 'react';
 import {messages as messagesEn} from './locales/en/messages';
 import {messages as messagesEs} from './locales/es/messages';
 
-import {Language} from './locales/types';
+import type {Language} from './locales/types';
 
 const messages: Record<Language, Record<string, string>> = {
   es: messagesEs,

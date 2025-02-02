@@ -1,8 +1,10 @@
-import {atoms as a, useTheme, ViewStyleProp} from '@core/layout';
-import {FC, useCallback} from 'react';
+import type { ViewStyleProp} from '@core/layout';
+import {atoms as a, useTheme} from '@core/layout';
+import type {FC} from 'react';
+import { useCallback} from 'react';
 import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
-import {FilterOption} from '../constants/filter-constants';
+import type {FilterOption} from '../constants/filter-constants';
 
 type FilterProps = {
   onPress: (id: FilterOption) => void;

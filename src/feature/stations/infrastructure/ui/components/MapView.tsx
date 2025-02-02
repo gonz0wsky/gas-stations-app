@@ -1,16 +1,20 @@
 import {atoms as a, useTheme} from '@core/layout';
-import {MapPoi} from '@feature/stations/domain/MapPoiModel';
-import React, {FC, useMemo} from 'react';
-import RNMap, {
-  Marker,
+import type {MapPoi} from '@feature/stations/domain/MapPoiModel';
+import type {FC} from 'react';
+import React, { useMemo} from 'react';
+import type {
   MarkerPressEvent,
+  MapViewProps} from 'react-native-maps';
+import type RNMap from 'react-native-maps';
+import {
+  Marker,
   Animated as AnimatedMap,
   AnimatedRegion,
-  MapViewProps,
 } from 'react-native-maps';
+import type {
+  SharedValue} from 'react-native-reanimated';
 import Animated, {
   interpolate,
-  SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
 

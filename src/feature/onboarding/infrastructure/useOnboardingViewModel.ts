@@ -2,7 +2,7 @@ import {useWindow} from '@core/layout';
 import {useStore} from '@core/store';
 import {useNavigation} from '@react-navigation/native';
 import {useCallback, useRef} from 'react';
-import {ScrollView} from 'react-native';
+import type {ScrollView} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
 export const useOnboardingViewModel = () => {

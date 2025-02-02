@@ -1,7 +1,9 @@
 import React from 'react';
-import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
+import type {LinkingOptions} from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
+import type {
+  NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import {
-  NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
@@ -13,7 +15,7 @@ import {UserVehicleFuelSettingsView} from '@feature/settings/infrastructure/ui/U
 import {ThemeSettingsView} from '@feature/settings/infrastructure/ui/Theme/ThemeSettingsView';
 import {OnboardingView} from '@feature/onboarding/infrastructure/OnboardingView';
 
-import {
+import type {
   AllNavigatorParamList,
   MainNavigatorParamList,
   ModalNavigatorParamList,

@@ -1,4 +1,4 @@
-import {SystemTheme} from '@core/layout/utils/useColorModeTheme';
+import type {SystemTheme} from '@core/layout/utils/useColorModeTheme';
 import {msg} from '@lingui/core/macro';
 
 const THEME_NAMES: Record<SystemTheme, ReturnType<typeof msg>> = {

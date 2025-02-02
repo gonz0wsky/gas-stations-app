@@ -3,11 +3,16 @@ import {createJSONStorage, persist} from 'zustand/middleware';
 
 import {storage} from './storage';
 
-import createSystemSlice, {SystemSlice} from './useSystemSlice';
-import createVehicleSlice, {VehicleSlice} from './useVehicleSlice';
-import createStationsSlice, {StationsSlice} from './useStationsSlice';
-import createLocationSlice, {LocationSlice} from './useLocationSlice';
-import createMapSlice, {MapSlice} from './useMapSlice';
+import type {SystemSlice} from './useSystemSlice';
+import createSystemSlice from './useSystemSlice';
+import type {VehicleSlice} from './useVehicleSlice';
+import createVehicleSlice from './useVehicleSlice';
+import type {StationsSlice} from './useStationsSlice';
+import createStationsSlice from './useStationsSlice';
+import type {LocationSlice} from './useLocationSlice';
+import createLocationSlice from './useLocationSlice';
+import type {MapSlice} from './useMapSlice';
+import createMapSlice from './useMapSlice';
 
 type Slices = SystemSlice &
   VehicleSlice &

@@ -1,13 +1,16 @@
 import {atoms as a, useTheme} from '@core/layout/index';
-import React, {FC} from 'react';
+import type {FC} from 'react';
+import React from 'react';
+import type {
+  TextStyle,
+  ViewStyle} from 'react-native';
 import {
   ActivityIndicator,
   Text,
-  TextStyle,
   View,
-  ViewStyle,
 } from 'react-native';
-import {RectButton, RectButtonProps} from 'react-native-gesture-handler';
+import type { RectButtonProps} from 'react-native-gesture-handler';
+import {RectButton} from 'react-native-gesture-handler';
 
 type Props = {
   disabled?: boolean;

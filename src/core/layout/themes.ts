@@ -1,8 +1,8 @@
 import * as tokens from '@core/layout/tokens';
 import type {Mutable} from '@core/layout/types';
 
-import {SystemTheme} from './utils/useColorModeTheme';
-import {StatusBarStyle} from 'react-native';
+import type {SystemTheme} from './utils/useColorModeTheme';
+import type {StatusBarStyle} from 'react-native';
 
 export type ThemeName = 'light' | 'dark';
 export type ReadonlyTheme = typeof light;

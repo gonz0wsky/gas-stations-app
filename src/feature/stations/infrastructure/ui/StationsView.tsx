@@ -11,8 +11,8 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import {useStationsViewModel} from './useStationsViewModel';
-import {MapViewProps} from 'react-native-maps';
-import {MapStyle} from '@core/store/useMapSlice';
+import type {MapViewProps} from 'react-native-maps';
+import type {MapStyle} from '@core/store/useMapSlice';
 import type {ScreenComponent} from '@core/navigation/routes/params';
 
 const INDEX = 1 as const;

@@ -1,8 +1,9 @@
+import type {
+  ServiceStation} from '../domain/ServiceStationModel';
 import {
   mapDtoToServiceStation,
-  ServiceStation,
 } from '../domain/ServiceStationModel';
-import {ServiceStationsRepository} from '../domain/ServiceStationsRepository';
+import type {ServiceStationsRepository} from '../domain/ServiceStationsRepository';
 
 const GetServiceStationsUseCase =
   (request: ServiceStationsRepository['fetch']) =>

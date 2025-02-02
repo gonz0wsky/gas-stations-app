@@ -4,9 +4,9 @@ import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
 import {useLingui} from '@lingui/react';
 import OptionsList from '../../layout/OptionsList';
-import {msg} from '@lingui/core/macro';
+import type {msg} from '@lingui/core/macro';
 import RADIUS_NAMES from '@shared/constants/names/radius-names';
-import {ScreenComponent} from '@core/navigation/routes/params';
+import type {ScreenComponent} from '@core/navigation/routes/params';
 import {useStationsDistanceSettingsViewModel} from './useStationsDistanceSettingsViewModel';
 
 const OPTIONS: Record<string, ReturnType<typeof msg>> = RADIUS_NAMES;

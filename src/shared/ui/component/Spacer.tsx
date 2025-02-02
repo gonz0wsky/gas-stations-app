@@ -1,5 +1,5 @@
 import {atoms as a, useTheme} from '@core/layout';
-import {FC} from 'react';
+import type {FC} from 'react';
 import {View} from 'react-native';
 
 const Spacer: FC = () => {

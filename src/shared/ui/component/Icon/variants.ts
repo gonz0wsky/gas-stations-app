@@ -14,7 +14,7 @@ import Settings from './icons/Settings';
 import Star from './icons/Star';
 import StarFill from './icons/StarFill';
 
-import {IconProps} from './types';
+import type {IconProps} from './types';
 
 const createSvgIcons = <T extends {[name: string]: FC<IconProps>}>(
   cfg: T,

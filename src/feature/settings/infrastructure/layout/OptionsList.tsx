@@ -1,8 +1,9 @@
 import {atoms as a} from '@core/layout';
 import Icon from '@shared/ui/component/Icon';
 import Spacer from '@shared/ui/component/Spacer';
-import {FC} from 'react';
-import {FlatList, FlatListProps, Text} from 'react-native';
+import type {FC} from 'react';
+import type { FlatListProps} from 'react-native';
+import {FlatList, Text} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 
 type OptionItemProps = {

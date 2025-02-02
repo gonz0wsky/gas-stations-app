@@ -1,5 +1,5 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {FC} from 'react';
+import type {FC} from 'react';
 
 export type MainNavigatorParamList = {
   MapSettings: undefined;

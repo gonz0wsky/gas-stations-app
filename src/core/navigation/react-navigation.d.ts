@@ -1,4 +1,4 @@
-import {AllNavigatorParamList} from './routes/params';
+import type {AllNavigatorParamList} from './routes/params';
 
 declare global {
   namespace ReactNavigation {

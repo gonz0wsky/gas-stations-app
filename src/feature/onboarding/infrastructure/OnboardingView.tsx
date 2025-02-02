@@ -1,10 +1,10 @@
-import {ScreenComponent} from '@core/navigation/routes/params';
+import type {ScreenComponent} from '@core/navigation/routes/params';
 import {useOnboardingViewModel} from './useOnboardingViewModel';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
-import {FC} from 'react';
+import type {FC} from 'react';
 import Button from '@shared/ui/component/Button';
-import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
+import type {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
 import {useLingui} from '@lingui/react';
 import {CONTENT} from './constants';

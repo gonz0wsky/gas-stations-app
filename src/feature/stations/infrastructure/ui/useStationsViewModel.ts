@@ -1,16 +1,17 @@
-import BottomSheet from '@gorhom/bottom-sheet';
+import type BottomSheet from '@gorhom/bottom-sheet';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import useServiceStationsQuery from '../api/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 import {useStationFilter} from './hooks/useStationsFilter';
-import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
-import {
+import type {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
+import type {
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
 } from 'react-native';
 import {useStore} from '@core/store';
-import RNMap, {MarkerPressEvent} from 'react-native-maps';
+import type {MarkerPressEvent} from 'react-native-maps';
+import type RNMap from 'react-native-maps';
 import {openExternalMaps} from './utils/openExternalMaps';
 import {useLocation} from '@core/geolocation/GeoLocationProvider';
 
