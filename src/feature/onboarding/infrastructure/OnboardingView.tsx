@@ -26,6 +26,8 @@ const Page: FC<PageProps> = ({
   const safe = useSafeArea();
   const {i18n} = useLingui();
 
+  const titleStyles = {...a.font_title_one, fontSize: 32};
+
   return (
     <View
       style={[
@@ -44,9 +46,7 @@ const Page: FC<PageProps> = ({
         />
       </View>
       <View style={[a.align_center]}>
-        <Text style={[{...a.font_title_one, fontSize: 32}, a.mt_lg]}>
-          {CONTENT[position]?.title}
-        </Text>
+        <Text style={[titleStyles, a.mt_lg]}>{CONTENT[position]?.title}</Text>
         <Text style={[a.font_body_one, a.text_center, a.mt_xl, a.mx_xl]}>
           {CONTENT[position]?.description}
         </Text>

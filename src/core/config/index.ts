@@ -1,12 +1,7 @@
-// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
 import {ENVIRONMENT, SERVICE_STATIONS_API} from '@env';
 
-type Config = {
-  ENVIRONMENT: 'development' | 'staging' | 'production';
-  SERVICE_STATIONS_API: string;
-};
-
-export const CONFIG: Config = {
+export const CONFIG = {
   ENVIRONMENT,
   SERVICE_STATIONS_API,
 } as const;

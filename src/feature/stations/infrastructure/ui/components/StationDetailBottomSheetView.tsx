@@ -1,7 +1,7 @@
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import {msg} from '@lingui/core/macro';
 import {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
-import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
+import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import {BottomSheetView, BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {useLingui} from '@lingui/react';
 import Button from '@shared/ui/component/Button';
@@ -68,10 +68,11 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
   );
 };
 
-const Spacer = () => (
-  <View style={[a.px_sm, a.my_sm, {height: 1, backgroundColor: 'gray'}]} />
-);
-
+const Spacer = () => {
+  const t = useTheme();
+  const styles = {height: 1};
+  return <View style={[a.px_sm, a.my_sm, t.atoms.spacer, styles]} />;
+};
 type StationDetailRowProps = {
   title: string;
   subtitle: string;
@@ -118,6 +119,8 @@ type Props = {
   userLocation: {latitude: number; longitude: number};
 };
 
+const headerStyles = {paddingTop: 0};
+
 export const StationDetailBottomSheetView: FC<Props> = ({
   handlePressBack,
   handlePressFavorite,
@@ -137,7 +140,7 @@ export const StationDetailBottomSheetView: FC<Props> = ({
   return (
     <BottomSheetView style={[{width: w.width}]}>
       <Header
-        style={[{paddingTop: 0}, a.pb_sm, a.px_lg]}
+        style={[headerStyles, a.pb_sm, a.px_lg]}
         isModal
         transparent
         leftIcon="left-arrow"

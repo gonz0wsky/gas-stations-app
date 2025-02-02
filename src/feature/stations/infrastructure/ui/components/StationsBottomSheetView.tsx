@@ -8,7 +8,7 @@ import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
 import Filter from './Filter';
 import FILTER_OPTIONS, {FilterOption} from '../constants/filter-constants';
 import CircularButton from '@shared/ui/component/CircularButton';
-import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
+import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import Skeleton from 'react-native-reanimated-skeleton';
 
 type StationCardProps = {

@@ -1,8 +1,23 @@
 module.exports = {
   root: true,
-  extends: '@react-native',
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'import'],
+  extends: [
+    '@react-native',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  ignorePatterns: ['**/locales/**/*.js'],
+  
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
+    'import/no-unresolved': 'error',
+    'import/no-unused-modules': 'error',
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {} // this loads <rootdir>/tsconfig.json to eslint
+    },
   },
 };

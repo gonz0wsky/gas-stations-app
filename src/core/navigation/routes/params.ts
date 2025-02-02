@@ -11,7 +11,9 @@ export type MainNavigatorParamList = {
   UserVehicleFuelSettings: undefined;
 };
 
-export type ModalNavigatorParamList = {};
+export type ModalNavigatorParamList = {
+  UpdateApp: undefined;
+};
 
 export type AllNavigatorParamList = ModalNavigatorParamList &
   MainNavigatorParamList;

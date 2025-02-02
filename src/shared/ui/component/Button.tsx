@@ -29,6 +29,8 @@ const Button: FC<Props> = ({
 }) => {
   const t = useTheme();
 
+  const buttonStyles = {opacity: disabled ? 0.4 : 1};
+
   const buttonSize: Record<NonNullable<Props['size']>, ViewStyle[]> = {
     normal: [a.py_md],
     small: [a.py_xs],
@@ -55,7 +57,7 @@ const Button: FC<Props> = ({
         t.atoms.btn.bg[variant],
         a.rounded_full,
         a.overflow_hidden,
-        {opacity: disabled ? 0.4 : 1},
+        buttonStyles,
       ]}>
       <RectButton
         {...rest}

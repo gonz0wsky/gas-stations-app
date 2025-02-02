@@ -10,6 +10,8 @@ type FilterProps = {
   selected: FilterOption;
 } & ViewStyleProp;
 
+const filterStyles = {height: 36};
+
 const Filter: FC<FilterProps> = ({options, selected, onPress, style}) => {
   const t = useTheme();
 
@@ -19,7 +21,7 @@ const Filter: FC<FilterProps> = ({options, selected, onPress, style}) => {
         key={id}
         onPress={() => onPress(id)}
         style={[
-          {height: 36},
+          filterStyles,
           a.flex_1,
           a.align_center,
           a.justify_center,

@@ -2,7 +2,7 @@ import React from 'react';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout/index';
 import {IconName} from './Icon/types';
 import {FC, ReactNode} from 'react';
-import {StyleProp, Text, View, ViewStyle} from 'react-native';
+import {StyleProp, StyleSheet, Text, View, ViewStyle} from 'react-native';
 
 import CircularButton from './CircularButton';
 
@@ -54,7 +54,7 @@ const Header: FC<Props> = ({
           : {paddingTop: Math.max(safe.top, a.pt_md.paddingTop)},
         style,
       ]}>
-      <View style={{minWidth: 36, aspectRatio: 1}}>
+      <View style={styles.buttonContainer}>
         {leftIcon ? (
           <CircularButton icon={leftIcon} onPress={onPressLeft} />
         ) : null}
@@ -64,7 +64,7 @@ const Header: FC<Props> = ({
           <Text style={[t.atoms.text.primary, a.font_body_one]}>{title}</Text>
         </View>
       )}
-      <View style={{minWidth: 36, aspectRatio: 1}}>
+      <View style={styles.buttonContainer}>
         {rightIcon ? (
           <CircularButton icon={rightIcon} onPress={onPressRight} />
         ) : null}
@@ -73,5 +73,9 @@ const Header: FC<Props> = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonContainer: {minWidth: 36, aspectRatio: 1},
+});
 
 export default Header;

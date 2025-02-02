@@ -6,7 +6,7 @@ import {useLingui} from '@lingui/react';
 import OptionsList from '../../layout/OptionsList';
 import {msg} from '@lingui/core/macro';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
-import ServiceStationProducts from '@feature/stations/domain/ServiceStationProductsModel';
+import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import {useUserVehicleFuelSettingsViewModel} from './useUserVehicleFuelSettingsViewModel';
 import {ScreenComponent} from '@core/navigation/routes/params';
 

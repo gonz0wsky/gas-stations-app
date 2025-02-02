@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "start": "react-native start --reset-cache",
     "test": "jest",
     "clean": "rm -rf node_modules && rm -rf ios/build && rm ios/Podfile.lock && npm install && pod install --project-directory=ios",
@@ -54,6 +54,9 @@
     "@types/react-test-renderer": "18.0.0",
     "babel-plugin-module-resolver": "5.0.2",
     "eslint": "^8.19.0",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-ft-flow": "3.0.11",
+    "eslint-plugin-import": "^2.31.0",
     "jest": "29.6.3",
     "prettier": "2.8.8",
     "react-native-dotenv": "3.4.11",

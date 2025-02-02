@@ -19,7 +19,7 @@ export function I18nProvider({children}: {children: React.ReactNode}) {
   useEffect(() => {
     i18n.loadAndActivate({
       locale: language,
-      messages: messages[language] ?? messages['en'],
+      messages: messages[language] ?? messages.es,
     });
   }, [language]);
 

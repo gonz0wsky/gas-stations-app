@@ -6,7 +6,7 @@
       "@assets/*": ["./assets/*"],
       "@core/*": ["./src/core/*"],
       "@feature/*": ["./src/feature/*"],
-      "@shared/*": ["./src/shared/*"],
+      "@shared/*": ["./src/shared/*"]
     }
   }
 }
