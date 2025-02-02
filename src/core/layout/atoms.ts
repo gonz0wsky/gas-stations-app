@@ -433,7 +433,7 @@ export const atoms = {
     paddingBottom: tokens.space._5xl,
   },
   pt_safe: (top: number, minSpacing: number) => ({
-    paddingBottom: Math.max(top, minSpacing),
+    paddingTop: Math.max(top, minSpacing),
   }),
   pt_2xs: {
     paddingTop: tokens.space._2xs,
@@ -734,6 +734,9 @@ export const atoms = {
   },
   mb_5xl: {
     marginBottom: tokens.space._5xl,
+  },
+  mb_auto: {
+    marginBottom: tokens.space.auto,
   },
   ml_2xs: {
     marginLeft: tokens.space._2xs,
