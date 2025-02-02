@@ -1,35 +1,13 @@
 import {ScreenComponent} from '@core/navigation/routes/params';
 import {useOnboardingViewModel} from './useOnboardingViewModel';
-import {ScrollView, Text, View} from 'react-native';
+import {Image, ScrollView, Text, View} from 'react-native';
 import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import {FC} from 'react';
-import LottieView from 'lottie-react-native';
-import {GpsLocationLottie} from '@assets/lottie';
 import Button from '@shared/ui/component/Button';
 import {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
 import {useLingui} from '@lingui/react';
-
-const CONTENT: Array<{title: string; description: string; button: string}> = [
-  {
-    title: 'Ahorra',
-    description:
-      'Consulta los precios actualizados de las gasolineras cercanas y ahorra en cada repostaje.',
-    button: 'Siguiente',
-  },
-  {
-    title: 'Encuentra',
-    description:
-      'Para mostrarte las gasolineras más cercanas y sus precios, necesitamos acceder a tu ubicación.',
-    button: 'Acceder a mi ubicación',
-  },
-  {
-    title: 'Adapta',
-    description:
-      'Selecciona el tipo de combustible que usas para mostrar primero las gasolineras con ese precio.',
-    button: 'Empezar a ahorrar',
-  },
-] as const;
+import {CONTENT} from './constants';
 
 type PageProps = {
   onPressNext: () => void;
@@ -58,12 +36,13 @@ const Page: FC<PageProps> = ({
         a.pt_safe(safe.top, 20),
         {width: w.width - a.px_lg.paddingLeft - a.px_lg.paddingRight},
       ]}>
-      <LottieView
-        style={[{height: w.width * 0.9, width: w.width}, a.mt_2xl]}
-        source={GpsLocationLottie}
-        autoPlay
-        loop
-      />
+      <View style={[a.mt_2xl, a.rounded_md, a.overflow_hidden]}>
+        <Image
+          source={CONTENT[position]?.image}
+          resizeMode="contain"
+          style={[{width: w.width * 0.9, height: w.width * 0.9}]}
+        />
+      </View>
       <View style={[a.align_center]}>
         <Text style={[{...a.font_title_one, fontSize: 32}, a.mt_lg]}>
           {CONTENT[position]?.title}
