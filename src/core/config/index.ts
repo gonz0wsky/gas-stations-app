@@ -1,7 +1,22 @@
-// eslint-disable-next-line import/no-unresolved
-import {ENVIRONMENT, SERVICE_STATIONS_API} from '@env';
+import {
+  APP_STORE_ANDROID_ID,
+  APP_STORE_IOS_ID,
+  APPWRITE_COLLECTION_ID,
+  APPWRITE_DATABASE_ID,
+  APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT_ID,
+  ENVIRONMENT,
+  SERVICE_STATIONS_API,
+  // eslint-disable-next-line import/no-unresolved
+} from '@env';
 
 export const CONFIG = {
+  APP_STORE_ANDROID_ID,
+  APP_STORE_IOS_ID,
+  APPWRITE_COLLECTION_ID,
+  APPWRITE_DATABASE_ID,
+  APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT_ID,
   ENVIRONMENT,
   SERVICE_STATIONS_API,
 } as const;

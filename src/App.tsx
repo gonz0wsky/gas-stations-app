@@ -9,6 +9,7 @@ import {StatusBar} from 'react-native';
 import {statusBarStyle} from '@core/layout/themes';
 import {QueryClientProvider} from '@core/query-client/QueryClientProvider';
 import {GeoLocationProvider} from '@core/geolocation/GeoLocationProvider';
+import {VersionControlProvider} from '@feature/version-control/infrastructure/ui/VersionControlProvider';
 
 const InnerApp = () => {
   const themeName = useStore(s => s.theme);
@@ -19,8 +20,10 @@ const InnerApp = () => {
       <ThemeProvider theme={theme}>
         <GestureProvider>
           <I18nProvider>
-            <Navigator />
-            <StatusBar barStyle={statusBarStyle[theme]} />
+            <VersionControlProvider>
+              <Navigator />
+              <StatusBar barStyle={statusBarStyle[theme]} />
+            </VersionControlProvider>
           </I18nProvider>
         </GestureProvider>
       </ThemeProvider>
