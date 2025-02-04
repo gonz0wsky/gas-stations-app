@@ -12,6 +12,7 @@ import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
 import type {FC} from 'react';
 import {Text, View} from 'react-native';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
+import Spacer from '@shared/ui/component/Spacer';
 
 const SIDE_ROAD_NAMES: Record<'right' | 'left', ReturnType<typeof msg>> = {
   right: msg`Right`,
@@ -35,16 +36,25 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
       <View
         style={[
           a.mr_md,
-          t.atoms.station_detail_row.icon_bg,
+          t.atoms.components.station_detail_row.icon_bg,
           a.p_sm,
           a.border,
           a.rounded_sm,
           viewStyle,
         ]}>
-        <Icon name="bank-notes" />
+        <Icon
+          name="bank-notes"
+          color={t.atoms.components.station_detail_row.icon.color}
+        />
       </View>
       <View style={[a.flex_1]}>
-        <Text numberOfLines={1} style={[a.font_body_one_medium, a.mb_xs]}>
+        <Text
+          numberOfLines={1}
+          style={[
+            a.font_body_one_medium,
+            a.mb_xs,
+            t.atoms.components.station_detail_row.title,
+          ]}>
           {i18n.t('Prices')}
         </Text>
         {Object.entries(products).map(([fuel, price]) => {
@@ -54,10 +64,20 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
 
           return (
             <View key={fuel} style={[a.flex_row, a.justify_between]}>
-              <Text numberOfLines={1} style={[a.font_body_two]}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  a.font_body_two,
+                  t.atoms.components.station_detail_row.subtitle,
+                ]}>
                 {i18n.t(PRODUCT_NAMES[fuel as keyof ServiceStationProducts])}{' '}
               </Text>
-              <Text numberOfLines={1} style={[a.font_body_two_medium]}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  a.font_body_two_medium,
+                  t.atoms.components.station_detail_row.subtitle,
+                ]}>
                 {price ? `${price} ${i18n.t('€/l')}` : i18n.t('N/A')}
               </Text>
             </View>
@@ -68,11 +88,6 @@ const StationPricesDetailCard: FC<StationProductsDetailRowProps> = ({
   );
 };
 
-const Spacer = () => {
-  const t = useTheme();
-  const styles = {height: 1};
-  return <View style={[a.px_sm, a.my_sm, t.atoms.spacer, styles]} />;
-};
 type StationDetailRowProps = {
   title: string;
   subtitle: string;
@@ -91,18 +106,32 @@ const StationDetailRow: FC<StationDetailRowProps> = ({
       <View
         style={[
           a.mr_md,
-          t.atoms.station_detail_row.icon_bg,
+          t.atoms.components.station_detail_row.icon_bg,
           a.p_sm,
           a.border,
           a.rounded_sm,
         ]}>
-        <Icon name={icon} />
+        <Icon
+          name={icon}
+          color={t.atoms.components.station_detail_row.icon.color}
+        />
       </View>
       <View>
-        <Text numberOfLines={1} style={[a.font_body_one_medium, a.mb_xs]}>
+        <Text
+          numberOfLines={1}
+          style={[
+            a.font_body_one_medium,
+            a.mb_xs,
+            t.atoms.components.station_detail_row.title,
+          ]}>
           {title}
         </Text>
-        <Text numberOfLines={1} style={[a.font_body_two]}>
+        <Text
+          numberOfLines={1}
+          style={[
+            a.font_body_two,
+            t.atoms.components.station_detail_row.subtitle,
+          ]}>
           {subtitle}
         </Text>
       </View>
@@ -129,6 +158,7 @@ export const StationDetailBottomSheetView: FC<Props> = ({
   userFavoriteStations,
   userLocation,
 }) => {
+  const t = useTheme();
   const w = useWindow();
   const safe = useSafeArea();
   const {i18n} = useLingui();
@@ -159,37 +189,40 @@ export const StationDetailBottomSheetView: FC<Props> = ({
           a.flex_grow,
           a.pb_safe(safe.bottom, 16),
         ]}>
-        <Text style={[a.font_title_one, a.mb_xs]}>{station.name}</Text>
-        <Text style={[a.font_caption, a.mb_lg]}>
+        <Text style={[a.font_title_one, a.mb_xs, t.atoms.text.primary]}>
+          {station.name}
+        </Text>
+        <Text style={[a.font_caption, a.mb_lg, t.atoms.text.primary]}>
           {[station.address, station.locality].join(', ')}
         </Text>
-        <StationPricesDetailCard products={station.products} />
-        <Spacer />
-        <StationDetailRow
-          title={i18n.t('Open Hours')}
-          subtitle={station.schedule}
-          icon="clock"
-        />
-        <Spacer />
-        <StationDetailRow
-          title={i18n.t('Distance')}
-          subtitle={`${calculateDistanceInKm(
-            userLocation,
-            station.position,
-          )} ${i18n.t('Km from your location')}`}
-          icon="map"
-        />
-        <Spacer />
-        <StationDetailRow
-          title={i18n.t('Side road')}
-          subtitle={
-            station.sideRoad
-              ? i18n.t(SIDE_ROAD_NAMES[station.sideRoad])
-              : `${i18n.t('N/A')}`
-          }
-          icon="left-right-arrows"
-        />
-        <Spacer />
+        <View style={[a.gap_sm]}>
+          <StationPricesDetailCard products={station.products} />
+          <Spacer />
+          <StationDetailRow
+            title={i18n.t('Open Hours')}
+            subtitle={station.schedule}
+            icon="clock"
+          />
+          <Spacer />
+          <StationDetailRow
+            title={i18n.t('Distance')}
+            subtitle={`${calculateDistanceInKm(
+              userLocation,
+              station.position,
+            )} ${i18n.t('Km from your location')}`}
+            icon="map"
+          />
+          <Spacer />
+          <StationDetailRow
+            title={i18n.t('Side road')}
+            subtitle={
+              station.sideRoad
+                ? i18n.t(SIDE_ROAD_NAMES[station.sideRoad])
+                : `${i18n.t('N/A')}`
+            }
+            icon="left-right-arrows"
+          />
+        </View>
         <Button
           style={[a.mt_auto]}
           title={i18n.t('Open in Maps')}

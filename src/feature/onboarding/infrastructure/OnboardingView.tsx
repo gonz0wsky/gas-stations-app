@@ -81,7 +81,7 @@ export const OnboardingView: ScreenComponent<'Onboarding'> = () => {
         ref={scrollViewRef}
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
-        style={[a.flex_1, t.atoms.bg.primary]}>
+        style={[a.flex_1, t.atoms.background.primary]}>
         {Array(3)
           .fill(0)
           .map((_, i) => (

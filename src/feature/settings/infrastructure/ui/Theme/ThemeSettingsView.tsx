@@ -25,7 +25,7 @@ export const ThemeSettingsView: ScreenComponent<'ThemeSettings'> = () => {
   }));
 
   return (
-    <View style={[a.flex_1, t.atoms.bg.primary]}>
+    <View style={[a.flex_1, t.atoms.background.primary]}>
       <Header
         title={i18n.t('Theme')}
         leftIcon="left-arrow"

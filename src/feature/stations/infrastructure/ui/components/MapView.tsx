@@ -1,22 +1,16 @@
 import {atoms as a, useTheme} from '@core/layout';
 import type {MapPoi} from '@feature/stations/domain/MapPoiModel';
 import type {FC} from 'react';
-import React, { useMemo} from 'react';
-import type {
-  MarkerPressEvent,
-  MapViewProps} from 'react-native-maps';
+import React, {useMemo} from 'react';
+import type {MarkerPressEvent, MapViewProps} from 'react-native-maps';
 import type RNMap from 'react-native-maps';
 import {
   Marker,
   Animated as AnimatedMap,
   AnimatedRegion,
 } from 'react-native-maps';
-import type {
-  SharedValue} from 'react-native-reanimated';
-import Animated, {
-  interpolate,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
+import type {SharedValue} from 'react-native-reanimated';
+import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
 
 const IBERIA = {
   latitude: 40.0,
@@ -61,8 +55,8 @@ export const MapView: FC<Props> = ({
     () =>
       poiList.map(poi => {
         const pinColor = poi.isFavorite
-          ? t.atoms.map.poi.favorite
-          : t.atoms.map.poi.price_level[poi.priceLevel];
+          ? t.atoms.components.map.marker.favorite
+          : t.atoms.components.map.marker.price[poi.priceLevel];
 
         return (
           <Marker
@@ -77,10 +71,10 @@ export const MapView: FC<Props> = ({
         );
       }),
     [
-      poiList,
-      t.atoms.map.poi.favorite,
-      t.atoms.map.poi.price_level,
       onPressMarker,
+      poiList,
+      t.atoms.components.map.marker.favorite,
+      t.atoms.components.map.marker.price,
     ],
   );
 

@@ -23,7 +23,7 @@ export const VersionControlView: FC<VersionControlViewProps> = ({
     <SafeAreaView
       style={[
         a.flex_1,
-        t.atoms.bg.primary,
+        t.atoms.bgColor.primary,
         a.justify_center,
         a.align_center,
         a.px_lg,

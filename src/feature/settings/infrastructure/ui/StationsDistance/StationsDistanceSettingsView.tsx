@@ -26,7 +26,7 @@ export const StationDistanceSettingsView: ScreenComponent<
   }));
 
   return (
-    <View style={[a.flex_1, t.atoms.bg.primary]}>
+    <View style={[a.flex_1, t.atoms.background.primary]}>
       <Header
         title={i18n.t('Stations to show')}
         leftIcon="left-arrow"

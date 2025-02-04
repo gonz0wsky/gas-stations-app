@@ -3,7 +3,7 @@ import {atoms as a, useSafeArea, useTheme} from '@core/layout/index';
 import type {IconName} from './Icon/types';
 import type {FC, ReactNode} from 'react';
 import type {StyleProp, ViewStyle} from 'react-native';
-import { StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 import CircularButton from './CircularButton';
 
@@ -39,7 +39,7 @@ const Header: FC<Props> = ({
     <View
       pointerEvents="box-none"
       style={[
-        transparent ? undefined : t.atoms.header.bg,
+        transparent ? undefined : t.atoms.background.secondary,
         a.absolute,
         a.align_center,
         a.flex_row,
@@ -62,7 +62,7 @@ const Header: FC<Props> = ({
       </View>
       {!!title && (
         <View>
-          <Text style={[t.atoms.text.primary, a.font_body_one]}>{title}</Text>
+          <Text style={[t.atoms.text.secondary, a.font_body_one]}>{title}</Text>
         </View>
       )}
       <View style={styles.buttonContainer}>

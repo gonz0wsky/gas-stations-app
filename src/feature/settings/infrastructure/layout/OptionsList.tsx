@@ -1,8 +1,8 @@
-import {atoms as a} from '@core/layout';
+import {atoms as a, useTheme} from '@core/layout';
 import Icon from '@shared/ui/component/Icon';
 import Spacer from '@shared/ui/component/Spacer';
 import type {FC} from 'react';
-import type { FlatListProps} from 'react-native';
+import type {FlatListProps} from 'react-native';
 import {FlatList, Text} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 
@@ -14,14 +14,31 @@ type OptionItemProps = {
 };
 
 const OptionItem: FC<OptionItemProps> = ({id, title, selected, onPress}) => {
+  const t = useTheme();
   const handlePress = () => onPress(id);
 
   return (
     <RectButton
       onPress={handlePress}
-      style={[a.py_sm, a.px_lg, a.flex_row, a.justify_between, a.align_center]}>
-      <Text style={[a.font_body_one_medium]}>{title}</Text>
-      {selected && <Icon name="check" size={18} />}
+      style={[
+        a.py_sm,
+        a.px_lg,
+        a.flex_row,
+        a.justify_between,
+        a.align_center,
+        t.atoms.components.options_list.background,
+      ]}>
+      <Text
+        style={[a.font_body_one_medium, t.atoms.components.options_list.text]}>
+        {title}
+      </Text>
+      {selected && (
+        <Icon
+          name="check"
+          size={18}
+          color={t.atoms.components.options_list.icon.color}
+        />
+      )}
     </RectButton>
   );
 };
@@ -32,6 +49,8 @@ type Props = {
 } & Omit<FlatListProps<{id: string; title: string}>, 'renderItem'>;
 
 const OptionsList: FC<Props> = ({data, onPress, ...rest}) => {
+  const t = useTheme();
+
   const renderItem = ({item}: {item: {id: string; title: string}}) => (
     <OptionItem
       id={item.id}
@@ -41,13 +60,17 @@ const OptionsList: FC<Props> = ({data, onPress, ...rest}) => {
     />
   );
 
+  const renderSpacer = () => (
+    <Spacer style={[t.atoms.components.options_list.spacer]} />
+  );
+
   return (
     <FlatList
       alwaysBounceVertical={false}
       data={data}
       renderItem={renderItem}
       style={[a.flex_1]}
-      ItemSeparatorComponent={Spacer}
+      ItemSeparatorComponent={renderSpacer}
       {...rest}
     />
   );

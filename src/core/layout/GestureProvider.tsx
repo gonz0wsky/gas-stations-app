@@ -7,7 +7,7 @@ export const GestureProvider = ({children}: {children: ReactNode}) => {
   const t = useTheme();
 
   return (
-    <GestureHandlerRootView style={[a.flex_1, t.atoms.bg.primary]}>
+    <GestureHandlerRootView style={[a.flex_1, t.atoms.background.primary]}>
       {children}
     </GestureHandlerRootView>
   );

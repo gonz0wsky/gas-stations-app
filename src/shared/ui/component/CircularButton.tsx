@@ -3,16 +3,13 @@ import Icon from './Icon';
 import type {IconName} from './Icon/types';
 import type {FC} from 'react';
 import {View} from 'react-native';
-import type {
-  BorderlessButtonProps} from 'react-native-gesture-handler';
-import {
-  BorderlessButton,
-} from 'react-native-gesture-handler';
+import type {BorderlessButtonProps} from 'react-native-gesture-handler';
+import {BorderlessButton} from 'react-native-gesture-handler';
 
 type Props = {
   icon: IconName;
   size?: number;
-  variant?: 'primary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
 } & BorderlessButtonProps;
 
 const CircularButton: FC<Props> = ({
@@ -28,14 +25,17 @@ const CircularButton: FC<Props> = ({
     <View
       style={[
         style,
-        t.atoms.round_btn.bg[variant],
+        t.atoms.components.circular_button.background[variant],
         a.rounded_full,
         a.overflow_hidden,
       ]}>
       <BorderlessButton
         style={[{height: size, width: size}, a.align_center, a.justify_center]}
         {...rest}>
-        <Icon name={icon} color={t.atoms.round_btn.icon[variant].color} />
+        <Icon
+          name={icon}
+          color={t.atoms.components.circular_button.icon[variant].color}
+        />
       </BorderlessButton>
     </View>
   );
