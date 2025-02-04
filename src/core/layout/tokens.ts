@@ -1,7 +1,4 @@
 export const color = {
-  true_black: '#000000',
-  true_white: '#ffffff',
-
   theme_light_primary: '#e2e1d7',
   theme_light_secondary: '#1b384e',
   theme_light_tertiary: '#6aba37',
@@ -9,12 +6,12 @@ export const color = {
   theme_light_medium: '#d6a62b',
   theme_light_low: '#4f8a2f',
 
-  theme_dark_primary: '#393d4c',
-  theme_dark_secondary: '#fbfeff',
-  theme_dark_tertiary: '#97c535',
-  theme_dark_high: 'red',
-  theme_dark_medium: 'yellow',
-  theme_dark_low: 'green',
+  theme_dark_primary: '#1b1c1a',
+  theme_dark_secondary: '#a2b8cc',
+  theme_dark_tertiary: '#8cd95a',
+  theme_dark_high: '#e0503f',
+  theme_dark_medium: '#e0b13e',
+  theme_dark_low: '#6aba37',
 } as const;
 
 export const space = {
