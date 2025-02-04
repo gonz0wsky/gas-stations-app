@@ -12,7 +12,6 @@ const palette: Palette = {
 
 export const theme: Theme = {
   name: 'dark',
-  palette,
   atoms: {
     text: {
       primary: {color: palette.secondary},
@@ -107,7 +106,7 @@ export const theme: Theme = {
         spacer: {backgroundColor: palette.secondary},
         text: {color: palette.secondary},
       },
-      sekeleton: {
+      skeleton: {
         background: palette.secondary,
         foreground: palette.tertiary,
       },

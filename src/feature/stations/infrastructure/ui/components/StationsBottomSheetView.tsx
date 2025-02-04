@@ -128,8 +128,8 @@ const LoadingView: FC = () => {
   return (
     <Skeleton
       containerStyle={containerStyle}
-      highlightColor={t.atoms.components.sekeleton.foreground}
-      boneColor={t.atoms.components.sekeleton.background}
+      highlightColor={t.atoms.components.skeleton.foreground}
+      boneColor={t.atoms.components.skeleton.background}
       isLoading
       layout={[
         {

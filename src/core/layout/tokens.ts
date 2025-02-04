@@ -12,6 +12,14 @@ export const color = {
   theme_dark_high: '#c04034',
   theme_dark_medium: '#b38a32',
   theme_dark_low: '#5f7a2e',
+
+  theme_bird_black: '#000000',
+  theme_bird_blue: '#0057B8',
+  theme_bird_green: '#00A651',
+  theme_bird_pink: '#FF80AB',
+  theme_bird_red: '#FF0000',
+  theme_bird_white: '#FFFFFF',
+  theme_bird_yellow: '#FFD700',
 } as const;
 
 export const space = {
