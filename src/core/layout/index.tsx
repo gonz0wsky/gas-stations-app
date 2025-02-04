@@ -2,10 +2,10 @@ import * as themes from '@core/layout/themes';
 import type {Breakpoint} from '@core/layout/tokens';
 import getActiveBreakpoints from '@core/layout/utils/getActiveBreakpoints';
 import React from 'react';
-import type { ScaledSize} from 'react-native';
+import type {ScaledSize} from 'react-native';
 import {Dimensions, useWindowDimensions} from 'react-native';
 import type {EdgeInsets} from 'react-native-safe-area-context';
-import { useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export {atoms} from '@core/layout/atoms';
 export * as tokens from '@core/layout/tokens';
@@ -30,7 +30,7 @@ const Context = React.createContext<{
     gtTablet: false,
   },
   safearea: {top: 0, left: 0, right: 0, bottom: 0},
-  theme: themes.light,
+  theme: themes.variant.light,
   themeName: 'light',
   window: {fontScale: 0, height: 0, scale: 0, width: 0},
 });
@@ -41,7 +41,7 @@ export const ThemeProvider = ({
 }: React.PropsWithChildren<{theme: themes.ThemeName}>) => {
   const safearea = useSafeAreaInsets();
   const window = useWindowDimensions();
-  const theme = themes[themeName];
+  const theme = themes.variant[themeName];
   const [breakpoints, setBreakpoints] = React.useState(() =>
     getActiveBreakpoints({width: Dimensions.get('window').width}),
   );

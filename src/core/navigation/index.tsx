@@ -1,11 +1,8 @@
 import React from 'react';
 import type {LinkingOptions} from '@react-navigation/native';
-import { NavigationContainer} from '@react-navigation/native';
-import type {
-  NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import type {NativeStackNavigationOptions} from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {StationsView} from '@feature/stations/infrastructure/ui/StationsView';
 import {SettingsView} from '@feature/settings/infrastructure/ui/SettingsView';
@@ -18,25 +15,10 @@ import {OnboardingView} from '@feature/onboarding/infrastructure/OnboardingView'
 import type {
   AllNavigatorParamList,
   MainNavigatorParamList,
-  ModalNavigatorParamList,
 } from './routes/params';
 import {useStore} from '@core/store';
 
 const Main = createNativeStackNavigator<MainNavigatorParamList>();
-const Modal = createNativeStackNavigator<ModalNavigatorParamList>();
-
-const ModalNavigator = () => {
-  const screenOptions: NativeStackNavigationOptions = {
-    animation: 'slide_from_bottom',
-    presentation: 'modal',
-  } as const;
-
-  return (
-    <Modal.Group screenOptions={screenOptions}>
-      <></>
-    </Modal.Group>
-  );
-};
 
 const MainNavigatorScreens = () => (
   <>
@@ -73,7 +55,6 @@ const MainNavigator = () => {
         <Main.Screen name="Onboarding" component={OnboardingView} />
       )}
       {MainNavigatorScreens()}
-      {ModalNavigator()}
     </Main.Navigator>
   );
 };

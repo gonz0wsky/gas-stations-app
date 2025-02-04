@@ -1,7 +1,7 @@
-import type { ViewStyleProp} from '@core/layout';
+import type {ViewStyleProp} from '@core/layout';
 import {atoms as a, useTheme} from '@core/layout';
 import type {FC} from 'react';
-import { useCallback} from 'react';
+import {useCallback} from 'react';
 import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import type {FilterOption} from '../constants/filter-constants';
@@ -27,15 +27,15 @@ const Filter: FC<FilterProps> = ({options, selected, onPress, style}) => {
           a.flex_1,
           a.align_center,
           a.justify_center,
-          selected === id && t.atoms.selector.selected_bg,
+          selected === id && t.atoms.components.filter.background_active,
         ]}>
         <Text
           numberOfLines={1}
           style={[
             a.px_md,
             a.font_body_one_medium,
-            t.atoms.selector.text,
-            selected === id && t.atoms.selector.selected_text,
+            t.atoms.components.filter.text,
+            selected === id && t.atoms.components.filter.text_active,
           ]}>
           {label}
         </Text>
@@ -44,9 +44,9 @@ const Filter: FC<FilterProps> = ({options, selected, onPress, style}) => {
     [
       onPress,
       selected,
-      t.atoms.selector.selected_bg,
-      t.atoms.selector.selected_text,
-      t.atoms.selector.text,
+      t.atoms.components.filter.background_active,
+      t.atoms.components.filter.text,
+      t.atoms.components.filter.text_active,
     ],
   );
 
@@ -54,9 +54,9 @@ const Filter: FC<FilterProps> = ({options, selected, onPress, style}) => {
     <View
       style={[
         style,
+        t.atoms.components.filter.background,
         a.flex_row,
         a.rounded_sm,
-        t.atoms.selector.bg,
         a.overflow_hidden,
       ]}>
       {options.map(render)}

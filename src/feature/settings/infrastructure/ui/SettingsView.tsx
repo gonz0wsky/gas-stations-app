@@ -1,5 +1,5 @@
 import type {FC} from 'react';
-import React, { useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import {atoms as a, useSafeArea, useTheme} from '@core/layout';
 import Header from '@shared/ui/component/Header';
@@ -19,13 +19,20 @@ type SectionTitleProps = {
   title: string;
 };
 
-const SectionTitle: FC<SectionTitleProps> = ({title}) => (
-  <View style={[a.px_lg, a.py_sm]}>
-    <Text numberOfLines={1} style={[a.font_body_one_medium]}>
-      {title}
-    </Text>
-  </View>
-);
+const SectionTitle: FC<SectionTitleProps> = ({title}) => {
+  const t = useTheme();
+
+  return (
+    <View
+      style={[a.px_lg, a.py_sm, t.atoms.components.section_title.background]}>
+      <Text
+        numberOfLines={1}
+        style={[a.font_body_one_medium, t.atoms.components.section_title.text]}>
+        {title}
+      </Text>
+    </View>
+  );
+};
 
 type NavigateOptionProps = {
   title: string;
@@ -47,23 +54,36 @@ const NavigateOption: FC<NavigateOptionProps> = ({
       onPress={onPress}
       style={[
         pressStyle,
-        t.atoms.option_navigate.bg,
+        t.atoms.components.settings_option.background,
         a.px_lg,
         a.flex_row,
         a.justify_between,
         a.align_center,
       ]}>
       <View>
-        <Text numberOfLines={1} style={[a.font_body_one_medium]}>
+        <Text
+          numberOfLines={1}
+          style={[
+            a.font_body_one_medium,
+            t.atoms.components.settings_option.title,
+          ]}>
           {title}
         </Text>
         {!!subtitle && (
-          <Text numberOfLines={1} style={[a.font_body_two]}>
+          <Text
+            numberOfLines={1}
+            style={[
+              a.font_body_two,
+              t.atoms.components.settings_option.subtitle,
+            ]}>
             {subtitle}
           </Text>
         )}
       </View>
-      <Icon name="right-chevron" />
+      <Icon
+        name="right-chevron"
+        color={t.atoms.components.settings_option.icon.color}
+      />
     </RectButton>
   );
 };
@@ -134,18 +154,28 @@ const SelectorOption: FC<SelectorOptionProps> = ({
     <View
       style={[
         pressStyle,
-        t.atoms.option_navigate.bg,
+        t.atoms.components.settings_option.background,
         a.px_lg,
         a.flex_row,
         a.justify_between,
         a.align_center,
       ]}>
       <View>
-        <Text numberOfLines={1} style={[a.font_body_one_medium]}>
+        <Text
+          numberOfLines={1}
+          style={[
+            a.font_body_one_medium,
+            t.atoms.components.settings_option.title,
+          ]}>
           {title}
         </Text>
         {!!subtitle && (
-          <Text numberOfLines={1} style={[a.font_body_two]}>
+          <Text
+            numberOfLines={1}
+            style={[
+              a.font_body_two,
+              t.atoms.components.settings_option.subtitle,
+            ]}>
             {subtitle}
           </Text>
         )}
@@ -197,8 +227,8 @@ export const SettingsView: ScreenComponent<'Settings'> = () => {
         onPressLeft={onPressBack}
       />
       <ScrollView
-        style={[t.atoms.bg.primary]}
-        contentContainerStyle={[a.pt_sm, a.pb_safe(safe.bottom, 16)]}
+        style={[t.atoms.background.primary]}
+        contentContainerStyle={[a.pb_safe(safe.bottom, 16)]}
         alwaysBounceVertical={false}>
         <SectionTitle title={i18n.t('General')} />
         <NavigateOption

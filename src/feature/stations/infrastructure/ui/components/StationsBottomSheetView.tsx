@@ -2,7 +2,7 @@ import {atoms as a, useSafeArea, useTheme, useWindow} from '@core/layout';
 import type {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import {BottomSheetFlatList, BottomSheetView} from '@gorhom/bottom-sheet';
 import type {FC} from 'react';
-import { useCallback, useMemo} from 'react';
+import {useCallback, useMemo} from 'react';
 import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
@@ -41,32 +41,37 @@ const StationCard = ({
 
   const priceRangeStyle = useMemo(() => {
     if (!price) {
-      return t.atoms.station_card.price;
+      return t.atoms.components.card.price.default;
     }
 
     if (price < priceRanges.lowEnd) {
-      return t.atoms.station_card.price_low;
+      return t.atoms.components.card.price.low;
     }
 
     if (price < priceRanges.midEnd) {
-      return t.atoms.station_card.price_medium;
+      return t.atoms.components.card.price.medium;
     }
 
-    return t.atoms.station_card.price_high;
+    return t.atoms.components.card.price.high;
   }, [
     price,
     priceRanges.lowEnd,
     priceRanges.midEnd,
-    t.atoms.station_card.price_high,
-    t.atoms.station_card.price_low,
-    t.atoms.station_card.price_medium,
-    t.atoms.station_card.price,
+    t.atoms.components.card.price.high,
+    t.atoms.components.card.price.default,
+    t.atoms.components.card.price.low,
+    t.atoms.components.card.price.medium,
   ]);
 
   const handlePress = () => onPress(station.id);
 
   return (
-    <View style={[a.rounded_sm, a.overflow_hidden, t.atoms.station_card.bg]}>
+    <View
+      style={[
+        a.rounded_sm,
+        a.overflow_hidden,
+        t.atoms.components.card.background,
+      ]}>
       <RectButton style={[a.flex_row, a.py_sm, a.px_lg]} onPress={handlePress}>
         <View
           style={[
@@ -83,7 +88,7 @@ const StationCard = ({
           <Text
             style={[
               a.font_caption,
-              t.atoms.station_card.distance,
+              t.atoms.components.card.distance,
             ]}>{`${distance} Km`}</Text>
         </View>
         <View style={[a.flex_1]}>
@@ -92,13 +97,13 @@ const StationCard = ({
             style={[
               a.font_body_one_medium,
               a.mb_xs,
-              t.atoms.station_card.title,
+              t.atoms.components.card.title,
             ]}>
             {station.name}
           </Text>
           <Text
             numberOfLines={1}
-            style={[a.font_caption, t.atoms.station_card.subtitle]}>
+            style={[a.font_caption, t.atoms.components.card.subtitle]}>
             {station.address}
           </Text>
         </View>
@@ -108,12 +113,23 @@ const StationCard = ({
 };
 
 const LoadingView: FC = () => {
+  const t = useTheme();
   const w = useWindow();
   const containerStyle = Object.freeze({flex: 1});
+
+  // if we use flex 1 animation will not work
+  const calculatedFilterWidth =
+    w.width -
+    a.mx_lg.marginLeft -
+    a.mx_lg.marginRight -
+    a.mr_sm.marginRight -
+    36;
 
   return (
     <Skeleton
       containerStyle={containerStyle}
+      highlightColor={t.atoms.components.skeleton.foreground}
+      boneColor={t.atoms.components.skeleton.background}
       isLoading
       layout={[
         {
@@ -125,7 +141,7 @@ const LoadingView: FC = () => {
             {
               key: 'filter',
               height: 36,
-              flex: 1,
+              width: calculatedFilterWidth,
               ...a.mr_sm,
               ...a.rounded_sm,
             },
@@ -222,6 +238,7 @@ const StationsBottomSheetView: FC<Props> = ({
         initialNumToRender={12}
         maxToRenderPerBatch={4}
         renderItem={handleRender}
+        showsVerticalScrollIndicator={false}
         style={[a.mt_sm]}
       />
     </BottomSheetView>

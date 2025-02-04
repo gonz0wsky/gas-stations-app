@@ -73,7 +73,8 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
         poiList={mapPois}
       />
       <BottomSheet
-        handleStyle={t.atoms.bg.primary}
+        handleIndicatorStyle={[t.atoms.background.tertiary]}
+        handleStyle={t.atoms.background.primary}
         animatedIndex={bsSharedValue}
         enableOverDrag={false}
         animateOnMount={false}
@@ -82,7 +83,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
         ref={bottomSheetRef}
         enableContentPanningGesture={false}
         snapPoints={['40%', '60%', '80%']}>
-        <Animated.View style={[animatedStyle, t.atoms.bg.primary]}>
+        <Animated.View style={[animatedStyle, t.atoms.background.primary]}>
           <BottomSheetScrollView
             bounces={false}
             horizontal
