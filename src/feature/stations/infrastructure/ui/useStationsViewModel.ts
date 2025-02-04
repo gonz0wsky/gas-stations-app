@@ -55,8 +55,12 @@ export const useStationsViewModel = () => {
 
   const {navigate} = useNavigation();
   const deviceLocation = useLocation();
-  const {data: serviceStationsList, isLoading: isServiceStationsLoading} =
-    useServiceStationsQuery();
+  const {
+    data: serviceStationsList,
+    isLoading: isServiceStationsLoading,
+    refetch: refetchServiceStations,
+    isRefetching: isServiceStationsRefetching,
+  } = useServiceStationsQuery();
 
   const {
     filter,
@@ -191,10 +195,12 @@ export const useStationsViewModel = () => {
     handlePressSettings,
     horizontalViewRef,
     isServiceStationsLoading,
+    isServiceStationsRefetching,
     mapPois,
     mapRef,
     mapStyle,
     priceRanges,
+    refetchServiceStations,
     selectedStation,
     userCurrentLocation,
     userFavoriteStationsIds,
