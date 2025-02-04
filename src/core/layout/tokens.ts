@@ -5,9 +5,9 @@ export const color = {
   theme_light_primary: '#e2e1d7',
   theme_light_secondary: '#1b384e',
   theme_light_tertiary: '#6aba37',
-  theme_light_high: 'red',
-  theme_light_medium: 'yellow',
-  theme_light_low: 'green',
+  theme_light_high: '#b02e1a',
+  theme_light_medium: '#d6a62b',
+  theme_light_low: '#4f8a2f',
 
   theme_dark_primary: '#393d4c',
   theme_dark_secondary: '#fbfeff',
