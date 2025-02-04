@@ -113,12 +113,23 @@ const StationCard = ({
 };
 
 const LoadingView: FC = () => {
+  const t = useTheme();
   const w = useWindow();
   const containerStyle = Object.freeze({flex: 1});
+
+  // if we use flex 1 animation will not work
+  const calculatedFilterWidth =
+    w.width -
+    a.mx_lg.marginLeft -
+    a.mx_lg.marginRight -
+    a.mr_sm.marginRight -
+    36;
 
   return (
     <Skeleton
       containerStyle={containerStyle}
+      highlightColor={t.atoms.components.sekeleton.foreground}
+      boneColor={t.atoms.components.sekeleton.background}
       isLoading
       layout={[
         {
@@ -130,7 +141,7 @@ const LoadingView: FC = () => {
             {
               key: 'filter',
               height: 36,
-              flex: 1,
+              width: calculatedFilterWidth,
               ...a.mr_sm,
               ...a.rounded_sm,
             },

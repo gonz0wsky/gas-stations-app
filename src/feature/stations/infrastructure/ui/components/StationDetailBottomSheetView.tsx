@@ -195,7 +195,7 @@ export const StationDetailBottomSheetView: FC<Props> = ({
         <Text style={[a.font_caption, a.mb_lg, t.atoms.text.primary]}>
           {[station.address, station.locality].join(', ')}
         </Text>
-        <View style={[a.gap_sm]}>
+        <View style={[a.gap_sm, a.mb_lg]}>
           <StationPricesDetailCard products={station.products} />
           <Spacer />
           <StationDetailRow

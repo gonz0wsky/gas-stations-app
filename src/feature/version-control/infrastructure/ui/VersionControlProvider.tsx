@@ -1,4 +1,4 @@
-import {useState, type ReactNode} from 'react';
+import React, {useState, type ReactNode} from 'react';
 import {getVersion} from 'react-native-device-info';
 import {CONFIG} from '@core/config';
 import {Linking, Platform} from 'react-native';
@@ -58,5 +58,5 @@ export const VersionControlProvider = ({children}: {children: ReactNode}) => {
     );
   }
 
-  return children;
+  return children as React.JSX.Element;
 };

@@ -1,16 +1,17 @@
 import {tokens} from '@core/layout/utils/getActiveBreakpoints';
+import type {Palette, Theme} from '..';
 
-const palette = {
-  primary: tokens.color.theme_light_primary,
-  secondary: tokens.color.theme_light_secondary,
-  tertiary: tokens.color.theme_light_tertiary,
-  high: tokens.color.theme_light_high,
-  medium: tokens.color.theme_light_medium,
-  low: tokens.color.theme_light_low,
+const palette: Palette = {
+  primary: tokens.color.theme_dark_primary,
+  secondary: tokens.color.theme_dark_secondary,
+  tertiary: tokens.color.theme_dark_tertiary,
+  high: tokens.color.theme_dark_high,
+  medium: tokens.color.theme_dark_medium,
+  low: tokens.color.theme_dark_low,
 } as const;
 
-export const theme = {
-  name: 'light',
+export const theme: Theme = {
+  name: 'dark',
   palette,
   atoms: {
     text: {
@@ -31,7 +32,7 @@ export const theme = {
           tertiary: {backgroundColor: palette.primary},
         },
         text: {
-          primary: {color: palette.secondary},
+          primary: {color: palette.primary},
           secondary: {color: palette.primary},
           tertiary: {color: palette.tertiary},
         },
@@ -43,7 +44,7 @@ export const theme = {
           tertiary: {backgroundColor: palette.primary},
         },
         icon: {
-          primary: {color: palette.secondary},
+          primary: {color: palette.primary},
           secondary: {color: palette.primary},
           tertiary: {color: palette.tertiary},
         },
@@ -51,7 +52,7 @@ export const theme = {
       filter: {
         background: {backgroundColor: palette.tertiary},
         background_active: {backgroundColor: palette.secondary},
-        text: {color: palette.secondary},
+        text: {color: palette.primary},
         text_active: {color: palette.primary},
       },
       card: {
@@ -68,10 +69,10 @@ export const theme = {
       },
       station_detail_row: {
         icon_bg: {
-          backgroundColor: palette.tertiary,
-          borderColor: palette.secondary,
+          backgroundColor: palette.secondary,
+          borderColor: palette.primary,
         },
-        icon: {color: palette.secondary},
+        icon: {color: palette.primary},
         title: {color: palette.secondary},
         subtitle: {color: palette.secondary},
       },
@@ -91,20 +92,24 @@ export const theme = {
         },
       },
       section_title: {
-        background: {backgroundColor: palette.primary},
-        text: {color: palette.secondary},
+        background: {backgroundColor: palette.secondary},
+        text: {color: palette.primary},
       },
       settings_option: {
-        background: {backgroundColor: palette.secondary},
-        title: {color: palette.tertiary},
-        subtitle: {color: palette.primary},
-        icon: {color: palette.tertiary},
+        background: {backgroundColor: palette.primary},
+        title: {color: palette.secondary},
+        subtitle: {color: palette.secondary},
+        icon: {color: palette.secondary},
       },
       options_list: {
         background: {backgroundColor: palette.primary},
         icon: {color: palette.secondary},
         spacer: {backgroundColor: palette.secondary},
         text: {color: palette.secondary},
+      },
+      sekeleton: {
+        background: palette.secondary,
+        foreground: palette.tertiary,
       },
     },
   },

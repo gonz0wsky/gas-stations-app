@@ -6,12 +6,12 @@ export const color = {
   theme_light_medium: '#d6a62b',
   theme_light_low: '#4f8a2f',
 
-  theme_dark_primary: '#1b1c1a',
-  theme_dark_secondary: '#a2b8cc',
-  theme_dark_tertiary: '#8cd95a',
-  theme_dark_high: '#e0503f',
-  theme_dark_medium: '#e0b13e',
-  theme_dark_low: '#6aba37',
+  theme_dark_primary: '#0e1d11',
+  theme_dark_secondary: '#b8b5b5',
+  theme_dark_tertiary: '#92d100',
+  theme_dark_high: '#c04034',
+  theme_dark_medium: '#b38a32',
+  theme_dark_low: '#5f7a2e',
 } as const;
 
 export const space = {

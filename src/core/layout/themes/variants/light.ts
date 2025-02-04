@@ -106,6 +106,10 @@ export const theme = {
         spacer: {backgroundColor: palette.secondary},
         text: {color: palette.secondary},
       },
+      sekeleton: {
+        background: palette.secondary,
+        foreground: palette.tertiary,
+      },
     },
   },
 };
