@@ -3,6 +3,7 @@ import type {ServiceStation} from '@feature/stations/domain/ServiceStationModel'
 import {BottomSheetFlatList, BottomSheetView} from '@gorhom/bottom-sheet';
 import type {FC} from 'react';
 import {useCallback, useMemo} from 'react';
+import type {FlatListProps} from 'react-native';
 import {Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import {calculateDistanceInKm} from '@shared/utils/calculateDistanceInKm';
@@ -174,7 +175,9 @@ type Props = {
   handlePressSettings: () => void;
   isLoading: boolean;
   onPressCard: (id: string) => void;
+  onRefresh: FlatListProps<ServiceStation>['onRefresh'];
   priceRanges: {lowEnd: number; midEnd: number};
+  refreshing: FlatListProps<ServiceStation>['refreshing'];
   stations: ServiceStation[];
   userLocation: {latitude: number; longitude: number};
   userPreferredProduct: keyof ServiceStationProducts;
@@ -186,7 +189,9 @@ const StationsBottomSheetView: FC<Props> = ({
   handlePressSettings,
   isLoading,
   onPressCard,
+  onRefresh,
   priceRanges,
+  refreshing,
   stations,
   userLocation,
   userPreferredProduct,
@@ -237,6 +242,8 @@ const StationsBottomSheetView: FC<Props> = ({
         data={stations}
         initialNumToRender={12}
         maxToRenderPerBatch={4}
+        onRefresh={onRefresh}
+        refreshing={refreshing}
         renderItem={handleRender}
         showsVerticalScrollIndicator={false}
         style={[a.mt_sm]}

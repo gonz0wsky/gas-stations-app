@@ -41,10 +41,12 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
     handlePressSettings,
     horizontalViewRef,
     isServiceStationsLoading,
+    isServiceStationsRefetching,
     mapPois,
     mapRef,
     mapStyle,
     priceRanges,
+    refetchServiceStations,
     selectedStation,
     userCurrentLocation,
     userFavoriteStationsIds,
@@ -96,12 +98,14 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
               filter={filter}
               handlePressFilter={handlePressFilter}
               handlePressSettings={handlePressSettings}
+              isLoading={isServiceStationsLoading}
               onPressCard={handlePressCard}
+              onRefresh={refetchServiceStations}
               priceRanges={priceRanges}
+              refreshing={isServiceStationsRefetching}
               stations={filteredStationList}
               userLocation={userCurrentLocation}
               userPreferredProduct={userVehicleFuel}
-              isLoading={isServiceStationsLoading}
             />
             {!!selectedStation && (
               <StationDetailBottomSheetView
