@@ -1,12 +1,11 @@
 import type {ReactNode} from 'react';
 import React from 'react';
+import type {QueryClient} from '@tanstack/react-query';
 import {
-  QueryClient,
   QueryClientProvider as ReactQueryClientProvider,
   useQueryClient as useReactQueryClient,
 } from '@tanstack/react-query';
-
-const queryClient = new QueryClient();
+import {queryClient} from './QueryClient';
 
 const Context = React.createContext<{
   queryClient: QueryClient;
