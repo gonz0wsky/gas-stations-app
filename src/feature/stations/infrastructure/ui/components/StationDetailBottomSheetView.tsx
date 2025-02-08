@@ -184,6 +184,7 @@ export const StationDetailBottomSheetView: FC<Props> = ({
       <BottomSheetScrollView
         automaticallyAdjustContentInsets
         alwaysBounceVertical={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={[
           a.px_lg,
           a.pt_lg,
