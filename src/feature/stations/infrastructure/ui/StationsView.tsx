@@ -29,6 +29,7 @@ const mapVariants: Record<
 export const StationsView: ScreenComponent<'Stations'> = () => {
   const {
     bottomSheetRef,
+    deviceLocation,
     filter,
     filteredStationList,
     handleHorizontalOnMomentunScrollEnd,
@@ -48,7 +49,6 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
     priceRanges,
     refetchServiceStations,
     selectedStation,
-    userCurrentLocation,
     userFavoriteStationsIds,
     userVehicleFuel,
   } = useStationsViewModel();
@@ -104,7 +104,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
               priceRanges={priceRanges}
               refreshing={isServiceStationsRefetching}
               stations={filteredStationList}
-              userLocation={userCurrentLocation}
+              userLocation={deviceLocation}
               userPreferredProduct={userVehicleFuel}
             />
             {!!selectedStation && (
@@ -114,7 +114,7 @@ export const StationsView: ScreenComponent<'Stations'> = () => {
                 handlePressOpenInMaps={handlePressOpenInMaps}
                 station={selectedStation}
                 userFavoriteStations={userFavoriteStationsIds}
-                userLocation={userCurrentLocation}
+                userLocation={deviceLocation}
               />
             )}
           </BottomSheetScrollView>

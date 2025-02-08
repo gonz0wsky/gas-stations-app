@@ -13,12 +13,14 @@ import FILTER_OPTIONS from '../constants/filter-constants';
 import CircularButton from '@shared/ui/component/CircularButton';
 import type {ServiceStationProducts} from '@feature/stations/domain/ServiceStationModel';
 import Skeleton from 'react-native-reanimated-skeleton';
+import type {PriceRanges} from '@shared/domain/PriceRanges';
+import type {Location} from '@shared/domain/Location';
 
 type StationCardProps = {
   onPress: (id: string) => void;
-  priceRanges: {lowEnd: number; midEnd: number};
+  priceRanges: PriceRanges;
   station: ServiceStation;
-  userLocation: {latitude: number; longitude: number};
+  userLocation: Location | null;
   userPreferredProduct: keyof ServiceStationProducts;
 };
 
@@ -34,7 +36,10 @@ const StationCard = ({
   const t = useTheme();
 
   const distance = useMemo(
-    () => calculateDistanceInKm(userLocation, station.position),
+    () =>
+      userLocation
+        ? calculateDistanceInKm(userLocation, station.position)
+        : null,
     [station.position, userLocation],
   );
 
@@ -86,11 +91,9 @@ const StationCard = ({
               ? `${`${price}00`.slice(0, 5)} €/l`
               : 'N/A'}
           </Text>
-          <Text
-            style={[
-              a.font_caption,
-              t.atoms.components.card.distance,
-            ]}>{`${distance} Km`}</Text>
+          <Text style={[a.font_caption, t.atoms.components.card.distance]}>
+            {distance ? `${distance} Km` : 'N/A'}
+          </Text>
         </View>
         <View style={[a.flex_1]}>
           <Text
@@ -176,10 +179,10 @@ type Props = {
   isLoading: boolean;
   onPressCard: (id: string) => void;
   onRefresh: FlatListProps<ServiceStation>['onRefresh'];
-  priceRanges: {lowEnd: number; midEnd: number};
+  priceRanges: PriceRanges;
   refreshing: FlatListProps<ServiceStation>['refreshing'];
   stations: ServiceStation[];
-  userLocation: {latitude: number; longitude: number};
+  userLocation: Location | null;
   userPreferredProduct: keyof ServiceStationProducts;
 };
 

@@ -1,5 +1,5 @@
-import type {ServiceStationsDTO} from '../infrastructure/api/ServiceStationsDTO';
+import type {ServiceStation} from './ServiceStationModel';
 
 export interface ServiceStationsRepository {
-  fetch(): Promise<ServiceStationsDTO>;
+  fetchAll(): Promise<Array<ServiceStation>>;
 }

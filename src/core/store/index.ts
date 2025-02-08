@@ -9,16 +9,10 @@ import type {VehicleSlice} from './useVehicleSlice';
 import createVehicleSlice from './useVehicleSlice';
 import type {StationsSlice} from './useStationsSlice';
 import createStationsSlice from './useStationsSlice';
-import type {LocationSlice} from './useLocationSlice';
-import createLocationSlice from './useLocationSlice';
 import type {MapSlice} from './useMapSlice';
 import createMapSlice from './useMapSlice';
 
-type Slices = SystemSlice &
-  VehicleSlice &
-  StationsSlice &
-  LocationSlice &
-  MapSlice;
+type Slices = SystemSlice & VehicleSlice & StationsSlice & MapSlice;
 
 export const useStore = create<Slices>()(
   persist(
@@ -26,7 +20,6 @@ export const useStore = create<Slices>()(
       ...createSystemSlice(...a),
       ...createVehicleSlice(...a),
       ...createStationsSlice(...a),
-      ...createLocationSlice(...a),
       ...createMapSlice(...a),
     }),
     {

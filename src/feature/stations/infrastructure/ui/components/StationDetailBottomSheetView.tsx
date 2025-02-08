@@ -13,6 +13,7 @@ import type {FC} from 'react';
 import {Text, View} from 'react-native';
 import PRODUCT_NAMES from '@shared/constants/names/product-names';
 import Spacer from '@shared/ui/component/Spacer';
+import type {Location} from '@shared/domain/Location';
 
 const SIDE_ROAD_NAMES: Record<'right' | 'left', ReturnType<typeof msg>> = {
   right: msg`Right`,
@@ -145,7 +146,7 @@ type Props = {
   handlePressOpenInMaps: () => void;
   station: ServiceStation;
   userFavoriteStations: string[];
-  userLocation: {latitude: number; longitude: number};
+  userLocation: Location | null;
 };
 
 const headerStyles = {paddingTop: 0};
@@ -204,14 +205,16 @@ export const StationDetailBottomSheetView: FC<Props> = ({
             icon="clock"
           />
           <Spacer />
-          <StationDetailRow
-            title={i18n.t('Distance')}
-            subtitle={`${calculateDistanceInKm(
-              userLocation,
-              station.position,
-            )} ${i18n.t('Km from your location')}`}
-            icon="map"
-          />
+          {!!userLocation && (
+            <StationDetailRow
+              title={i18n.t('Distance')}
+              subtitle={`${calculateDistanceInKm(
+                userLocation,
+                station.position,
+              )} ${i18n.t('Km from your location')}`}
+              icon="map"
+            />
+          )}
           <Spacer />
           <StationDetailRow
             title={i18n.t('Side road')}
