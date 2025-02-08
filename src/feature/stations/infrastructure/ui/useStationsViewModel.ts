@@ -1,6 +1,6 @@
 import type BottomSheet from '@gorhom/bottom-sheet';
 import {useCallback, useEffect, useRef, useState} from 'react';
-import useServiceStationsQuery from '../api/useServiceStationsQuery';
+import useServiceStationsQuery from '../persistence/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
 import {useStationFilter} from './hooks/useStationsFilter';
 import type {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
