@@ -26,6 +26,12 @@ export const GeoLocationProvider = ({children}: {children: ReactNode}) => {
 
   Geolocation.watchPosition(
     position => {
+      // set seville location
+      setLocation({
+        latitude: 37.389444,
+        longitude: -6.069444,
+      });
+      return;
       setLocation({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,

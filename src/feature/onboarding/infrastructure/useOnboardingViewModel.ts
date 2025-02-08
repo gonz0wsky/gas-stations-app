@@ -30,7 +30,6 @@ export const useOnboardingViewModel = () => {
 
   const handlePressNext = useCallback(() => {
     const current = currentScreen.current;
-    console.log(current);
 
     switch (current) {
       case 0:

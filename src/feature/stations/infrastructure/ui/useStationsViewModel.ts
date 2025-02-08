@@ -2,7 +2,6 @@ import type BottomSheet from '@gorhom/bottom-sheet';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import useServiceStationsQuery from '../persistence/useServiceStationsQuery';
 import {useNavigation} from '@react-navigation/native';
-import {useStationFilter} from './hooks/useStationsFilter';
 import type {ServiceStation} from '@feature/stations/domain/ServiceStationModel';
 import type {
   NativeScrollEvent,
@@ -14,33 +13,13 @@ import type {MarkerPressEvent} from 'react-native-maps';
 import type RNMap from 'react-native-maps';
 import {openExternalMaps} from './utils/openExternalMaps';
 import {useLocation} from '@core/geolocation/GeoLocationProvider';
-
-const animateMapToPosition = (
-  mapRef: React.RefObject<RNMap>,
-  type: 'poi' | 'region',
-  latitude: number,
-  longitude: number,
-) => {
-  const deltas: Record<
-    string,
-    {latitudeDelta: number; longitudeDelta: number}
-  > = {
-    poi: {
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
-    },
-    region: {
-      latitudeDelta: 0.5,
-      longitudeDelta: 0.5,
-    },
-  } as const;
-
-  mapRef.current?.animateToRegion({
-    latitude,
-    longitude,
-    ...deltas[type],
-  });
-};
+import {useCheapestServiceStations} from './hooks/useCheapestServiceStations';
+import {useFavoritesServiceStations} from './hooks/useFavoritesServiceStations';
+import {useNearestServiceStations} from './hooks/useNearestServiceStations';
+import type {FilterOption} from './constants/filter-constants';
+import {animateMapToPosition} from './utils/animateMapToPosition';
+import {usePriceRanges} from './hooks/usePriceRanges';
+import {useMapMarkers} from './hooks/useMapMarkers';
 
 export const useStationsViewModel = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -49,8 +28,8 @@ export const useStationsViewModel = () => {
   const initialGPSMapPositionDone = useRef(false);
 
   const permuteUserFavorite = useStore(state => state.permuteFavorite);
-  const userCurrentLocation = useStore(state => state.currentLocation);
   const userVehicleFuel = useStore(state => state.fuel);
+  const userFavoriteStationsIds = useStore(state => state.favorites);
   const mapStyle = useStore(state => state.mapStyle);
 
   const {navigate} = useNavigation();
@@ -61,23 +40,22 @@ export const useStationsViewModel = () => {
     refetch: refetchServiceStations,
     isRefetching: isServiceStationsRefetching,
   } = useServiceStationsQuery();
+  const cheapestStations = useCheapestServiceStations(serviceStationsList);
+  const favoriteStations = useFavoritesServiceStations(serviceStationsList);
+  const nearestStations = useNearestServiceStations(serviceStationsList);
+  const priceRanges = usePriceRanges(nearestStations);
+  const mapPois = useMapMarkers(favoriteStations, nearestStations, priceRanges);
 
-  const {
-    filter,
-    filteredStationList,
-    handlePressFilter,
-    mapPois,
-    priceRanges,
-    userFavoriteStationsIds,
-  } = useStationFilter({
-    stations: serviceStationsList ?? [],
-    location: deviceLocation,
-    userVehicleFuel,
-  });
-
+  const [filter, setFilter] = useState<FilterOption>('price');
   const [selectedStation, setSelectedStation] = useState<ServiceStation | null>(
     null,
   );
+
+  const filteredStationList = {
+    price: cheapestStations,
+    favorites: favoriteStations,
+    near: nearestStations,
+  }[filter];
 
   useEffect(() => {
     if (selectedStation) {
@@ -183,13 +161,14 @@ export const useStationsViewModel = () => {
 
   return {
     bottomSheetRef,
+    deviceLocation,
     filter,
     filteredStationList,
     handleHorizontalOnMomentunScrollEnd,
     handlePressBack,
     handlePressCard,
     handlePressFavorite,
-    handlePressFilter,
+    handlePressFilter: setFilter,
     handlePressMarker,
     handlePressOpenInMaps,
     handlePressSettings,
@@ -202,7 +181,6 @@ export const useStationsViewModel = () => {
     priceRanges,
     refetchServiceStations,
     selectedStation,
-    userCurrentLocation,
     userFavoriteStationsIds,
     userVehicleFuel,
   };
